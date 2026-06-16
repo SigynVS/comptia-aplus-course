@@ -368,6 +368,119 @@
     host.appendChild(wrap);
   }
 
+  // ---------- Achievement badges (home page) ----------
+  function loadBest() {
+    try { return JSON.parse(localStorage.getItem('aplus-best')) || {}; }
+    catch (e) { return {}; }
+  }
+  function initBadges() {
+    var host = document.querySelector('.badges');
+    if (!host) return;
+    var s = loadStats();
+    var streak = computeStreak(s.visitDates || []);
+    var p = loadProgress();
+    var lessonsDone = Object.keys(p).filter(function (k) { return p[k] && p[k].done; }).length;
+    var quizzes = s.quizzesTaken || 0;
+    var avg = quizzes ? (s.scoreSum || 0) / quizzes : 0;
+    var best = loadBest();
+    var bestVals = Object.keys(best).map(function (k) { return best[k]; });
+    var topBest = bestVals.length ? Math.max.apply(null, bestVals) : 0;
+
+    var DEFS = [
+      { icon: '🌱', name: 'First Steps', desc: 'Complete your first lesson', got: lessonsDone >= 1 },
+      { icon: '📚', name: 'Halfway There', desc: 'Complete 5 lessons', got: lessonsDone >= 5 },
+      { icon: '🎓', name: 'Course Complete', desc: 'Complete all 9 lessons', got: lessonsDone >= 9 },
+      { icon: '🔥', name: 'On a Roll', desc: 'Reach a 3-day streak', got: streak.longest >= 3 },
+      { icon: '⚡', name: 'Dedicated', desc: 'Reach a 7-day streak', got: streak.longest >= 7 },
+      { icon: '✍️', name: 'Quiz Regular', desc: 'Take 10 quizzes', got: quizzes >= 10 },
+      { icon: '🎯', name: 'Sharp Shooter', desc: 'Average 90%+ over 3+ quizzes', got: quizzes >= 3 && avg >= 90 },
+      { icon: '🛡️', name: 'Exam Ready', desc: 'Score 75%+ on any exam mode', got: topBest >= 75 },
+      { icon: '🏆', name: 'Perfectionist', desc: 'Score 100% on any exam mode', got: topBest >= 100 }
+    ];
+    var earned = DEFS.filter(function (d) { return d.got; }).length;
+
+    var wrap = document.createElement('div');
+    wrap.className = 'progress-wrap';
+    var cards = DEFS.map(function (d) {
+      return '<div style="flex:1 1 9rem;min-width:9rem;opacity:' + (d.got ? '1' : '0.4') +
+        ';border:1px solid var(--line);border-radius:8px;padding:0.7rem">' +
+        '<div style="font-size:1.5rem">' + d.icon + '</div>' +
+        '<div style="font-weight:700;color:var(--ink)">' + d.name + (d.got ? ' ✓' : '') + '</div>' +
+        '<div style="font-size:0.82rem;color:var(--muted)">' + d.desc + '</div></div>';
+    }).join('');
+    wrap.innerHTML = '<strong>🏅 Achievements</strong> <span style="color:var(--muted)">(' +
+      earned + ' / ' + DEFS.length + ' unlocked)</span>' +
+      '<div style="display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:0.85rem">' + cards + '</div>';
+    host.appendChild(wrap);
+  }
+
+  // ---------- Export / Import progress (home page) ----------
+  var BACKUP_KEYS = ['aplus-progress-v1', 'aplus-stats', 'aplus-best', 'aplus-missed', 'aplus-theme'];
+  function initBackup() {
+    var host = document.querySelector('.backup-controls');
+    if (!host) return;
+
+    var exportBtn = mkButton('⬇ Export progress', 'button secondary');
+    var importBtn = mkButton('⬆ Import progress', 'button secondary');
+    var file = document.createElement('input');
+    file.type = 'file';
+    file.accept = 'application/json,.json';
+    file.style.display = 'none';
+
+    exportBtn.addEventListener('click', function () {
+      var data = {};
+      BACKUP_KEYS.forEach(function (k) {
+        var v = localStorage.getItem(k);
+        if (v !== null) data[k] = v;
+      });
+      var payload = JSON.stringify({ app: 'comptia-aplus-course', version: 1, data: data }, null, 2);
+      var blob = new Blob([payload], { type: 'application/json' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'aplus-progress-' + todayStr() + '.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+
+    importBtn.addEventListener('click', function () { file.click(); });
+    file.addEventListener('change', function () {
+      var f = file.files && file.files[0];
+      if (!f) return;
+      var reader = new FileReader();
+      reader.onload = function () {
+        try {
+          var obj = JSON.parse(reader.result);
+          var data = obj && obj.data;
+          if (!data || typeof data !== 'object') throw new Error('bad file');
+          if (!window.confirm('Import will overwrite your current progress on this device. Continue?')) return;
+          BACKUP_KEYS.forEach(function (k) {
+            if (k in data) localStorage.setItem(k, data[k]);
+          });
+          location.reload();
+        } catch (e) {
+          alert('That file could not be read as a valid A+ progress backup.');
+        }
+      };
+      reader.readAsText(f);
+    });
+
+    var note = document.createElement('p');
+    note.className = 'lede';
+    note.style.cssText = 'margin:0 0 0.5rem;font-size:0.9rem';
+    note.textContent = 'Your progress lives in this browser. Export a backup file to keep it safe or move it to another device.';
+    host.appendChild(note);
+    var row = document.createElement('div');
+    row.className = 'lesson-actions';
+    row.style.marginTop = '0';
+    row.appendChild(exportBtn);
+    row.appendChild(importBtn);
+    host.appendChild(row);
+    host.appendChild(file);
+  }
+
   // ---------- helpers ----------
   function mkButton(text, cls) {
     var b = document.createElement('button');
@@ -387,6 +500,8 @@
     initCompleteButtons();
     recordVisit();
     initStatsPanel();
+    initBadges();
     initDashboard();
+    initBackup();
   });
 })();
