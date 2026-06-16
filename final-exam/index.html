@@ -35,14 +35,30 @@
 
       <!-- Setup -->
       <div id="setup" class="progress-wrap">
-        <h3 style="margin-top:0">Choose your exam length</h3>
+        <h3 style="margin-top:0">Full exam — all domains</h3>
         <div class="lesson-actions" style="margin-top:0.75rem">
           <button class="button" data-len="20">Quick · 20 Q</button>
           <button class="button" data-len="40">Standard · 40 Q</button>
           <button class="button" data-len="0">Full bank · all Q</button>
         </div>
         <p id="bank-size" class="lede" style="margin-top:0.75rem"></p>
-        <label style="display:block;margin-top:0.5rem">
+
+        <h3>Per-domain drill</h3>
+        <p class="lede" style="margin-top:0">Focus on one domain at a time.</p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;margin-top:0.5rem">
+          <select id="domain-select" aria-label="Choose a domain"
+            style="padding:0.6rem 0.7rem;border:1px solid var(--line);border-radius:8px;font:inherit;min-width:16rem"></select>
+          <button id="drill-btn" class="button">Drill this domain →</button>
+        </div>
+
+        <h3>Review your missed questions</h3>
+        <p class="lede" style="margin-top:0">Retry only the questions you have gotten wrong in past attempts.</p>
+        <div class="lesson-actions" style="margin-top:0.5rem">
+          <button id="missed-btn" class="button secondary">Review missed (0)</button>
+          <button id="clear-missed" class="button secondary">Clear missed list</button>
+        </div>
+
+        <label style="display:block;margin-top:1rem">
           <input type="checkbox" id="timed" checked /> Timed mode (90&nbsp;seconds per question)
         </label>
       </div>
@@ -85,11 +101,29 @@
     <script>
       (function () {
         'use strict';
-        var BANK = window.EXAM_BANK || [];
+        var BANK = (window.EXAM_BANK || []).map(function (item, idx) {
+          return { id: idx, d: item.d, q: item.q, o: item.o, a: item.a, e: item.e };
+        });
         var PASS = 75; // percent
+        var MISSED_KEY = 'aplus-missed';
         var exam = [];          // current question set (with shuffled options)
         var timerId = null;
         var remaining = 0;
+
+        function loadMissed() {
+          try { return JSON.parse(localStorage.getItem(MISSED_KEY)) || []; }
+          catch (e) { return []; }
+        }
+        function saveMissed(ids) {
+          try { localStorage.setItem(MISSED_KEY, JSON.stringify(ids)); } catch (e) {}
+        }
+        function updateMissedBtn() {
+          var n = loadMissed().length;
+          var b = document.getElementById('missed-btn');
+          b.textContent = 'Review missed (' + n + ')';
+          b.disabled = n === 0;
+          b.style.opacity = n === 0 ? '0.5' : '1';
+        }
 
         // year
         var y = document.getElementById('year');
@@ -131,6 +165,17 @@
         document.getElementById('bank-size').textContent =
           'Question bank: ' + BANK.length + ' questions across all 9 domains.';
 
+        // populate domain dropdown with counts
+        var domains = {};
+        BANK.forEach(function (q) { domains[q.d] = (domains[q.d] || 0) + 1; });
+        var sel = document.getElementById('domain-select');
+        Object.keys(domains).sort().forEach(function (d) {
+          var opt = document.createElement('option');
+          opt.value = d;
+          opt.textContent = d + ' (' + domains[d] + ')';
+          sel.appendChild(opt);
+        });
+
         function shuffle(arr) {
           var a = arr.slice();
           for (var i = a.length - 1; i > 0; i--) {
@@ -140,8 +185,9 @@
           return a;
         }
 
-        function buildExam(len) {
-          var pool = shuffle(BANK);
+        // source: an array of BANK items; len: 0 = all, else cap
+        function buildExam(source, len) {
+          var pool = shuffle(source);
           if (len > 0) pool = pool.slice(0, len);
           // shuffle options within each question, tracking the correct index
           return pool.map(function (item) {
@@ -149,12 +195,13 @@
             var order = shuffle(idx);
             var options = order.map(function (i) { return item.o[i]; });
             var answer = order.indexOf(item.a);
-            return { d: item.d, q: item.q, o: options, a: answer, e: item.e, picked: null };
+            return { id: item.id, d: item.d, q: item.q, o: options, a: answer, e: item.e, picked: null };
           });
         }
 
-        function startExam(len, timed) {
-          exam = buildExam(len);
+        function startExam(source, len, timed) {
+          if (!source.length) { alert('No questions available for this selection.'); return; }
+          exam = buildExam(source, len);
           document.getElementById('setup').style.display = 'none';
           document.getElementById('results').style.display = 'none';
           document.getElementById('exam').style.display = 'block';
@@ -222,11 +269,22 @@
           if (timerId) { clearInterval(timerId); timerId = null; }
           var correct = 0;
           var byDomain = {};
+          // update the persistent missed list: add wrong/unanswered, remove now-correct
+          var missed = loadMissed();
           exam.forEach(function (item) {
             byDomain[item.d] = byDomain[item.d] || { c: 0, n: 0 };
             byDomain[item.d].n++;
-            if (item.picked === item.a) { correct++; byDomain[item.d].c++; }
+            var got = item.picked === item.a;
+            if (got) {
+              correct++; byDomain[item.d].c++;
+              var at = missed.indexOf(item.id);
+              if (at !== -1) missed.splice(at, 1); // mastered — remove
+            } else if (missed.indexOf(item.id) === -1) {
+              missed.push(item.id);
+            }
           });
+          saveMissed(missed);
+          updateMissedBtn();
           var pct = Math.round((correct / exam.length) * 100);
 
           document.getElementById('exam').style.display = 'none';
@@ -274,14 +332,28 @@
           return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         }
 
+        function timed() { return document.getElementById('timed').checked; }
+
         // wire buttons
         document.querySelectorAll('#setup [data-len]').forEach(function (b) {
           b.addEventListener('click', function () {
-            var len = parseInt(b.getAttribute('data-len'), 10);
-            var timed = document.getElementById('timed').checked;
-            startExam(len, timed);
+            startExam(BANK, parseInt(b.getAttribute('data-len'), 10), timed());
           });
         });
+        document.getElementById('drill-btn').addEventListener('click', function () {
+          var d = document.getElementById('domain-select').value;
+          startExam(BANK.filter(function (q) { return q.d === d; }), 0, timed());
+        });
+        document.getElementById('missed-btn').addEventListener('click', function () {
+          var ids = loadMissed();
+          startExam(BANK.filter(function (q) { return ids.indexOf(q.id) !== -1; }), 0, timed());
+        });
+        document.getElementById('clear-missed').addEventListener('click', function () {
+          if (!confirm('Clear your missed-questions list?')) return;
+          saveMissed([]); updateMissedBtn();
+        });
+        updateMissedBtn();
+
         document.getElementById('submitBtn').addEventListener('click', finish);
         document.getElementById('submitBtn2').addEventListener('click', finish);
         document.getElementById('retry').addEventListener('click', function () {
