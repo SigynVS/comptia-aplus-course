@@ -343,7 +343,18 @@
     var streak = computeStreak(s.visitDates || []);
     var totalLessons = parseInt(host.getAttribute('data-total-lessons'), 10) || 9;
     var p = loadProgress();
-    var done = Object.keys(p).filter(function (k) { return p[k] && p[k].done; }).length;
+    // Scope "lessons done" to the lessons listed on this page's dashboard (so a
+    // cert page counts only its own lessons), falling back to a global count.
+    var scopeIds = null;
+    var dash = document.querySelector('.progress-dash');
+    if (dash) {
+      try {
+        scopeIds = JSON.parse(dash.getAttribute('data-lessons')).map(function (l) { return l[0]; });
+      } catch (e) { scopeIds = null; }
+    }
+    var done = Object.keys(p).filter(function (k) {
+      return p[k] && p[k].done && (!scopeIds || scopeIds.indexOf(k) !== -1);
+    }).length;
     var quizzes = s.quizzesTaken || 0;
     var avg = quizzes ? Math.round((s.scoreSum || 0) / quizzes) : 0;
     var exams = s.examsTaken || 0;

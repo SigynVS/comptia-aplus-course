@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A free, self-paced CompTIA Security+ (SY0-701) study section with lessons, flashcards, and quizzes across all five domains. Vanilla HTML/CSS/JS, no dependencies." />
+    <title>CompTIA Security+ (SY0-701) — Study Section</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../index.html">CompTIA Study <span class="badge">SEC+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../index.html">A+</a></li>
+          <li><a href="../network-plus/index.html">Network+</a></li>
+          <li><a href="index.html">Security+</a></li>
+          <li><a href="#domains">Domains</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../index.html">Home</a> › <strong>Security+</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Self-paced · Free · Exam SY0-701</p>
+        <h1>CompTIA Security+</h1>
+        <p class="lede">
+          The industry-standard entry-level cybersecurity certification. This section
+          covers all five SY0-701 domains — concepts, threats, architecture,
+          operations, and program management — with lessons, flashcards, and quizzes.
+          Your progress is saved in your browser.
+        </p>
+        <div class="lesson-actions">
+          <a class="button" href="general-security-concepts/index.html">Start Domain 1 →</a>
+          <a class="button secondary" href="../index.html">Back to all certs</a>
+        </div>
+      </section>
+
+      <div class="study-stats" data-total-lessons="5"></div>
+
+      <div class="progress-dash" data-lessons='[
+        ["sec-1","Domain 1 · General Security Concepts"],
+        ["sec-2","Domain 2 · Threats, Vulnerabilities &amp; Mitigations"],
+        ["sec-3","Domain 3 · Security Architecture"],
+        ["sec-4","Domain 4 · Security Operations"],
+        ["sec-5","Domain 5 · Security Program Management"]
+      ]'></div>
+
+      <section id="domains">
+        <h2>The five domains — SY0-701</h2>
+        <div class="grid two">
+          <a class="card" href="general-security-concepts/index.html">
+            <span class="tag">Domain 1.0 <span class="weight">12%</span></span>
+            <h3>General Security Concepts</h3>
+            <p>CIA triad, security controls, AAA, zero trust, cryptography basics, PKI, and change management.</p>
+          </a>
+          <a class="card" href="index.html">
+            <span class="tag">Domain 2.0 <span class="weight">22%</span></span>
+            <h3>Threats, Vulnerabilities &amp; Mitigations <em>(coming next)</em></h3>
+            <p>Threat actors, attack types, malware, social engineering, vulnerabilities, and mitigation techniques.</p>
+          </a>
+          <a class="card" href="index.html">
+            <span class="tag">Domain 3.0 <span class="weight">18%</span></span>
+            <h3>Security Architecture <em>(coming next)</em></h3>
+            <p>Secure models, cloud, zero trust, network design, data protection, and resilience.</p>
+          </a>
+          <a class="card" href="index.html">
+            <span class="tag">Domain 4.0 <span class="weight">28%</span></span>
+            <h3>Security Operations <em>(coming next)</em></h3>
+            <p>Hardening, monitoring, identity &amp; access, incident response, and digital forensics.</p>
+          </a>
+          <a class="card" href="index.html">
+            <span class="tag">Domain 5.0 <span class="weight">20%</span></span>
+            <h3>Security Program Management <em>(coming next)</em></h3>
+            <p>Governance, risk management, third-party risk, compliance, audits, and awareness.</p>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. "Security+", "CompTIA Security+", and exam codes are trademarks of CompTIA, Inc. Always verify the current official exam objectives at comptia.org.</p>
+      </div>
+    </footer>
+
+    <script src="../assets/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA Network+ (N10-009) Domain 1.0 Networking Concepts — the OSI model, ports and protocols, IP addressing and subnetting, topologies, and network services. Lessons, flashcards, and a quiz." />
+    <title>Networking Concepts — Network+ Domain 1.0</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../../index.html">CompTIA Study <span class="badge">NET+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../index.html">Network+ Home</a></li>
+          <li><a href="#lesson">Lesson</a></li>
+          <li><a href="#flashcards">Flashcards</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../../index.html">Home</a> › <a href="../index.html">Network+</a> › <strong>1.0 Networking Concepts</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Network+ · N10-009 · Domain 1.0 (23%)</p>
+        <h1>Networking Concepts</h1>
+        <p class="lede">
+          The foundation: the OSI model, ports and protocols, IP addressing and
+          subnetting, topologies, and the services that make a network usable.
+        </p>
+      </section>
+
+      <section id="lesson" class="lesson">
+        <h2>1.1 The OSI model</h2>
+        <p>Seven layers, bottom to top. Mnemonic: <em>Please Do Not Throw Sausage Pizza Away</em>.</p>
+        <table class="spec">
+          <tr><th>#</th><th>Layer</th><th>Examples / PDU</th></tr>
+          <tr><td>7</td><td>Application</td><td>HTTP, DNS, SMTP</td></tr>
+          <tr><td>6</td><td>Presentation</td><td>TLS/SSL, encoding, compression</td></tr>
+          <tr><td>5</td><td>Session</td><td>Session setup/teardown</td></tr>
+          <tr><td>4</td><td>Transport</td><td>TCP/UDP — <strong>segments</strong>, ports</td></tr>
+          <tr><td>3</td><td>Network</td><td>IP, routers — <strong>packets</strong></td></tr>
+          <tr><td>2</td><td>Data Link</td><td>MAC, switches — <strong>frames</strong></td></tr>
+          <tr><td>1</td><td>Physical</td><td>Cables, signals — <strong>bits</strong></td></tr>
+        </table>
+        <div class="callout exam">
+          <strong>On the exam:</strong> Switch = Layer 2 (MAC), router = Layer 3 (IP). A frame is L2,
+          a packet is L3, a segment is L4.
+        </div>
+
+        <h2>1.2 Ports &amp; protocols</h2>
+        <table class="spec">
+          <tr><th>Port</th><th>Protocol</th><th>TCP/UDP</th></tr>
+          <tr><td>20/21</td><td>FTP</td><td>TCP</td></tr>
+          <tr><td>22</td><td>SSH/SFTP</td><td>TCP</td></tr>
+          <tr><td>25</td><td>SMTP</td><td>TCP</td></tr>
+          <tr><td>53</td><td>DNS</td><td>TCP/UDP</td></tr>
+          <tr><td>67/68</td><td>DHCP</td><td>UDP</td></tr>
+          <tr><td>80</td><td>HTTP</td><td>TCP</td></tr>
+          <tr><td>123</td><td>NTP</td><td>UDP</td></tr>
+          <tr><td>161/162</td><td>SNMP</td><td>UDP</td></tr>
+          <tr><td>443</td><td>HTTPS</td><td>TCP</td></tr>
+          <tr><td>3389</td><td>RDP</td><td>TCP</td></tr>
+        </table>
+
+        <h2>1.3 IP addressing &amp; subnetting</h2>
+        <ul>
+          <li><strong>IPv4</strong> = 32-bit; <strong>IPv6</strong> = 128-bit (eliminates NAT need, e.g., 2001:db8::1).</li>
+          <li>Private ranges: <strong>10.0.0.0/8</strong>, <strong>172.16.0.0/12</strong>, <strong>192.168.0.0/16</strong>.</li>
+          <li><strong>APIPA</strong> 169.254.0.0/16; <strong>loopback</strong> 127.0.0.1; <strong>CGNAT</strong> 100.64.0.0/10.</li>
+          <li>Classes: A (/8), B (/16), C (/24). <strong>CIDR</strong> uses prefix lengths instead of classes.</li>
+          <li><strong>Subnet mask</strong> separates network vs host bits; a /24 has 254 usable hosts.</li>
+        </ul>
+        <table class="spec">
+          <tr><th>CIDR</th><th>Mask</th><th>Usable hosts</th></tr>
+          <tr><td>/24</td><td>255.255.255.0</td><td>254</td></tr>
+          <tr><td>/25</td><td>255.255.255.128</td><td>126</td></tr>
+          <tr><td>/26</td><td>255.255.255.192</td><td>62</td></tr>
+          <tr><td>/30</td><td>255.255.255.252</td><td>2 (point-to-point)</td></tr>
+        </table>
+        <div class="callout exam">
+          <strong>On the exam:</strong> Usable hosts = 2^(host bits) − 2 (subtract network &amp; broadcast).
+          A /30 gives exactly 2 usable — perfect for router links.
+        </div>
+
+        <h2>1.4 Topologies &amp; network types</h2>
+        <ul>
+          <li>Topologies: <strong>star</strong> (most common LAN), mesh, hub-and-spoke, point-to-point, <strong>spine-and-leaf</strong> (data center).</li>
+          <li>Types: <strong>LAN, WAN, MAN, PAN, WLAN, SAN</strong>; <strong>SD-WAN</strong> and <strong>SDN</strong> for software-defined networking.</li>
+          <li>Cloud: IaaS/PaaS/SaaS; public/private/hybrid; <strong>VPC</strong>, gateways, and connectivity options.</li>
+        </ul>
+
+        <h2>1.5 Network services</h2>
+        <ul>
+          <li><strong>DNS</strong> record types: <strong>A</strong> (IPv4), <strong>AAAA</strong> (IPv6), <strong>CNAME</strong> (alias), <strong>MX</strong> (mail), <strong>TXT</strong> (SPF/DKIM), <strong>PTR</strong> (reverse), <strong>NS</strong>, <strong>SOA</strong>.</li>
+          <li><strong>DHCP</strong>: scopes, reservations, leases, options, relay (IP helper).</li>
+          <li><strong>NTP</strong> keeps clocks in sync (critical for logs, Kerberos, certs).</li>
+        </ul>
+        <div class="callout">
+          <strong>Tip:</strong> An <strong>A record</strong> maps a name to an IPv4 address; a <strong>CNAME</strong>
+          maps a name to another name (alias). <strong>MX</strong> directs email.
+        </div>
+
+        <div class="lesson-actions">
+          <button class="button" data-complete="net-1">Mark lesson complete</button>
+          <a class="button secondary" href="../index.html">Back to Network+</a>
+        </div>
+      </section>
+
+      <section id="flashcards">
+        <h2>Flashcards — key terms</h2>
+        <p class="lede">Tap to flip. Loop until automatic.</p>
+        <div class="flashcard-deck" data-cards='[
+          ["OSI Layer 3","Network layer — IP, routers, packets."],
+          ["OSI Layer 2","Data Link — MAC, switches, frames."],
+          ["OSI Layer 4","Transport — TCP/UDP, ports, segments."],
+          ["OSI mnemonic","Please Do Not Throw Sausage Pizza Away (L1→L7)."],
+          ["Usable hosts formula","2^(host bits) − 2 (subtract network & broadcast)."],
+          ["/30 usable hosts","2 — ideal for point-to-point router links."],
+          ["A vs AAAA record","A = IPv4 address; AAAA = IPv6 address."],
+          ["CNAME record","An alias pointing one name to another name."],
+          ["MX record","Directs email to a mail server."],
+          ["NTP port","123 (UDP) — clock synchronization."],
+          ["APIPA range","169.254.0.0/16 — self-assigned, no DHCP."],
+          ["Spine-and-leaf","A data-center topology for predictable low latency."]
+        ]'></div>
+      </section>
+
+      <section id="quiz">
+        <h2>Quiz — Networking Concepts</h2>
+        <p class="lede">Score 70%+ to auto-complete this lesson on your dashboard.</p>
+        <div class="quiz" data-lesson="net-1" data-quiz='[
+          {"q":"At which OSI layer does a router operate?","options":["Layer 2","Layer 3","Layer 4","Layer 7"],"answer":1,"explain":"Routers forward packets using IP addresses at Layer 3 (Network)."},
+          {"q":"How many usable host addresses does a /26 subnet provide?","options":["30","62","126","254"],"answer":1,"explain":"/26 = 6 host bits → 2^6 − 2 = 62 usable hosts."},
+          {"q":"Which DNS record maps a hostname to an IPv6 address?","options":["A","AAAA","CNAME","MX"],"answer":1,"explain":"AAAA records resolve to IPv6 addresses; A records are IPv4."},
+          {"q":"Which protocol synchronizes time across network devices?","options":["SNMP","NTP","SMTP","DHCP"],"answer":1,"explain":"NTP (port 123/UDP) keeps device clocks synchronized."},
+          {"q":"What is the PDU at the Data Link layer?","options":["Bit","Frame","Packet","Segment"],"answer":1,"explain":"Layer 2 (Data Link) uses frames; packets are L3, segments L4."},
+          {"q":"Which subnet mask corresponds to a /30 prefix?","options":["255.255.255.0","255.255.255.192","255.255.255.252","255.255.255.128"],"answer":2,"explain":"/30 = 255.255.255.252, leaving 2 usable hosts for a point-to-point link."}
+        ]'></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. Verify against current official objectives at comptia.org.</p>
+      </div>
+    </footer>
+    <script src="../../assets/app.js"></script>
+  </body>
+</html>

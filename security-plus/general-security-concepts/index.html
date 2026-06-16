@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA Security+ (SY0-701) Domain 1.0 General Security Concepts — CIA triad, security control types, AAA, zero trust, cryptographic solutions, PKI, and change management. Lessons, flashcards, and a quiz." />
+    <title>General Security Concepts — Security+ Domain 1.0</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../../index.html">CompTIA Study <span class="badge">SEC+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../index.html">Security+ Home</a></li>
+          <li><a href="#lesson">Lesson</a></li>
+          <li><a href="#flashcards">Flashcards</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../../index.html">Home</a> › <a href="../index.html">Security+</a> › <strong>1.0 General Security Concepts</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Security+ · SY0-701 · Domain 1.0 (12%)</p>
+        <h1>General Security Concepts</h1>
+        <p class="lede">
+          The vocabulary the whole exam is built on: the CIA triad, the categories
+          and types of security controls, AAA, zero trust, core cryptography and PKI,
+          and change management.
+        </p>
+      </section>
+
+      <section id="lesson" class="lesson">
+        <h2>1.1 The CIA triad (and friends)</h2>
+        <ul>
+          <li><strong>Confidentiality</strong> — only authorized parties can read data (encryption, access control).</li>
+          <li><strong>Integrity</strong> — data is unaltered and trustworthy (hashing, digital signatures).</li>
+          <li><strong>Availability</strong> — systems/data are accessible when needed (redundancy, backups).</li>
+          <li><strong>Non-repudiation</strong> — a party cannot deny an action (digital signatures, logging).</li>
+          <li><strong>Authentication, Authorization, Accounting (AAA)</strong> — prove identity, grant access, record activity.</li>
+        </ul>
+        <div class="callout exam">
+          <strong>On the exam:</strong> Map a scenario to the right pillar. Tampered data = <strong>integrity</strong>;
+          a DDoS knocking a site offline = <strong>availability</strong>; a leak = <strong>confidentiality</strong>.
+        </div>
+
+        <h2>1.2 Security control categories &amp; types</h2>
+        <p>Every control has a <em>category</em> (how it's implemented) and a <em>type</em> (what it does).</p>
+        <table class="spec">
+          <tr><th>Category</th><th>Examples</th></tr>
+          <tr><td>Technical</td><td>Firewalls, encryption, antivirus, MFA.</td></tr>
+          <tr><td>Managerial</td><td>Policies, risk assessments, security planning.</td></tr>
+          <tr><td>Operational</td><td>Security guards, awareness training, backups (people/process).</td></tr>
+          <tr><td>Physical</td><td>Locks, fences, bollards, badges, cameras.</td></tr>
+        </table>
+        <table class="spec">
+          <tr><th>Type</th><th>Purpose</th><th>Example</th></tr>
+          <tr><td>Preventive</td><td>Stop an incident</td><td>Firewall, ACL, lock</td></tr>
+          <tr><td>Deterrent</td><td>Discourage an attacker</td><td>Warning sign, visible camera</td></tr>
+          <tr><td>Detective</td><td>Identify/log an incident</td><td>IDS, log review, CCTV review</td></tr>
+          <tr><td>Corrective</td><td>Fix after an incident</td><td>Backups/restore, patching</td></tr>
+          <tr><td>Compensating</td><td>Alternate when primary isn't feasible</td><td>Extra monitoring in place of a missing patch</td></tr>
+          <tr><td>Directive</td><td>Instruct/mandate behavior</td><td>Policy, acceptable use</td></tr>
+        </table>
+
+        <h2>1.3 Zero Trust</h2>
+        <ul>
+          <li>Core idea: <strong>"never trust, always verify"</strong> — no implicit trust based on network location.</li>
+          <li><strong>Control plane</strong>: adaptive identity, policy engine, policy administrator, policy decision point.</li>
+          <li><strong>Data plane</strong>: subject/system, policy enforcement point.</li>
+          <li>Concepts: <strong>least privilege</strong>, microsegmentation, continuous verification.</li>
+        </ul>
+
+        <h2>1.4 Physical security</h2>
+        <ul>
+          <li>Barriers: <strong>bollards</strong>, fencing, <strong>access control vestibule (mantrap)</strong>.</li>
+          <li>Detection: <strong>sensors</strong> (infrared, pressure, microwave, ultrasonic), cameras, guards, lighting.</li>
+          <li><strong>Honeypots/honeynets/honeyfiles</strong> and <strong>honeytokens</strong> — deception/disruption to detect attackers.</li>
+        </ul>
+
+        <h2>1.5 Cryptographic solutions</h2>
+        <table class="spec">
+          <tr><th>Concept</th><th>Notes</th></tr>
+          <tr><td>Symmetric</td><td>One shared key (AES). Fast; key distribution is the challenge.</td></tr>
+          <tr><td>Asymmetric</td><td>Public/private key pair (RSA, ECC). Solves key exchange; slower.</td></tr>
+          <tr><td>Hashing</td><td>One-way integrity check (SHA-256). Not encryption.</td></tr>
+          <tr><td>Digital signature</td><td>Hash encrypted with the sender's private key → integrity + non-repudiation.</td></tr>
+          <tr><td>Salting</td><td>Random data added before hashing passwords to defeat rainbow tables.</td></tr>
+          <tr><td>TPM / HSM</td><td>Hardware that stores keys securely (TPM on a device; HSM as an appliance).</td></tr>
+          <tr><td>Key escrow / KMS</td><td>Secure key storage/recovery and lifecycle management.</td></tr>
+        </table>
+        <h3>PKI essentials</h3>
+        <ul>
+          <li><strong>CA</strong> issues certificates; <strong>RA</strong> verifies identities; certificates bind a public key to an identity.</li>
+          <li><strong>CRL</strong> and <strong>OCSP</strong> check whether a certificate is revoked.</li>
+          <li><strong>Root of trust</strong>, intermediate CAs, <strong>certificate chaining</strong>, and <strong>wildcard</strong> certs.</li>
+        </ul>
+        <div class="callout exam">
+          <strong>On the exam:</strong> <strong>Hashing</strong> proves integrity (not confidentiality). A
+          <strong>digital signature</strong> = sign the hash with your <em>private</em> key; verify with your <em>public</em> key.
+        </div>
+
+        <h2>1.6 Change management</h2>
+        <ul>
+          <li>Business processes: <strong>approval</strong>, ownership, stakeholders, <strong>impact analysis</strong>, test results, <strong>backout plan</strong>, maintenance window.</li>
+          <li>Technical implications: allow/deny lists, restricted activities, downtime, service/app restarts, legacy apps, dependencies.</li>
+          <li>Documentation: update diagrams/policies; version control.</li>
+        </ul>
+        <div class="callout">
+          <strong>Tip:</strong> Change management overlaps heavily with A+ Operational Procedures —
+          approvals + backout plans are universal.
+        </div>
+
+        <div class="lesson-actions">
+          <button class="button" data-complete="sec-1">Mark lesson complete</button>
+          <a class="button secondary" href="../index.html">Back to Security+</a>
+        </div>
+      </section>
+
+      <section id="flashcards">
+        <h2>Flashcards — key terms</h2>
+        <p class="lede">Tap to flip. Loop until automatic.</p>
+        <div class="flashcard-deck" data-cards='[
+          ["CIA triad","Confidentiality, Integrity, Availability."],
+          ["Non-repudiation","Proof a party performed an action (digital signatures, logs)."],
+          ["AAA","Authentication, Authorization, Accounting."],
+          ["Compensating control","An alternate control used when the primary isn’t feasible."],
+          ["Detective vs preventive control","Detective identifies/logs; preventive stops the incident."],
+          ["Zero Trust motto","Never trust, always verify — no implicit trust by location."],
+          ["Symmetric vs asymmetric","Symmetric = one shared key (AES); asymmetric = public/private pair (RSA)."],
+          ["Hashing","One-way function for integrity (SHA-256); not reversible."],
+          ["Digital signature","Hash encrypted with the sender’s private key → integrity + non-repudiation."],
+          ["Salting","Random data added before hashing to defeat rainbow tables."],
+          ["CRL / OCSP","Methods to check if a certificate has been revoked."],
+          ["Access control vestibule","A mantrap — two interlocking doors to control entry."]
+        ]'></div>
+      </section>
+
+      <section id="quiz">
+        <h2>Quiz — General Security Concepts</h2>
+        <p class="lede">Score 70%+ to auto-complete this lesson on your dashboard.</p>
+        <div class="quiz" data-lesson="sec-1" data-quiz='[
+          {"q":"An attacker alters values in a database so reports are wrong. Which CIA pillar is violated?","options":["Confidentiality","Integrity","Availability","Non-repudiation"],"answer":1,"explain":"Unauthorized alteration of data violates integrity."},
+          {"q":"A visible security camera that discourages intruders is which control type?","options":["Preventive","Detective","Deterrent","Corrective"],"answer":2,"explain":"A visible deterrent discourages attackers; a camera reviewed after the fact would be detective."},
+          {"q":"Which provides integrity AND non-repudiation for a message?","options":["Symmetric encryption","Hashing alone","A digital signature","Salting"],"answer":2,"explain":"A digital signature (hash signed with the private key) gives integrity and non-repudiation."},
+          {"q":"Which control category includes locks, fences, and bollards?","options":["Technical","Managerial","Operational","Physical"],"answer":3,"explain":"Locks, fences, and bollards are physical controls."},
+          {"q":"What is the core principle of Zero Trust?","options":["Trust the internal network","Never trust, always verify","Trust signed certificates only","Trust after first login"],"answer":1,"explain":"Zero Trust grants no implicit trust based on network location."},
+          {"q":"Random data added to a password before hashing to defeat precomputed tables is called…","options":["A nonce","Salt","A pepper file","Key escrow"],"answer":1,"explain":"Salting adds randomness so identical passwords hash differently, defeating rainbow tables."}
+        ]'></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. Verify against current official objectives at comptia.org.</p>
+      </div>
+    </footer>
+    <script src="../../assets/app.js"></script>
+  </body>
+</html>
