@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA A+ Core 2 (220-1102) Domain 1.0 Operating Systems — Windows editions, command line, OS features and tools, networking config, and other operating systems. Lessons, flashcards, and a quiz." />
+    <title>Operating Systems — A+ Core 2 Domain 1.0</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../../index.html">CompTIA A+ <span class="badge">A+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="#lesson">Lesson</a></li>
+          <li><a href="#flashcards">Flashcards</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../../index.html">Home</a> › Core 2 › <strong>1.0 Operating Systems</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Core 2 · 220-1102 · Domain 1.0 (28%)</p>
+        <h1>Operating Systems</h1>
+        <p class="lede">
+          Windows editions and tools, the command line, system configuration utilities,
+          OS installation, and a tour of macOS, Linux, and mobile OSes.
+        </p>
+      </section>
+
+      <section id="lesson" class="lesson">
+        <h2>1.1 Windows editions &amp; features</h2>
+        <table class="spec">
+          <tr><th>Edition</th><th>Notes</th></tr>
+          <tr><td>Home</td><td>Consumer; no domain join, no BitLocker, no Group Policy (gpedit).</td></tr>
+          <tr><td>Pro</td><td>Adds domain join, BitLocker, Group Policy, RDP host.</td></tr>
+          <tr><td>Pro for Workstations / Enterprise</td><td>More cores/RAM, advanced management features.</td></tr>
+        </table>
+        <ul>
+          <li><strong>32-bit (x86)</strong> caps RAM at ~4 GB; <strong>64-bit (x64)</strong> supports far more.</li>
+          <li>Domain vs Workgroup: <strong>domain</strong> = central authentication (Active Directory); <strong>workgroup</strong> = peer-to-peer.</li>
+        </ul>
+
+        <h2>1.2 Command-line tools</h2>
+        <table class="spec">
+          <tr><th>Command</th><th>Use</th></tr>
+          <tr><td><code>ipconfig</code></td><td>View/release/renew IP config (<code>/all</code>, <code>/release</code>, <code>/renew</code>, <code>/flushdns</code>).</td></tr>
+          <tr><td><code>ping</code></td><td>Test reachability.</td></tr>
+          <tr><td><code>tracert</code></td><td>Trace the route to a host.</td></tr>
+          <tr><td><code>nslookup</code></td><td>Query DNS.</td></tr>
+          <tr><td><code>netstat</code></td><td>Active connections/ports.</td></tr>
+          <tr><td><code>chkdsk</code></td><td>Check/repair disk (<code>/f</code> fix, <code>/r</code> recover).</td></tr>
+          <tr><td><code>sfc /scannow</code></td><td>System File Checker — repair OS files.</td></tr>
+          <tr><td><code>diskpart</code></td><td>Partition management.</td></tr>
+          <tr><td><code>gpupdate</code> / <code>gpresult</code></td><td>Apply / view Group Policy.</td></tr>
+          <tr><td><code>format</code> / <code>copy</code> / <code>robocopy</code> / <code>xcopy</code></td><td>Disk &amp; file operations.</td></tr>
+          <tr><td><code>shutdown</code></td><td>Shut down/restart from CLI.</td></tr>
+        </table>
+        <div class="callout exam">
+          <strong>On the exam:</strong> <code>sfc /scannow</code> repairs corrupted system files;
+          <code>chkdsk /f</code> fixes file-system errors; <code>ipconfig /flushdns</code> clears the DNS cache.
+        </div>
+
+        <h2>1.3 Windows tools &amp; the Control Panel / Settings</h2>
+        <ul>
+          <li><strong>Task Manager</strong> — processes, performance, startup, services, users.</li>
+          <li><strong>MMC snap-ins</strong>: <code>devmgmt.msc</code> (Device Manager), <code>diskmgmt.msc</code> (Disk Management), <code>services.msc</code>, <code>compmgmt.msc</code>, <code>eventvwr.msc</code> (Event Viewer), <code>perfmon</code>, <code>taskschd.msc</code>, <code>certmgr.msc</code>, <code>lusrmgr.msc</code>.</li>
+          <li><strong>System Configuration</strong> <code>msconfig</code>, <strong>Registry Editor</strong> <code>regedit</code>, <strong>Resource Monitor</strong> <code>resmon</code>, <code>dxdiag</code>.</li>
+          <li>Control Panel applets: Internet Options, Devices &amp; Printers, Programs &amp; Features, Network &amp; Sharing, System, Windows Defender Firewall, Power Options, User Accounts, Indexing, File Explorer Options, Admin Tools.</li>
+        </ul>
+
+        <h2>1.4 Disk &amp; OS installation</h2>
+        <ul>
+          <li><strong>Partition styles</strong>: <strong>MBR</strong> (≤2 TB, 4 primary partitions) vs <strong>GPT</strong> (huge disks, 128 partitions, needs UEFI).</li>
+          <li><strong>File systems</strong>: <strong>NTFS</strong> (Windows; permissions, encryption, journaling), <strong>FAT32</strong> (4 GB file limit, broad compatibility), <strong>exFAT</strong> (large files on removable media), <strong>ext4</strong> (Linux), <strong>APFS</strong> (macOS).</li>
+          <li>Install types: <strong>clean</strong>, <strong>in-place upgrade</strong>, <strong>image deployment</strong>, <strong>repair</strong>, <strong>recovery</strong>, <strong>unattended</strong>, network/PXE.</li>
+          <li>Boot methods: USB, optical, PXE, internet-based.</li>
+        </ul>
+
+        <h2>1.5 Networking config in Windows</h2>
+        <ul>
+          <li>Configure IP (static vs DHCP), DNS, gateway, proxy, VPN, alternate config.</li>
+          <li><strong>Workgroup vs domain</strong> join; network locations (Public/Private) change firewall behavior.</li>
+          <li>Establish network shares, mapped drives, and printer connections.</li>
+        </ul>
+
+        <h2>1.6 Other operating systems</h2>
+        <ul>
+          <li><strong>macOS</strong>: Finder, Mission Control, Spotlight, Keychain, Time Machine (backup), Disk Utility, FileVault (encryption), Gatekeeper.</li>
+          <li><strong>Linux</strong>: shell commands — <code>ls</code>, <code>pwd</code>, <code>cd</code>, <code>cp</code>, <code>mv</code>, <code>rm</code>, <code>chmod</code>, <code>chown</code>, <code>sudo</code>, <code>apt/yum</code>, <code>grep</code>, <code>ps</code>, <code>df</code>.</li>
+          <li>Mobile OSes: iOS (closed), Android (open), updates, app stores.</li>
+        </ul>
+      </section>
+
+      <div class="lesson-actions">
+        <button class="button" data-complete="c2-os">Mark lesson complete</button>
+        <a class="button secondary" href="../../index.html">Back to dashboard</a>
+      </div>
+
+      <section id="flashcards">
+        <h2>Flashcards — key terms</h2>
+        <div class="flashcard-deck" data-cards='[
+          ["sfc /scannow","System File Checker — scans & repairs Windows system files."],
+          ["chkdsk /f vs /r","/f fixes file-system errors; /r also locates bad sectors & recovers data."],
+          ["ipconfig /flushdns","Clears the local DNS resolver cache."],
+          ["NTFS","Windows file system — permissions, encryption (EFS), journaling."],
+          ["FAT32 limit","Maximum single file size of 4 GB."],
+          ["exFAT","For large files on removable media (no 4 GB limit)."],
+          ["MBR vs GPT","MBR ≤2 TB / 4 primary partitions; GPT huge disks / 128 partitions / UEFI."],
+          ["Windows Home limitation","No domain join, BitLocker, or Group Policy (gpedit)."],
+          ["Domain vs Workgroup","Domain = central AD auth; Workgroup = peer-to-peer."],
+          ["diskmgmt.msc","Disk Management snap-in."],
+          ["msconfig","System Configuration — boot & startup options."],
+          ["FileVault","macOS full-disk encryption."]
+        ]'></div>
+      </section>
+
+      <section id="quiz">
+        <h2>Quiz — Operating Systems</h2>
+        <div class="quiz" data-lesson="c2-os" data-quiz='[
+          {"q":"Which command scans and repairs protected Windows system files?","options":["chkdsk /r","sfc /scannow","diskpart","gpupdate"],"answer":1,"explain":"sfc /scannow is the System File Checker for OS file repair."},
+          {"q":"A user needs to join a corporate Active Directory domain but their Windows edition won't allow it. Which edition do they likely have?","options":["Pro","Enterprise","Home","Pro for Workstations"],"answer":2,"explain":"Windows Home cannot join a domain — upgrade to Pro or higher."},
+          {"q":"Which file system is required for files larger than 4 GB on a removable USB drive while staying widely compatible?","options":["FAT32","exFAT","ext4","HFS+"],"answer":1,"explain":"FAT32 caps files at 4 GB; exFAT removes that limit and is broadly compatible."},
+          {"q":"Which partition style supports disks larger than 2 TB and up to 128 partitions?","options":["MBR","GPT","FAT","Dynamic"],"answer":1,"explain":"GPT supports very large disks and many partitions (requires UEFI)."},
+          {"q":"Which command clears the local DNS cache?","options":["ipconfig /renew","ipconfig /flushdns","nslookup","netstat -a"],"answer":1,"explain":"ipconfig /flushdns clears cached DNS records."},
+          {"q":"Which macOS feature provides full-disk encryption?","options":["Time Machine","Gatekeeper","FileVault","Spotlight"],"answer":2,"explain":"FileVault encrypts the macOS startup disk; Time Machine is backup."}
+        ]'></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA A+ Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. Verify against current official objectives at comptia.org.</p>
+      </div>
+    </footer>
+    <script src="../../assets/app.js"></script>
+  </body>
+</html>

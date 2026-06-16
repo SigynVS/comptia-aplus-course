@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA A+ Core 1 (220-1101) Domain 4.0 Virtualization and Cloud Computing — cloud models, shared resources, virtual machines, hypervisors, and client-side virtualization. Lessons, flashcards, and a quiz." />
+    <title>Virtualization &amp; Cloud — A+ Core 1 Domain 4.0</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../../index.html">CompTIA A+ <span class="badge">A+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="#lesson">Lesson</a></li>
+          <li><a href="#flashcards">Flashcards</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../../index.html">Home</a> › Core 1 › <strong>4.0 Virtualization &amp; Cloud</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Core 1 · 220-1101 · Domain 4.0 (11%)</p>
+        <h1>Virtualization &amp; Cloud Computing</h1>
+        <p class="lede">
+          Cloud service and deployment models, shared/metered resources, and how
+          virtual machines and hypervisors work on the client side.
+        </p>
+      </section>
+
+      <section id="lesson" class="lesson">
+        <h2>4.1 Cloud concepts</h2>
+        <h3>Service models</h3>
+        <table class="spec">
+          <tr><th>Model</th><th>You manage</th><th>Example</th></tr>
+          <tr><td><strong>IaaS</strong> (Infrastructure)</td><td>OS, apps, data (provider gives VMs/storage/network)</td><td>AWS EC2</td></tr>
+          <tr><td><strong>PaaS</strong> (Platform)</td><td>Your app &amp; data (provider gives the runtime)</td><td>App Engine, Heroku</td></tr>
+          <tr><td><strong>SaaS</strong> (Software)</td><td>Just use it (provider manages everything)</td><td>Microsoft 365, Gmail</td></tr>
+        </table>
+
+        <h3>Deployment models</h3>
+        <ul>
+          <li><strong>Public</strong> — shared provider infrastructure (AWS, Azure).</li>
+          <li><strong>Private</strong> — dedicated to one organization.</li>
+          <li><strong>Hybrid</strong> — mix of public and private.</li>
+          <li><strong>Community</strong> — shared by organizations with common needs.</li>
+        </ul>
+
+        <h3>Cloud characteristics</h3>
+        <ul>
+          <li><strong>Shared resources</strong> (multitenancy), <strong>rapid elasticity</strong> (scale up/down on demand).</li>
+          <li><strong>Metered / measured utilization</strong> — pay for what you use.</li>
+          <li><strong>High availability</strong>, <strong>on-demand self-service</strong>, broad network access.</li>
+          <li><strong>File synchronization</strong> across devices (cloud storage).</li>
+          <li><strong>Desktop virtualization</strong>: <strong>VDI</strong> in the cloud or on-prem.</li>
+        </ul>
+        <div class="callout exam">
+          <strong>On the exam:</strong> Match the <strong>aaS</strong> term to "how much you manage."
+          SaaS = least for you; IaaS = most. PaaS sits in the middle (you bring the app).
+        </div>
+
+        <h2>4.2 Client-side virtualization</h2>
+        <h3>Hypervisors</h3>
+        <ul>
+          <li><strong>Type 1 (bare-metal)</strong> — runs directly on hardware (ESXi, Hyper-V server). Used for data-center virtualization.</li>
+          <li><strong>Type 2 (hosted)</strong> — runs on top of a host OS (VirtualBox, VMware Workstation). Used on a technician's workstation.</li>
+        </ul>
+
+        <h3>Resource requirements</h3>
+        <ul>
+          <li>Adequate <strong>CPU</strong> (with <strong>virtualization extensions</strong>: Intel VT-x / AMD-V enabled in BIOS/UEFI), <strong>RAM</strong>, <strong>storage</strong>, and <strong>networking</strong>.</li>
+          <li>Each VM needs its own allocated resources; over-provisioning starves the host.</li>
+        </ul>
+
+        <h3>Purposes &amp; security</h3>
+        <ul>
+          <li><strong>Sandbox</strong>/test environments, running legacy or cross-platform apps, <strong>developer</strong> testing.</li>
+          <li><strong>Security</strong>: isolate malware analysis in a VM; beware <strong>VM escape</strong> and the need to patch the hypervisor.</li>
+          <li><strong>Resource pooling</strong> and <strong>snapshots</strong> (roll back a VM to a known state).</li>
+        </ul>
+        <div class="callout">
+          <strong>Tip:</strong> If a VM won't start with a virtualization error, enable
+          <strong>VT-x / AMD-V</strong> in the firmware (BIOS/UEFI).
+        </div>
+      </section>
+
+      <div class="lesson-actions">
+        <button class="button" data-complete="c1-virt-cloud">Mark lesson complete</button>
+        <a class="button secondary" href="../../index.html">Back to dashboard</a>
+      </div>
+
+      <section id="flashcards">
+        <h2>Flashcards — key terms</h2>
+        <div class="flashcard-deck" data-cards='[
+          ["IaaS","Infrastructure as a Service — you manage OS/apps/data; provider gives VMs & storage."],
+          ["PaaS","Platform as a Service — you bring the app; provider gives the runtime/platform."],
+          ["SaaS","Software as a Service — just use the app (Microsoft 365, Gmail)."],
+          ["Type 1 hypervisor","Bare-metal — runs directly on hardware (ESXi, Hyper-V)."],
+          ["Type 2 hypervisor","Hosted — runs on top of a host OS (VirtualBox, VMware Workstation)."],
+          ["Rapid elasticity","Scale resources up or down on demand."],
+          ["Metered utilization","Pay only for the resources you actually use."],
+          ["VT-x / AMD-V","CPU virtualization extensions; enable in BIOS/UEFI to run VMs."],
+          ["VM escape","An attack where code breaks out of a VM into the host/hypervisor."],
+          ["Snapshot","A saved VM state you can roll back to."],
+          ["Hybrid cloud","A mix of public and private cloud."],
+          ["VDI","Virtual Desktop Infrastructure — desktops hosted centrally."]
+        ]'></div>
+      </section>
+
+      <section id="quiz">
+        <h2>Quiz — Virtualization &amp; Cloud</h2>
+        <div class="quiz" data-lesson="c1-virt-cloud" data-quiz='[
+          {"q":"A company uses Microsoft 365 entirely in the browser, managing nothing but their data. Which model is this?","options":["IaaS","PaaS","SaaS","DaaS"],"answer":2,"explain":"SaaS — the provider manages everything; the customer just uses the software."},
+          {"q":"Which hypervisor type runs directly on the hardware with no host OS?","options":["Type 1 (bare-metal)","Type 2 (hosted)","Type 3","Container"],"answer":0,"explain":"Type 1 hypervisors (ESXi, Hyper-V) run directly on hardware."},
+          {"q":"A VM fails to start with a virtualization error on a capable CPU. What is the most likely fix?","options":["Add more storage","Enable VT-x/AMD-V in BIOS/UEFI","Reinstall the host OS","Switch to Type 1"],"answer":1,"explain":"Virtualization extensions (Intel VT-x / AMD-V) must be enabled in firmware."},
+          {"q":"Which cloud characteristic means you pay only for resources consumed?","options":["Elasticity","Metered utilization","Multitenancy","High availability"],"answer":1,"explain":"Metered/measured utilization is the pay-for-use billing characteristic."},
+          {"q":"In which service model does the customer manage the operating system and applications on provider-supplied VMs?","options":["SaaS","PaaS","IaaS","FaaS"],"answer":2,"explain":"IaaS gives raw infrastructure (VMs, storage); the customer manages the OS and apps."},
+          {"q":"What lets you roll a VM back to a previous known-good state?","options":["A snapshot","A hypervisor","An image file","Elasticity"],"answer":0,"explain":"A snapshot captures VM state for later rollback."}
+        ]'></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA A+ Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. Verify against current official objectives at comptia.org.</p>
+      </div>
+    </footer>
+    <script src="../../assets/app.js"></script>
+  </body>
+</html>

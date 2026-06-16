@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA A+ Core 2 (220-1102) Domain 3.0 Software Troubleshooting — Windows OS problems, application crashes, malware symptoms and removal, and mobile OS/app/security issues. Lessons, flashcards, and a quiz." />
+    <title>Software Troubleshooting — A+ Core 2 Domain 3.0</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../../index.html">CompTIA A+ <span class="badge">A+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="#lesson">Lesson</a></li>
+          <li><a href="#flashcards">Flashcards</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../../index.html">Home</a> › Core 2 › <strong>3.0 Software Troubleshooting</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Core 2 · 220-1102 · Domain 3.0 (22%)</p>
+        <h1>Software Troubleshooting</h1>
+        <p class="lede">
+          Diagnosing Windows OS problems, application issues, malware symptoms, and
+          mobile OS/app/security trouble — and the right fix for each.
+        </p>
+      </section>
+
+      <section id="lesson" class="lesson">
+        <h2>3.1 Windows OS problems</h2>
+        <table class="spec">
+          <tr><th>Symptom</th><th>Common fix</th></tr>
+          <tr><td>Blue Screen (BSOD) / stop error</td><td>Note the code; check recent drivers/hardware/RAM; boot Safe Mode; roll back.</td></tr>
+          <tr><td>Boot problems / no OS found</td><td>Check boot order, run Startup Repair, <code>bootrec</code>, verify drive.</td></tr>
+          <tr><td>Frequent shutdowns / lockups</td><td>Overheating, drivers, failing hardware, malware.</td></tr>
+          <tr><td>Slow performance / high resource usage</td><td>Task Manager → end runaway process; disable startup items (msconfig); check disk/malware.</td></tr>
+          <tr><td>Slow boot</td><td>Trim startup apps, check disk health, malware scan.</td></tr>
+          <tr><td>Services not starting</td><td><code>services.msc</code>; check dependencies &amp; Event Viewer.</td></tr>
+          <tr><td>Time drift</td><td>Sync time; check CMOS battery.</td></tr>
+          <tr><td>Profile/USB issues</td><td>Rebuild profile; reinstall driver.</td></tr>
+        </table>
+        <h3>Common tools &amp; repair steps</h3>
+        <ul>
+          <li>Safe Mode, Last Known Good, <strong>System Restore</strong>, Startup Repair, <code>sfc /scannow</code>, <code>chkdsk</code>, <code>DISM</code>, reimage/reinstall, update drivers, roll back updates.</li>
+          <li>Boot order: least invasive first (reboot → Safe Mode → restore point → repair → reinstall).</li>
+        </ul>
+        <div class="callout exam">
+          <strong>On the exam:</strong> Choose the <strong>least invasive</strong> effective fix.
+          Try a restore point or driver rollback before a full reinstall.
+        </div>
+
+        <h2>3.2 Application problems</h2>
+        <ul>
+          <li><strong>App crashes / won't open</strong> — update or repair the app, run as admin, check compatibility mode, reinstall.</li>
+          <li><strong>Compatibility</strong> — verify OS/architecture (32 vs 64-bit) and minimum requirements.</li>
+          <li><strong>Slow / unresponsive</strong> — insufficient RAM/CPU; close background apps; check for updates.</li>
+          <li><strong>Permission / "access denied"</strong> — UAC, file/folder permissions, run as administrator.</li>
+        </ul>
+
+        <h2>3.3 Malware symptoms on a workstation</h2>
+        <ul>
+          <li>Pop-ups, browser <strong>redirection</strong>, changed <strong>home page</strong>, rogue antivirus, new toolbars.</li>
+          <li>Slow system, high network/CPU, disabled security tools, missing files.</li>
+          <li><strong>OS update failures</strong>, <strong>certificate warnings</strong>, altered <code>hosts</code> file, unexpected DNS.</li>
+          <li><strong>Fix with the 7-step malware removal process</strong> (Security domain): identify → quarantine → disable System Restore → remediate → schedule scans/updates → re-enable System Restore → educate user.</li>
+        </ul>
+        <div class="callout">
+          <strong>Tip:</strong> Browser redirects + altered <code>hosts</code> file = classic malware.
+          Reset the browser and clean the <code>hosts</code> file as part of remediation.
+        </div>
+
+        <h2>3.4 Mobile OS &amp; app issues</h2>
+        <table class="spec">
+          <tr><th>Symptom</th><th>Fix</th></tr>
+          <tr><td>App won't launch / crashes</td><td>Force-stop, clear cache/data, update, reinstall.</td></tr>
+          <tr><td>Slow performance / freezing</td><td>Close apps, free storage, reboot, check updates.</td></tr>
+          <tr><td>Battery drains fast / overheats</td><td>Find rogue app, lower brightness, disable background refresh, replace battery.</td></tr>
+          <tr><td>No connectivity / dropped signal</td><td>Toggle airplane mode, re-pair Bluetooth, reset network settings.</td></tr>
+          <tr><td>Can't update / install</td><td>Free storage, verify OS version, check account/store.</td></tr>
+        </table>
+
+        <h2>3.5 Mobile security symptoms</h2>
+        <ul>
+          <li><strong>High resource use</strong>, unexpected <strong>data usage</strong>, <strong>limited connectivity</strong>, fake/unauthorized apps.</li>
+          <li><strong>Leaked personal files/data</strong>, account access issues, <strong>signal interference</strong>.</li>
+          <li>Responses: uninstall suspicious apps, run mobile anti-malware, update OS, <strong>reset to factory</strong>, review app permissions, enable screen lock &amp; remote wipe.</li>
+        </ul>
+        <div class="callout exam">
+          <strong>On the exam:</strong> Unexpected high <strong>data usage</strong> + a recently installed
+          app often means <strong>leaked data / malware</strong> — uninstall and scan.
+        </div>
+      </section>
+
+      <div class="lesson-actions">
+        <button class="button" data-complete="c2-sw-troubleshooting">Mark lesson complete</button>
+        <a class="button secondary" href="../../index.html">Back to dashboard</a>
+      </div>
+
+      <section id="flashcards">
+        <h2>Flashcards — key terms</h2>
+        <div class="flashcard-deck" data-cards='[
+          ["BSOD first move","Note the stop code; check recent drivers/hardware; boot Safe Mode."],
+          ["Least invasive principle","Try restore point / driver rollback before a full reinstall."],
+          ["Slow PC — first tool","Task Manager to find the runaway process; trim startup (msconfig)."],
+          ["Browser redirection + changed home page","Classic malware symptom."],
+          ["Altered hosts file","Malware indicator — clean it during remediation."],
+          ["App won’t open after update","Run as admin, compatibility mode, repair/reinstall."],
+          ["sfc /scannow","Repairs corrupted Windows system files."],
+          ["DISM","Repairs the Windows image when sfc can’t."],
+          ["Mobile app crashing","Force-stop, clear cache/data, update, reinstall."],
+          ["Fast battery drain on phone","Find rogue app; disable background refresh; replace battery."],
+          ["Unexpected mobile data usage","Possible leaked data/malware — uninstall & scan."],
+          ["Last resort on mobile","Factory reset."]
+        ]'></div>
+      </section>
+
+      <section id="quiz">
+        <h2>Quiz — Software Troubleshooting</h2>
+        <div class="quiz" data-lesson="c2-sw-troubleshooting" data-quiz='[
+          {"q":"A PC began BSOD-ing right after a new GPU driver was installed. What is the BEST first action?","options":["Reinstall Windows","Roll back the driver / use Safe Mode","Replace the motherboard","Reset the BIOS"],"answer":1,"explain":"Least-invasive fix first: roll back the driver (Safe Mode if needed) before drastic steps."},
+          {"q":"A user reports their browser keeps redirecting to unknown sites and the home page changed. What is the likely cause?","options":["Failing RAM","Malware infection","Dead CMOS battery","Bad monitor cable"],"answer":1,"explain":"Redirects and a hijacked home page are classic malware symptoms."},
+          {"q":"Which tool quickly identifies a process consuming excessive CPU on Windows?","options":["Disk Management","Task Manager","Device Manager","Registry Editor"],"answer":1,"explain":"Task Manager shows per-process CPU/memory and lets you end the offender."},
+          {"q":"A phone's battery suddenly drains in a few hours after installing an app. What should you check first?","options":["Replace the screen","Identify and remove the rogue app","Factory reset immediately","Buy a new phone"],"answer":1,"explain":"Find the offending app first; factory reset is a last resort."},
+          {"q":"Which command repairs the Windows component store/image when sfc alone fails?","options":["chkdsk","DISM","format","gpupdate"],"answer":1,"explain":"DISM repairs the Windows image; run it before/with sfc when system files are damaged."},
+          {"q":"A mobile user sees a large spike in data usage right after installing an unfamiliar app. What does this most likely indicate?","options":["Normal behavior","Leaked data / malware","A failing battery","A weak signal"],"answer":1,"explain":"Unexpected data usage tied to a new app suggests leaked data or malware — uninstall and scan."}
+        ]'></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA A+ Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. Verify against current official objectives at comptia.org.</p>
+      </div>
+    </footer>
+    <script src="../../assets/app.js"></script>
+  </body>
+</html>

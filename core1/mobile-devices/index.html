@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA A+ Core 1 (220-1101) Domain 1.0 Mobile Devices — laptop hardware, display components, ports and accessories, mobile connectivity, and synchronization. Lessons, flashcards, and a quiz." />
+    <title>Mobile Devices — A+ Core 1 Domain 1.0</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../../index.html">CompTIA A+ <span class="badge">A+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="#lesson">Lesson</a></li>
+          <li><a href="#flashcards">Flashcards</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../../index.html">Home</a> › Core 1 › <strong>1.0 Mobile Devices</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Core 1 · 220-1101 · Domain 1.0 (15%)</p>
+        <h1>Mobile Devices</h1>
+        <p class="lede">
+          Laptop and mobile hardware: installing and configuring components, display
+          parts, ports and accessories, mobile network connectivity, and keeping data
+          in sync across devices.
+        </p>
+      </section>
+
+      <section id="lesson" class="lesson">
+        <h2>1.1 Laptop hardware &amp; components</h2>
+        <p>
+          Laptops squeeze desktop functionality into a small, power-efficient package.
+          Components are smaller, often proprietary, and frequently shared with the
+          display assembly. Know how to replace these field-replaceable parts.
+        </p>
+
+        <h3>Storage &amp; memory</h3>
+        <ul>
+          <li><strong>SSD (Solid-State Drive)</strong> — no moving parts, fast, shock-resistant. Forms: <strong>2.5"</strong> SATA, <strong>M.2</strong> (gumstick), and <strong>mSATA</strong> (older).</li>
+          <li><strong>M.2</strong> — a slot/form factor that can carry SATA or NVMe drives. <strong>NVMe</strong> uses the PCIe bus and is much faster than SATA.</li>
+          <li><strong>SODIMM (Small Outline DIMM)</strong> — the laptop RAM form factor. Smaller than desktop DIMMs; installed at an angle and clipped down.</li>
+        </ul>
+
+        <h3>Input &amp; internal devices</h3>
+        <ul>
+          <li>Keyboard, trackpad, and sometimes a battery — all common field replacements.</li>
+          <li><strong>Migrating/replacing</strong> components: power down, disconnect AC, and remove the battery when possible before service.</li>
+        </ul>
+
+        <div class="callout exam">
+          <strong>On the exam:</strong> Know the difference between <strong>M.2 SATA</strong> and
+          <strong>M.2 NVMe</strong> — same-looking slot, very different speed. NVMe = PCIe lanes.
+        </div>
+
+        <h2>1.2 Display components</h2>
+        <table class="spec">
+          <tr><th>Component</th><th>What it does / exam notes</th></tr>
+          <tr><td>LCD — TN</td><td>Twisted Nematic. Fast, cheap, poor viewing angles &amp; color.</td></tr>
+          <tr><td>LCD — IPS</td><td>In-Plane Switching. Best color and wide viewing angles; common in quality laptops.</td></tr>
+          <tr><td>LCD — VA</td><td>Vertical Alignment. High contrast; angles/speed between TN and IPS.</td></tr>
+          <tr><td>OLED</td><td>Organic LED — each pixel emits light, true blacks, no separate backlight.</td></tr>
+          <tr><td>Backlight / Inverter</td><td>Older CCFL displays use an inverter to power the backlight. LED displays don't need an inverter.</td></tr>
+          <tr><td>Wi-Fi antenna connector</td><td>Antenna wires run <em>through the display lid</em>; reconnect them when reassembling.</td></tr>
+          <tr><td>Webcam / microphone / digitizer</td><td>Mounted in the display bezel; digitizer enables touch input.</td></tr>
+        </table>
+
+        <div class="callout">
+          <strong>Tip:</strong> If Wi-Fi is weak after a screen repair, suspect a loose or
+          unconnected <strong>antenna lead</strong> in the lid.
+        </div>
+
+        <h2>1.3 Ports &amp; accessories</h2>
+        <ul>
+          <li><strong>USB-C</strong> — reversible connector; can carry data, video (DisplayPort Alt Mode), and power delivery.</li>
+          <li><strong>Thunderbolt</strong> — high-speed (uses USB-C connector on TB3/4); video + data + daisy-chaining.</li>
+          <li><strong>Docking station</strong> — full desktop connectivity (multiple monitors, Ethernet, USB) via one connection.</li>
+          <li><strong>Port replicator</strong> — like a dock but simpler; just multiplies the laptop's existing ports.</li>
+        </ul>
+        <h3>Locks &amp; security</h3>
+        <p>
+          A <strong>cable/Kensington lock</strong> tethers a laptop to a desk to deter theft.
+        </p>
+
+        <h2>1.4 Mobile network connectivity &amp; synchronization</h2>
+        <h3>Cellular standards</h3>
+        <ul>
+          <li><strong>GSM</strong> — uses a removable <strong>SIM</strong>; globally common.</li>
+          <li><strong>CDMA</strong> — older standard, historically tied to the carrier (no swappable SIM in classic form).</li>
+          <li><strong>4G LTE</strong> and <strong>5G</strong> — successive generations; 5G adds far greater speed/lower latency.</li>
+          <li><strong>PRL (Preferred Roaming List)</strong> — updates which towers a device connects to.</li>
+          <li><strong>IMEI</strong> identifies the <em>device</em>; <strong>IMSI</strong> identifies the <em>subscriber</em> (on the SIM).</li>
+        </ul>
+
+        <h3>Short-range &amp; configuration</h3>
+        <ul>
+          <li><strong>Bluetooth</strong> pairing: enable, make discoverable, pair, enter/confirm PIN, test.</li>
+          <li><strong>NFC</strong> — very short range; tap-to-pay and quick pairing.</li>
+          <li><strong>Hotspot / tethering</strong> — share a phone's cellular data with other devices.</li>
+          <li><strong>Airplane mode</strong> — disables all radios at once.</li>
+        </ul>
+
+        <h3>Email &amp; account setup</h3>
+        <table class="spec">
+          <tr><th>Protocol</th><th>Port</th><th>Notes</th></tr>
+          <tr><td>POP3</td><td>110 / 995 (SSL)</td><td>Downloads mail to one device; classically removes it from server.</td></tr>
+          <tr><td>IMAP</td><td>143 / 993 (SSL)</td><td>Syncs mail across devices; mail stays on server.</td></tr>
+          <tr><td>SMTP</td><td>25 / 587 / 465</td><td>Sending mail.</td></tr>
+        </table>
+        <div class="callout exam">
+          <strong>On the exam:</strong> If a user wants mail synced across phone, tablet, and
+          laptop, choose <strong>IMAP</strong>, not POP3.
+        </div>
+
+        <h3>Synchronization</h3>
+        <ul>
+          <li><strong>Sync to the cloud</strong> (iCloud, Google) vs. <strong>sync to the desktop</strong> (iTunes/Finder) vs. <strong>sync to automobile</strong> (CarPlay/Android Auto).</li>
+          <li>Synced data: contacts, calendar, mail, photos, documents, bookmarks, passwords.</li>
+          <li>Requirements: a connection, an <strong>account</strong>, and adequate storage on both ends.</li>
+        </ul>
+
+        <div class="lesson-actions">
+          <button class="button" data-complete="c1-mobile">Mark lesson complete</button>
+          <a class="button secondary" href="../../index.html">Back to dashboard</a>
+        </div>
+      </section>
+
+      <section id="flashcards">
+        <h2>Flashcards — key terms</h2>
+        <p class="lede">Tap a card to flip. Loop until recall is automatic.</p>
+        <div class="flashcard-deck" data-cards='[
+          ["SODIMM","Small Outline DIMM — the RAM form factor used in laptops."],
+          ["M.2 NVMe vs M.2 SATA","Same slot shape; NVMe uses fast PCIe lanes, SATA is slower."],
+          ["IPS panel","In-Plane Switching LCD — best color and wide viewing angles."],
+          ["Inverter","Powers a CCFL backlight on older LCDs; LED displays don’t need one."],
+          ["Where do Wi-Fi antennas run?","Through the laptop display lid."],
+          ["Docking station vs port replicator","Dock = full connectivity (monitors, Ethernet); replicator just multiplies existing ports."],
+          ["IMEI vs IMSI","IMEI = identifies the device; IMSI = identifies the subscriber (on the SIM)."],
+          ["POP3 vs IMAP","POP3 downloads to one device; IMAP syncs mail across devices."],
+          ["IMAP secure port","993."],
+          ["Airplane mode","Disables all wireless radios at once."],
+          ["PRL","Preferred Roaming List — updates which cell towers a device uses."],
+          ["NFC","Near Field Communication — very short range; tap-to-pay and quick pairing."]
+        ]'></div>
+      </section>
+
+      <section id="quiz">
+        <h2>Quiz — Mobile Devices</h2>
+        <p class="lede">Score 70%+ to auto-complete this lesson on your dashboard.</p>
+        <div class="quiz" data-lesson="c1-mobile" data-quiz='[
+          {
+            "q":"A user wants their email to stay in sync across a phone, tablet, and laptop. Which protocol should you configure?",
+            "options":["POP3","IMAP","SMTP","NNTP"],
+            "answer":1,
+            "explain":"IMAP keeps mail on the server and syncs state across all devices; POP3 typically downloads to a single device."
+          },
+          {
+            "q":"What is the RAM form factor used in most laptops?",
+            "options":["DIMM","SODIMM","M.2","SIMM"],
+            "answer":1,
+            "explain":"SODIMM (Small Outline DIMM) is the compact memory module used in laptops."
+          },
+          {
+            "q":"Two M.2 drives look identical in the slot, but one is far faster. What distinguishes the fast one?",
+            "options":["It is mSATA","It uses NVMe over PCIe","It has more pins","It is a 2.5-inch drive"],
+            "answer":1,
+            "explain":"M.2 can carry SATA or NVMe. NVMe runs over PCIe lanes and is much faster than SATA."
+          },
+          {
+            "q":"After replacing a laptop screen, Wi-Fi signal is now very weak. What is the most likely cause?",
+            "options":["Wrong RAM installed","Disconnected antenna lead in the lid","Failed inverter","Bad SODIMM slot"],
+            "answer":1,
+            "explain":"Wi-Fi antenna wires run through the display lid; a loose/unconnected lead after a screen repair weakens signal."
+          },
+          {
+            "q":"Which identifier is tied to the SIM and identifies the subscriber?",
+            "options":["IMEI","MAC address","IMSI","PRL"],
+            "answer":2,
+            "explain":"IMSI identifies the subscriber and lives on the SIM; IMEI identifies the physical device."
+          },
+          {
+            "q":"Which display technology emits light per-pixel and produces true blacks with no separate backlight?",
+            "options":["TN LCD","IPS LCD","VA LCD","OLED"],
+            "answer":3,
+            "explain":"OLED pixels emit their own light, so blacks are truly off — no backlight or inverter needed."
+          }
+        ]'></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA A+ Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. Always verify against the current official exam objectives at comptia.org.</p>
+      </div>
+    </footer>
+
+    <script src="../../assets/app.js"></script>
+  </body>
+</html>

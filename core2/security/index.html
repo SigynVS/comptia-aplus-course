@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA A+ Core 2 (220-1102) Domain 2.0 Security — threats and vulnerabilities, malware, social engineering, authentication, wireless security, and workstation hardening. Lessons, flashcards, and a quiz." />
+    <title>Security — A+ Core 2 Domain 2.0</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../../index.html">CompTIA A+ <span class="badge">A+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="#lesson">Lesson</a></li>
+          <li><a href="#flashcards">Flashcards</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../../index.html">Home</a> › Core 2 › <strong>2.0 Security</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Core 2 · 220-1102 · Domain 2.0 (28%)</p>
+        <h1>Security</h1>
+        <p class="lede">
+          Threats and social engineering, malware types and removal, authentication
+          and access control, wireless security, and hardening workstations &amp; SOHO networks.
+        </p>
+      </section>
+
+      <section id="lesson" class="lesson">
+        <h2>2.1 Social engineering &amp; threats</h2>
+        <table class="spec">
+          <tr><th>Attack</th><th>What it is</th></tr>
+          <tr><td>Phishing</td><td>Fraudulent email/message luring credentials. <strong>Spear phishing</strong> = targeted; <strong>whaling</strong> = execs.</td></tr>
+          <tr><td>Vishing / Smishing</td><td>Phishing via voice call / SMS.</td></tr>
+          <tr><td>Shoulder surfing</td><td>Watching someone enter credentials.</td></tr>
+          <tr><td>Tailgating / Piggybacking</td><td>Following an authorized person through a secure door.</td></tr>
+          <tr><td>Impersonation / Pretexting</td><td>Pretending to be someone to gain trust/access.</td></tr>
+          <tr><td>Dumpster diving</td><td>Recovering sensitive info from the trash.</td></tr>
+          <tr><td>Evil twin</td><td>Rogue AP mimicking a legitimate Wi-Fi network.</td></tr>
+        </table>
+        <ul>
+          <li>Network attacks: <strong>DoS/DDoS</strong>, <strong>on-path</strong> (MITM), <strong>spoofing</strong>, <strong>brute force</strong>, <strong>dictionary</strong>, <strong>zero-day</strong>, <strong>SQL injection</strong>, <strong>XSS</strong>.</li>
+          <li><strong>Insider threat</strong> and <strong>non-compliant systems</strong> are vulnerabilities too.</li>
+        </ul>
+
+        <h2>2.2 Malware &amp; removal</h2>
+        <table class="spec">
+          <tr><th>Type</th><th>Behavior</th></tr>
+          <tr><td>Virus</td><td>Attaches to files; needs a host &amp; user action to spread.</td></tr>
+          <tr><td>Worm</td><td>Self-replicates across networks; no host needed.</td></tr>
+          <tr><td>Trojan</td><td>Disguised as legitimate software.</td></tr>
+          <tr><td>Ransomware</td><td>Encrypts data and demands payment.</td></tr>
+          <tr><td>Spyware / Keylogger</td><td>Secretly records activity/keystrokes.</td></tr>
+          <tr><td>Rootkit</td><td>Hides deep in the OS; very hard to detect/remove.</td></tr>
+          <tr><td>Cryptominer</td><td>Hijacks resources to mine cryptocurrency.</td></tr>
+        </table>
+        <div class="callout exam">
+          <strong>Malware removal — know the 7 steps in order:</strong>
+          (1) Investigate &amp; verify symptoms, (2) <strong>Quarantine</strong> the system,
+          (3) <strong>Disable System Restore</strong> (Windows), (4) Remediate (update &amp; scan, safe mode/pre-installation env),
+          (5) Schedule scans &amp; run updates, (6) <strong>Re-enable System Restore</strong> &amp; create a restore point,
+          (7) <strong>Educate the end user</strong>.
+        </div>
+
+        <h2>2.3 Authentication &amp; access control</h2>
+        <ul>
+          <li><strong>MFA</strong> factors: something you <em>know</em> (password), <em>have</em> (token/phone), <em>are</em> (biometric), and <em>somewhere you are</em>/<em>do</em>.</li>
+          <li><strong>Least privilege</strong>, <strong>principle of least privilege</strong>, ACLs, user/group permissions.</li>
+          <li>Directory/AAA: <strong>Active Directory</strong>, <strong>Kerberos</strong>, <strong>RADIUS/TACACS+</strong>, <strong>SSO</strong>.</li>
+          <li><strong>Hard token</strong> vs <strong>soft token</strong>, smart cards, biometrics.</li>
+        </ul>
+
+        <h2>2.4 Wireless &amp; SOHO security</h2>
+        <table class="spec">
+          <tr><th>Protocol</th><th>Strength</th></tr>
+          <tr><td>WEP</td><td>Broken — never use.</td></tr>
+          <tr><td>WPA (TKIP)</td><td>Weak — avoid.</td></tr>
+          <tr><td>WPA2 (AES/CCMP)</td><td>Strong — minimum acceptable.</td></tr>
+          <tr><td>WPA3 (SAE)</td><td>Strongest — current best practice.</td></tr>
+        </table>
+        <ul>
+          <li>Harden a SOHO router: change <strong>default admin credentials</strong>, update firmware, disable WPS, change SSID, enable WPA2/WPA3, disable remote management, set up a guest network, use a strong passphrase.</li>
+          <li><strong>Firewall</strong>: enable, allow/deny by port; <strong>content filtering</strong>; <strong>MAC filtering</strong> (weak control); <strong>port forwarding</strong> vs <strong>DMZ</strong>.</li>
+        </ul>
+
+        <h2>2.5 Workstation &amp; data security</h2>
+        <ul>
+          <li>Best practices: <strong>strong password policy</strong>, account lockout, screen lock/timeout, least privilege, disable AutoRun, restrict logon times, change default accounts.</li>
+          <li><strong>Encryption</strong>: <strong>BitLocker</strong> (whole drive), <strong>EFS</strong> (files), TPM-backed keys.</li>
+          <li><strong>Data destruction</strong>: physical (<strong>shred, drill, degauss, incinerate</strong>) vs sanitization (<strong>secure erase, low-level format, wipe</strong>). Certificate of destruction for compliance.</li>
+          <li><strong>Antivirus/anti-malware</strong>, host firewall, patches, secure DNS.</li>
+        </ul>
+        <div class="callout exam">
+          <strong>On the exam:</strong> Reusing a drive → <strong>wipe/secure erase</strong>.
+          Disposing of a drive with sensitive data → <strong>physical destruction</strong> (shred/degauss/drill).
+        </div>
+      </section>
+
+      <div class="lesson-actions">
+        <button class="button" data-complete="c2-security">Mark lesson complete</button>
+        <a class="button secondary" href="../../index.html">Back to dashboard</a>
+      </div>
+
+      <section id="flashcards">
+        <h2>Flashcards — key terms</h2>
+        <div class="flashcard-deck" data-cards='[
+          ["Phishing vs spear phishing","Phishing = broad lure; spear phishing = targeted at a specific person."],
+          ["Tailgating","Following an authorized person through a secure door."],
+          ["Evil twin","A rogue AP impersonating a legitimate Wi-Fi network."],
+          ["Worm vs virus","Worm self-replicates across networks; virus needs a host file & user action."],
+          ["Ransomware","Encrypts data and demands payment."],
+          ["Rootkit","Hides deep in the OS; very hard to detect/remove."],
+          ["Malware step 2","Quarantine the infected system."],
+          ["Malware step 3","Disable System Restore (Windows) before remediation."],
+          ["Last malware-removal step","Educate the end user."],
+          ["Strongest Wi-Fi security","WPA3 (SAE)."],
+          ["Reuse a drive securely","Wipe / secure erase."],
+          ["Destroy a drive with sensitive data","Shred, drill, degauss, or incinerate."]
+        ]'></div>
+      </section>
+
+      <section id="quiz">
+        <h2>Quiz — Security</h2>
+        <div class="quiz" data-lesson="c2-security" data-quiz='[
+          {"q":"After verifying a malware infection, what is the NEXT step in the removal process?","options":["Educate the user","Quarantine the system","Re-enable System Restore","Run Windows Update"],"answer":1,"explain":"After identifying symptoms, quarantine the system (step 2) before remediation."},
+          {"q":"Which malware self-replicates across a network without needing a host file?","options":["Virus","Worm","Trojan","Keylogger"],"answer":1,"explain":"A worm self-propagates across networks; a virus needs a host and user action."},
+          {"q":"Which wireless security protocol is the current best practice?","options":["WEP","WPA","WPA2","WPA3"],"answer":3,"explain":"WPA3 (SAE) is the strongest and current best practice."},
+          {"q":"A drive containing sensitive data is being decommissioned permanently. What is the most appropriate action?","options":["Quick format","Move files to Recycle Bin","Physical destruction (shred/degauss)","Rename the partition"],"answer":2,"explain":"For permanent disposal of sensitive data, physically destroy the drive."},
+          {"q":"An attacker sets up a Wi-Fi network named identically to a coffee shop's to capture traffic. What is this?","options":["Tailgating","Evil twin","Shoulder surfing","Dumpster diving"],"answer":1,"explain":"A rogue AP impersonating a legitimate SSID is an evil twin."},
+          {"q":"Which Windows feature encrypts the entire drive, often using a TPM?","options":["EFS","BitLocker","Defender","UAC"],"answer":1,"explain":"BitLocker provides full-disk encryption; EFS encrypts individual files."}
+        ]'></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA A+ Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. Verify against current official objectives at comptia.org.</p>
+      </div>
+    </footer>
+    <script src="../../assets/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA A+ Core 1 (220-1101) Domain 5.0 Hardware and Network Troubleshooting — the troubleshooting methodology plus diagnosing devices, displays, storage/RAID, and network issues. Lessons, flashcards, and a quiz." />
+    <title>Hardware &amp; Network Troubleshooting — A+ Core 1 Domain 5.0</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../../index.html">CompTIA A+ <span class="badge">A+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="#lesson">Lesson</a></li>
+          <li><a href="#flashcards">Flashcards</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../../index.html">Home</a> › Core 1 › <strong>5.0 Troubleshooting</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Core 1 · 220-1101 · Domain 5.0 (29%)</p>
+        <h1>Hardware &amp; Network Troubleshooting</h1>
+        <p class="lede">
+          The largest domain. Master the methodology first, then the symptom-to-cause
+          patterns for devices, displays, storage, and networks.
+        </p>
+      </section>
+
+      <section id="lesson" class="lesson">
+        <h2>5.1 The CompTIA troubleshooting methodology</h2>
+        <p>This 6-step process appears on <em>both</em> exams. Know the order.</p>
+        <ol>
+          <li><strong>Identify the problem</strong> — question the user, back up data, note environment/recent changes.</li>
+          <li><strong>Establish a theory</strong> of probable cause (question the obvious; consider multiple causes).</li>
+          <li><strong>Test the theory</strong> to determine cause. If confirmed, plan next steps; if not, establish a new theory or escalate.</li>
+          <li><strong>Establish a plan of action</strong> to resolve the problem and implement the solution.</li>
+          <li><strong>Verify full system functionality</strong> and, if applicable, implement preventive measures.</li>
+          <li><strong>Document findings, actions, and outcomes.</strong></li>
+        </ol>
+        <div class="callout exam">
+          <strong>On the exam:</strong> "Always consider <strong>corporate policies, procedures, and impacts</strong>
+          before implementing changes." And <strong>back up data</strong> as part of identifying the problem.
+        </div>
+
+        <h2>5.2 Motherboard, CPU, RAM &amp; power symptoms</h2>
+        <table class="spec">
+          <tr><th>Symptom</th><th>Likely cause</th></tr>
+          <tr><td>No power / no POST</td><td>PSU, power button, RAM seating, shorted board.</td></tr>
+          <tr><td>POST beeps / no display</td><td>RAM or GPU not seated; check beep codes.</td></tr>
+          <tr><td>Intermittent shutdowns</td><td>Overheating (dust, failed fan, dried thermal paste) or failing PSU.</td></tr>
+          <tr><td>Burning smell / swollen capacitors</td><td>Failing PSU or motherboard — replace.</td></tr>
+          <tr><td>Continuous reboots / BSOD / GSOD</td><td>RAM, drivers, overheating, failing drive.</td></tr>
+          <tr><td>Wrong date/time</td><td>Dead CMOS battery.</td></tr>
+          <tr><td>Loud whining / grinding</td><td>Failing fan or HDD bearings.</td></tr>
+        </table>
+
+        <h2>5.3 Storage &amp; RAID symptoms</h2>
+        <ul>
+          <li><strong>Clicking / grinding noises</strong> = mechanical HDD failure → back up immediately.</li>
+          <li><strong>S.M.A.R.T. failure</strong> warning = drive predicting failure.</li>
+          <li><strong>Bootable device not found</strong> = boot order, disconnected drive, or dead drive.</li>
+          <li><strong>RAID not found / RAID stops</strong> = failed member disk or controller; rebuild from parity/mirror.</li>
+          <li><strong>Extended read/write times, data loss/corruption</strong> = failing drive or cabling.</li>
+        </ul>
+
+        <h2>5.4 Display symptoms</h2>
+        <table class="spec">
+          <tr><th>Symptom</th><th>Likely cause</th></tr>
+          <tr><td>Dim image</td><td>Backlight/inverter, brightness setting, power source (laptop).</td></tr>
+          <tr><td>Flickering</td><td>Loose cable, refresh rate, failing backlight.</td></tr>
+          <tr><td>Dead pixels</td><td>Manufacturing defect (stuck/dead).</td></tr>
+          <tr><td>Burn-in / image persistence</td><td>OLED/plasma static content over time.</td></tr>
+          <tr><td>Incorrect color / distorted image</td><td>Cable, GPU, drivers, resolution mismatch.</td></tr>
+          <tr><td>No image / external display needed</td><td>Use the laptop's display toggle / detect external.</td></tr>
+        </table>
+
+        <h2>5.5 Mobile device symptoms</h2>
+        <ul>
+          <li><strong>Poor battery life / swollen battery</strong> — replace; a swollen battery is a safety hazard, stop use.</li>
+          <li><strong>Overheating</strong> — close apps, check charging, environment.</li>
+          <li><strong>Won't charge / slow charge</strong> — cable, port debris, charger wattage.</li>
+          <li><strong>Random reboots, app crashes, slow performance</strong> — update, clear cache, factory reset as last resort.</li>
+        </ul>
+
+        <h2>5.6 Network troubleshooting</h2>
+        <table class="spec">
+          <tr><th>Symptom</th><th>Likely cause / tool</th></tr>
+          <tr><td>No connectivity</td><td>Cable, NIC, switch port, IP config. <code>ping</code>, link lights.</td></tr>
+          <tr><td>APIPA (169.254.x.x)</td><td>No DHCP — check DHCP service/cable.</td></tr>
+          <tr><td>Intermittent / slow / high latency</td><td>Interference, duplex mismatch, saturation, bad cable.</td></tr>
+          <tr><td>Limited connectivity</td><td>Wrong gateway/DNS; verify with <code>ipconfig</code>.</td></tr>
+          <tr><td>Weak Wi-Fi signal</td><td>Distance, interference, antenna; relocate AP / change channel.</td></tr>
+          <tr><td>Port flapping</td><td>Bad cable/NIC or switch port cycling up/down.</td></tr>
+        </table>
+        <p>Tools: <strong>cable tester</strong>, <strong>loopback plug</strong>, <strong>toner probe</strong>, <strong>punchdown tool</strong>, <strong>crimper</strong>, <strong>Wi-Fi analyzer</strong>, and software like <code>ping</code>, <code>ipconfig</code>, <code>tracert</code>, <code>nslookup</code>.</p>
+        <div class="callout exam">
+          <strong>On the exam:</strong> A <strong>swollen battery</strong> = stop using the device and
+          replace it. Don't puncture it.
+        </div>
+      </section>
+
+      <div class="lesson-actions">
+        <button class="button" data-complete="c1-troubleshooting">Mark lesson complete</button>
+        <a class="button secondary" href="../../index.html">Back to dashboard</a>
+      </div>
+
+      <section id="flashcards">
+        <h2>Flashcards — key terms</h2>
+        <div class="flashcard-deck" data-cards='[
+          ["Step 1 of troubleshooting","Identify the problem (question user, back up data, note changes)."],
+          ["Last step of troubleshooting","Document findings, actions, and outcomes."],
+          ["After establishing a theory","Test the theory to determine the cause."],
+          ["Clicking/grinding HDD","Mechanical failure — back up immediately."],
+          ["S.M.A.R.T. failure","Drive is predicting imminent failure."],
+          ["169.254.x.x while troubleshooting","No DHCP server reachable (APIPA)."],
+          ["Dim laptop screen","Backlight/inverter, brightness, or power source."],
+          ["Swollen battery","Safety hazard — stop use and replace; never puncture."],
+          ["Wrong date/time on boot","Dead CMOS battery."],
+          ["Toner probe","Traces/locates a cable in a bundle or wall."],
+          ["Loopback plug","Tests a NIC/port by looping signal back."],
+          ["Continuous reboots / BSOD","RAM, drivers, overheating, or failing drive."]
+        ]'></div>
+      </section>
+
+      <section id="quiz">
+        <h2>Quiz — Troubleshooting</h2>
+        <div class="quiz" data-lesson="c1-troubleshooting" data-quiz='[
+          {"q":"What is the FIRST step of the CompTIA troubleshooting methodology?","options":["Establish a theory","Identify the problem","Document the outcome","Verify functionality"],"answer":1,"explain":"Step 1 is identify the problem — gather info, back up data, note recent changes."},
+          {"q":"Immediately after establishing a theory of probable cause, what do you do?","options":["Document findings","Test the theory","Implement preventive measures","Escalate"],"answer":1,"explain":"Step 3 is test the theory to determine the actual cause."},
+          {"q":"A hard drive emits a rhythmic clicking sound. What is the priority action?","options":["Defragment it","Back up the data immediately","Update the driver","Run chkdsk repeatedly"],"answer":1,"explain":"Clicking signals mechanical failure — back up before the drive dies."},
+          {"q":"A laptop display is very dim but you can faintly see the desktop. What is the most likely cause?","options":["Dead GPU","Backlight/inverter or brightness/power","Corrupt OS","Bad RAM"],"answer":1,"explain":"A faint-but-present image points to backlight/inverter or brightness/power, not the GPU."},
+          {"q":"A technician notices a swollen battery in a tablet. What should they do?","options":["Keep using it until it dies","Puncture it to release pressure","Stop using it and replace it","Charge it fully first"],"answer":2,"explain":"A swollen battery is a safety hazard — stop use, replace, never puncture."},
+          {"q":"A PC repeatedly shuts down after running for a while. Which cause is most likely?","options":["DNS misconfiguration","Overheating or failing PSU","Wrong subnet mask","Dead pixels"],"answer":1,"explain":"Intermittent shutdowns under load typically indicate overheating or a failing power supply."}
+        ]'></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA A+ Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. Verify against current official objectives at comptia.org.</p>
+      </div>
+    </footer>
+    <script src="../../assets/app.js"></script>
+  </body>
+</html>

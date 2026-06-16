@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA A+ Core 1 (220-1101) Domain 2.0 Networking — ports and protocols, networking hardware, wireless standards, network services, and IP addressing. Lessons, flashcards, and a quiz." />
+    <title>Networking — A+ Core 1 Domain 2.0</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../../index.html">CompTIA A+ <span class="badge">A+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="#lesson">Lesson</a></li>
+          <li><a href="#flashcards">Flashcards</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../../index.html">Home</a> › Core 1 › <strong>2.0 Networking</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Core 1 · 220-1101 · Domain 2.0 (20%)</p>
+        <h1>Networking</h1>
+        <p class="lede">
+          Ports and protocols, the hardware that moves packets, wireless standards,
+          common network services, and how IP addressing works.
+        </p>
+      </section>
+
+      <section id="lesson" class="lesson">
+        <h2>2.1 Common ports &amp; protocols</h2>
+        <p>Memorize these — port/protocol questions are almost guaranteed.</p>
+        <table class="spec">
+          <tr><th>Port</th><th>Protocol</th><th>Use</th></tr>
+          <tr><td>20 / 21</td><td>FTP</td><td>File transfer (data / control)</td></tr>
+          <tr><td>22</td><td>SSH</td><td>Secure remote shell &amp; SFTP/SCP</td></tr>
+          <tr><td>23</td><td>Telnet</td><td>Insecure remote shell (plaintext)</td></tr>
+          <tr><td>25</td><td>SMTP</td><td>Sending email</td></tr>
+          <tr><td>53</td><td>DNS</td><td>Name → IP resolution</td></tr>
+          <tr><td>67 / 68</td><td>DHCP</td><td>Automatic IP assignment</td></tr>
+          <tr><td>80</td><td>HTTP</td><td>Web (unencrypted)</td></tr>
+          <tr><td>110</td><td>POP3</td><td>Receiving email (single device)</td></tr>
+          <tr><td>137-139</td><td>NetBIOS/NetBT</td><td>Legacy Windows name/file services</td></tr>
+          <tr><td>143</td><td>IMAP</td><td>Receiving email (synced)</td></tr>
+          <tr><td>161 / 162</td><td>SNMP</td><td>Network device management</td></tr>
+          <tr><td>389</td><td>LDAP</td><td>Directory services</td></tr>
+          <tr><td>443</td><td>HTTPS</td><td>Web (TLS-encrypted)</td></tr>
+          <tr><td>445</td><td>SMB/CIFS</td><td>Windows file &amp; printer sharing</td></tr>
+          <tr><td>3389</td><td>RDP</td><td>Remote Desktop</td></tr>
+        </table>
+        <div class="callout exam">
+          <strong>On the exam:</strong> Know <strong>TCP vs UDP</strong> — TCP is connection-oriented
+          and reliable (HTTP, FTP, SSH); UDP is connectionless and fast (DNS queries, DHCP, streaming).
+        </div>
+
+        <h2>2.2 Networking hardware</h2>
+        <ul>
+          <li><strong>Router</strong> — connects different networks; routes by IP (Layer 3).</li>
+          <li><strong>Switch</strong> — connects devices within a LAN; forwards by MAC (Layer 2). <strong>Managed</strong> switches support VLANs/config; <strong>unmanaged</strong> do not.</li>
+          <li><strong>Access Point (AP)</strong> — bridges wireless clients to the wired network.</li>
+          <li><strong>Firewall</strong> — filters traffic by rules.</li>
+          <li><strong>Hub</strong> — legacy; repeats traffic to all ports (a single collision domain).</li>
+          <li><strong>PoE / PoE switch / injector</strong> — delivers power + data over Ethernet (APs, cameras, phones).</li>
+          <li><strong>Cable/DSL modem, ONT</strong> — connect the LAN to the ISP.</li>
+        </ul>
+
+        <h2>2.3 Wireless networking</h2>
+        <table class="spec">
+          <tr><th>Standard</th><th>Wi-Fi name</th><th>Band(s)</th></tr>
+          <tr><td>802.11a</td><td>—</td><td>5 GHz</td></tr>
+          <tr><td>802.11b/g</td><td>—</td><td>2.4 GHz</td></tr>
+          <tr><td>802.11n</td><td>Wi-Fi 4</td><td>2.4 &amp; 5 GHz (MIMO)</td></tr>
+          <tr><td>802.11ac</td><td>Wi-Fi 5</td><td>5 GHz</td></tr>
+          <tr><td>802.11ax</td><td>Wi-Fi 6/6E</td><td>2.4, 5 (&amp; 6 GHz on 6E)</td></tr>
+        </table>
+        <ul>
+          <li><strong>2.4 GHz</strong> — longer range, more penetration, slower, more interference. Non-overlapping channels: <strong>1, 6, 11</strong>.</li>
+          <li><strong>5 GHz</strong> — faster, shorter range, more channels.</li>
+          <li>Other radios: <strong>Bluetooth</strong>, <strong>NFC</strong>, <strong>RFID</strong>, <strong>Zigbee/Z-Wave</strong> (IoT/home automation), <strong>long-range fixed wireless</strong>.</li>
+        </ul>
+
+        <h2>2.4 Network services &amp; the SOHO setup</h2>
+        <ul>
+          <li><strong>DNS</strong> resolves names to IPs; <strong>DHCP</strong> hands out IP/subnet/gateway/DNS automatically. A <strong>DHCP reservation</strong> ties an IP to a MAC.</li>
+          <li>Server roles: web, file, print, mail, <strong>syslog</strong>, authentication (AAA), <strong>proxy</strong>, <strong>spam gateway</strong>, <strong>load balancer</strong>.</li>
+          <li><strong>Embedded/legacy/IoT</strong> systems and <strong>SCADA</strong> (industrial control) appear as device types.</li>
+          <li><strong>Internet appliances</strong>: spam gateway, UTM, load balancer, proxy.</li>
+        </ul>
+
+        <h2>2.5 IP addressing</h2>
+        <ul>
+          <li><strong>IPv4</strong> = 32-bit, dotted decimal (e.g., 192.168.1.10). <strong>IPv6</strong> = 128-bit, hex.</li>
+          <li>Private ranges: <strong>10.0.0.0/8</strong>, <strong>172.16.0.0/12</strong>, <strong>192.168.0.0/16</strong>.</li>
+          <li><strong>APIPA</strong> = 169.254.x.x — a host gives itself this when no DHCP server is reachable (a troubleshooting clue!).</li>
+          <li><strong>Loopback</strong> = 127.0.0.1 (IPv4), ::1 (IPv6).</li>
+          <li><strong>Static vs dynamic</strong>; <strong>gateway</strong> = the router's LAN address; <strong>subnet mask</strong> separates network vs host portions.</li>
+          <li><strong>CIDR</strong>: /24 = 255.255.255.0.</li>
+        </ul>
+        <div class="callout exam">
+          <strong>On the exam:</strong> A device with a <strong>169.254.x.x</strong> address can't reach
+          the DHCP server — check the DHCP service, cabling, or switch port.
+        </div>
+      </section>
+
+      <div class="lesson-actions">
+        <button class="button" data-complete="c1-networking">Mark lesson complete</button>
+        <a class="button secondary" href="../../index.html">Back to dashboard</a>
+      </div>
+
+      <section id="flashcards">
+        <h2>Flashcards — key terms</h2>
+        <div class="flashcard-deck" data-cards='[
+          ["Port 443","HTTPS — encrypted web traffic (TLS)."],
+          ["Port 22","SSH — secure remote shell (also SFTP/SCP)."],
+          ["Port 3389","RDP — Remote Desktop Protocol."],
+          ["Port 53","DNS — resolves names to IP addresses."],
+          ["Port 445","SMB/CIFS — Windows file & printer sharing."],
+          ["Router vs switch","Router routes between networks by IP (L3); switch forwards within a LAN by MAC (L2)."],
+          ["APIPA address","169.254.x.x — self-assigned when no DHCP server is reachable."],
+          ["Non-overlapping 2.4 GHz channels","1, 6, and 11."],
+          ["802.11ax","Wi-Fi 6/6E — 2.4/5 GHz (and 6 GHz on 6E)."],
+          ["Private IPv4 ranges","10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16."],
+          ["TCP vs UDP","TCP = reliable, connection-oriented; UDP = fast, connectionless."],
+          ["PoE","Power over Ethernet — power + data on one cable (APs, cameras, phones)."]
+        ]'></div>
+      </section>
+
+      <section id="quiz">
+        <h2>Quiz — Networking</h2>
+        <div class="quiz" data-lesson="c1-networking" data-quiz='[
+          {"q":"Which port does HTTPS use?","options":["80","443","8080","21"],"answer":1,"explain":"HTTPS uses TCP port 443 (HTTP is 80)."},
+          {"q":"A workstation shows an IP of 169.254.12.7. What does this indicate?","options":["It has a valid public IP","It could not reach a DHCP server (APIPA)","It is using IPv6","It has a static IP"],"answer":1,"explain":"169.254.x.x is APIPA — assigned when no DHCP server responds."},
+          {"q":"Which device forwards frames within a LAN based on MAC addresses?","options":["Router","Switch","Modem","Firewall"],"answer":1,"explain":"A switch operates at Layer 2 and forwards by MAC address."},
+          {"q":"Which port is used by RDP?","options":["22","443","3389","23"],"answer":2,"explain":"Remote Desktop Protocol uses TCP 3389."},
+          {"q":"Which set of 2.4 GHz channels does not overlap?","options":["1, 5, 9","1, 6, 11","2, 7, 12","3, 6, 9"],"answer":1,"explain":"Channels 1, 6, and 11 are the standard non-overlapping 2.4 GHz channels."},
+          {"q":"Which protocol pair is connectionless and fast, used by DNS queries and DHCP?","options":["TCP","UDP","ICMP","ARP"],"answer":1,"explain":"UDP is connectionless; DNS lookups and DHCP rely on it."}
+        ]'></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA A+ Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. Verify against current official objectives at comptia.org.</p>
+      </div>
+    </footer>
+    <script src="../../assets/app.js"></script>
+  </body>
+</html>

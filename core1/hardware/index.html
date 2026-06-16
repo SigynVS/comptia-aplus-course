@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA A+ Core 1 (220-1101) Domain 3.0 Hardware — cables and connectors, RAM, storage, motherboards, CPUs, expansion, power, and peripherals. Lessons, flashcards, and a quiz." />
+    <title>Hardware — A+ Core 1 Domain 3.0</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../../index.html">CompTIA A+ <span class="badge">A+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="#lesson">Lesson</a></li>
+          <li><a href="#flashcards">Flashcards</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../../index.html">Home</a> › Core 1 › <strong>3.0 Hardware</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Core 1 · 220-1101 · Domain 3.0 (25%)</p>
+        <h1>Hardware</h1>
+        <p class="lede">
+          The biggest Core 1 domain: cables and connectors, memory, storage,
+          motherboards, CPUs, power supplies, and peripherals.
+        </p>
+      </section>
+
+      <section id="lesson" class="lesson">
+        <h2>3.1 Cables &amp; connectors</h2>
+        <table class="spec">
+          <tr><th>Cable</th><th>Notes</th></tr>
+          <tr><td>Cat 5e / Cat 6 / Cat 6a</td><td>Twisted-pair Ethernet. 5e=1 Gbps; 6=1–10 Gbps (short); 6a=10 Gbps. RJ45 connector.</td></tr>
+          <tr><td>Coaxial (RG-6)</td><td>Cable internet/TV. F-type connector.</td></tr>
+          <tr><td>Fiber (SMF/MMF)</td><td>Light over glass; immune to EMI, long distance.</td></tr>
+          <tr><td>USB 2.0 / 3.x</td><td>2.0=480 Mbps; 3.2 Gen 1=5 Gbps; Gen 2=10 Gbps. USB-C is reversible.</td></tr>
+          <tr><td>SATA</td><td>Internal drives — 7-pin data + 15-pin power.</td></tr>
+          <tr><td>Lightning / Molex / DB / Punchdown</td><td>Apple legacy / old peripheral power / serial / 110 block.</td></tr>
+        </table>
+        <ul>
+          <li>Video: <strong>HDMI</strong>, <strong>DisplayPort</strong>, <strong>DVI</strong>, <strong>VGA</strong> (analog, legacy).</li>
+          <li><strong>RJ45</strong> = Ethernet (8 wires); <strong>RJ11</strong> = phone/DSL (smaller).</li>
+        </ul>
+
+        <h2>3.2 RAM</h2>
+        <table class="spec">
+          <tr><th>Type</th><th>Notes</th></tr>
+          <tr><td>DDR3 / DDR4 / DDR5</td><td>Not interchangeable — different notch keys &amp; voltages. DDR5 is current.</td></tr>
+          <tr><td>DIMM vs SODIMM</td><td>Desktop vs laptop form factor.</td></tr>
+          <tr><td>ECC</td><td>Error-Correcting Code — detects/corrects errors; used in servers.</td></tr>
+          <tr><td>Channels</td><td>Single/dual/triple/quad — install in matched pairs for dual-channel bandwidth.</td></tr>
+        </table>
+
+        <h2>3.3 Storage devices</h2>
+        <ul>
+          <li><strong>HDD</strong> — spinning platters; speeds <strong>5400 / 7200 / 10000+ RPM</strong>.</li>
+          <li><strong>SSD</strong> — flash; forms: 2.5" SATA, <strong>M.2</strong> (SATA or NVMe), mSATA.</li>
+          <li><strong>NVMe</strong> over PCIe is the fastest mainstream storage.</li>
+          <li><strong>Optical</strong>: CD/DVD/Blu-ray (legacy).</li>
+          <li><strong>RAID</strong>: 0 (stripe, speed, no redundancy), 1 (mirror, redundancy), 5 (stripe + parity, needs 3+ disks), 10 (mirror + stripe).</li>
+        </ul>
+        <div class="callout exam">
+          <strong>On the exam:</strong> RAID 0 has <em>no</em> fault tolerance. RAID 1 mirrors.
+          RAID 5 survives one disk failure. RAID 10 needs four disks.
+        </div>
+
+        <h2>3.4 Motherboards, CPUs &amp; add-on cards</h2>
+        <ul>
+          <li>Form factors: <strong>ATX</strong> &gt; <strong>microATX</strong> &gt; <strong>Mini-ITX</strong>.</li>
+          <li>Expansion: <strong>PCIe</strong> (x1, x4, x8, x16). GPUs use x16.</li>
+          <li><strong>CPU sockets</strong>: Intel <strong>LGA</strong> (pins on socket), AMD historically <strong>PGA</strong> (pins on chip; AM5 is LGA).</li>
+          <li>Cooling: heat sink + fan, thermal paste, liquid cooling.</li>
+          <li><strong>BIOS/UEFI</strong>: boot order, <strong>Secure Boot</strong>, TPM, passwords. <strong>CMOS battery</strong> (CR2032) keeps settings/clock — a dead one resets the date/time.</li>
+        </ul>
+
+        <h2>3.5 Power</h2>
+        <ul>
+          <li><strong>PSU</strong> wattage must exceed total load; rails: <strong>+3.3V, +5V, +12V</strong>.</li>
+          <li>24-pin main + <strong>4/8-pin CPU (EPS)</strong> + PCIe power for GPUs.</li>
+          <li>Know input voltage (115V vs 230V) and dual-rail concerns.</li>
+        </ul>
+
+        <h2>3.6 Peripherals &amp; printers (overview)</h2>
+        <ul>
+          <li>Multifunction devices, ADF/flatbed scanners, monitors, KVM.</li>
+          <li>Printer types: <strong>laser</strong> (7-step imaging: processing, charging, exposing, developing, transferring, fusing, cleaning), <strong>inkjet</strong>, <strong>thermal</strong>, <strong>impact</strong> (multipart forms), <strong>3D</strong>.</li>
+        </ul>
+        <div class="callout exam">
+          <strong>On the exam:</strong> Memorize the <strong>laser imaging process order</strong> and that
+          <strong>impact printers</strong> are used for carbon-copy/multipart forms.
+        </div>
+      </section>
+
+      <div class="lesson-actions">
+        <button class="button" data-complete="c1-hardware">Mark lesson complete</button>
+        <a class="button secondary" href="../../index.html">Back to dashboard</a>
+      </div>
+
+      <section id="flashcards">
+        <h2>Flashcards — key terms</h2>
+        <div class="flashcard-deck" data-cards='[
+          ["RAID 0","Striping — speed, no redundancy. One disk fails = all data lost."],
+          ["RAID 1","Mirroring — full redundancy across two disks."],
+          ["RAID 5","Striping with parity — needs 3+ disks, survives one failure."],
+          ["RAID 10","Mirror + stripe — needs four disks."],
+          ["DDR generations","DDR3/4/5 are not interchangeable (different keys/voltages)."],
+          ["ECC RAM","Error-Correcting Code — detects & corrects memory errors; servers."],
+          ["CMOS battery","CR2032 — keeps BIOS settings & clock; dead = clock resets."],
+          ["PCIe x16 slot","Used for graphics cards."],
+          ["ATX sizes","ATX > microATX > Mini-ITX."],
+          ["Cat 6a","10 Gbps twisted-pair Ethernet."],
+          ["Laser print order","Processing, charging, exposing, developing, transferring, fusing, cleaning."],
+          ["Impact printer use","Multipart / carbon-copy forms."]
+        ]'></div>
+      </section>
+
+      <section id="quiz">
+        <h2>Quiz — Hardware</h2>
+        <div class="quiz" data-lesson="c1-hardware" data-quiz='[
+          {"q":"Which RAID level provides striping with parity and survives a single disk failure?","options":["RAID 0","RAID 1","RAID 5","RAID 10"],"answer":2,"explain":"RAID 5 stripes with distributed parity across 3+ disks and tolerates one failure."},
+          {"q":"A PC loses its date/time every time it is unplugged. What should you replace?","options":["The PSU","The CMOS battery","The RAM","The SATA cable"],"answer":1,"explain":"The CR2032 CMOS battery maintains BIOS settings and the real-time clock."},
+          {"q":"Which slot is used for a modern graphics card?","options":["PCIe x1","PCIe x16","PCI","M.2"],"answer":1,"explain":"GPUs use the PCIe x16 slot for maximum bandwidth."},
+          {"q":"Which printer type is required for multipart carbon-copy forms?","options":["Laser","Inkjet","Thermal","Impact"],"answer":3,"explain":"Impact (dot-matrix) printers physically strike the page, enabling multipart forms."},
+          {"q":"Which memory is used in servers to detect and correct errors?","options":["SODIMM","ECC","DDR3","VRAM"],"answer":1,"explain":"ECC (Error-Correcting Code) RAM is used where data integrity is critical."},
+          {"q":"Which is the fastest mainstream storage interface?","options":["SATA SSD","NVMe over PCIe","7200 RPM HDD","USB 2.0 flash"],"answer":1,"explain":"NVMe drives use PCIe lanes and far exceed SATA speeds."}
+        ]'></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA A+ Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. Verify against current official objectives at comptia.org.</p>
+      </div>
+    </footer>
+    <script src="../../assets/app.js"></script>
+  </body>
+</html>

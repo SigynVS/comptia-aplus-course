@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA A+ Core 2 (220-1102) Domain 4.0 Operational Procedures — documentation, change management, backups, safety, environmental controls, privacy, incident response, and professional communication. Lessons, flashcards, and a quiz." />
+    <title>Operational Procedures — A+ Core 2 Domain 4.0</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../../index.html">CompTIA A+ <span class="badge">A+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="#lesson">Lesson</a></li>
+          <li><a href="#flashcards">Flashcards</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../../index.html">Home</a> › Core 2 › <strong>4.0 Operational Procedures</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Core 2 · 220-1102 · Domain 4.0 (22%)</p>
+        <h1>Operational Procedures</h1>
+        <p class="lede">
+          The "professional" domain: documentation, change management, backups, safety,
+          environmental controls, privacy/licensing, incident response, and communication.
+        </p>
+      </section>
+
+      <section id="lesson" class="lesson">
+        <h2>4.1 Documentation &amp; best practices</h2>
+        <ul>
+          <li><strong>Ticketing systems</strong>: clear problem description, categories, severity, escalation, progress notes, and resolution.</li>
+          <li><strong>Asset management</strong>: inventory lists, asset tags/IDs, procurement life cycle, warranty, database.</li>
+          <li>Policy docs: <strong>AUP</strong> (acceptable use), <strong>network topology diagrams</strong>, <strong>SOPs</strong>, <strong>compliance</strong>, <strong>knowledge base/articles</strong>, regulatory/incident reports.</li>
+          <li><strong>Splash screens</strong>, password policy, new-user / end-user device on/offboarding.</li>
+        </ul>
+
+        <h2>4.2 Change management</h2>
+        <ol>
+          <li><strong>Documented business processes</strong> &amp; a <strong>change request</strong> with purpose/scope.</li>
+          <li><strong>Risk analysis</strong> and risk level.</li>
+          <li><strong>Plan for change</strong>, <strong>end-user acceptance</strong>, and a <strong>backout/rollback plan</strong>.</li>
+          <li><strong>Change Board</strong> approval, <strong>sandbox testing</strong>, then implement and document.</li>
+        </ol>
+        <div class="callout exam">
+          <strong>On the exam:</strong> Every change needs a <strong>rollback (backout) plan</strong> and
+          <strong>approval</strong> before implementation. Never "just make the change."
+        </div>
+
+        <h2>4.3 Backups &amp; recovery</h2>
+        <table class="spec">
+          <tr><th>Type</th><th>Backs up</th><th>Restore</th></tr>
+          <tr><td>Full</td><td>Everything</td><td>One set; slowest backup.</td></tr>
+          <tr><td>Incremental</td><td>Changes since last <em>any</em> backup</td><td>Full + every incremental; fast backup, slow restore.</td></tr>
+          <tr><td>Differential</td><td>Changes since last <em>full</em></td><td>Full + last differential.</td></tr>
+          <tr><td>Synthetic</td><td>Server-built full from prior backups</td><td>Like a full.</td></tr>
+        </table>
+        <ul>
+          <li><strong>3-2-1 rule</strong>: 3 copies, 2 media types, 1 offsite. Test restores regularly.</li>
+          <li><strong>On-site vs off-site</strong>; backup verification &amp; rotation (e.g., grandfather-father-son).</li>
+        </ul>
+
+        <h2>4.4 Safety</h2>
+        <ul>
+          <li><strong>ESD</strong> protection: anti-static <strong>wrist strap</strong> &amp; <strong>mat</strong>, equipment grounding, store parts in anti-static bags. (Don't wear a strap when working on CRTs/PSUs with high voltage.)</li>
+          <li><strong>Electrical safety</strong>: unplug before service; high-voltage devices (<strong>CRT monitors</strong>, <strong>power supplies</strong>, laser printer fusers) hold dangerous charge — don't open.</li>
+          <li>PPE: safety goggles, air filter mask; proper lifting (bend knees); fire safety; trip hazards.</li>
+          <li><strong>Compliance with government regulations</strong> for safe handling.</li>
+        </ul>
+        <div class="callout exam">
+          <strong>On the exam:</strong> An <strong>ESD wrist strap</strong> protects components from static —
+          but <strong>never</strong> wear one when servicing high-voltage equipment like a CRT or PSU.
+        </div>
+
+        <h2>4.5 Environmental controls</h2>
+        <ul>
+          <li><strong>MSDS / SDS</strong> — safety data sheets describe handling/disposal of chemicals (e.g., toner, batteries).</li>
+          <li>Proper disposal: <strong>batteries</strong>, <strong>toner</strong>, CRTs, and other devices per local regulation/recycling.</li>
+          <li>Temperature/humidity control, ventilation, dust, and protection from <strong>power surges/brownouts</strong> with a <strong>UPS</strong> &amp; <strong>surge suppressor</strong>.</li>
+        </ul>
+
+        <h2>4.6 Privacy, licensing &amp; policy</h2>
+        <ul>
+          <li><strong>PII / PHI</strong>, <strong>GDPR</strong>, <strong>PCI DSS</strong> — handle regulated data carefully.</li>
+          <li>Licensing: <strong>personal vs enterprise/corporate</strong>, open-source vs commercial, <strong>EULA</strong>, valid licenses, DRM.</li>
+          <li><strong>Chain of custody</strong> and incident response: identify, report through proper channels, <strong>preserve data/evidence</strong>, document.</li>
+        </ul>
+
+        <h2>4.7 Communication &amp; professionalism</h2>
+        <ul>
+          <li>Use clear language (avoid jargon/acronyms/slang), maintain a positive attitude, actively listen, don't interrupt.</li>
+          <li>Be culturally sensitive, on time, and avoid distractions (personal calls, texting).</li>
+          <li>Deal with difficult customers: don't argue, don't be dismissive, don't take it personally; set/meet expectations, offer options, follow up.</li>
+          <li>Maintain confidentiality of customer materials located on/around a workstation.</li>
+        </ul>
+        <h3>Remote access tools</h3>
+        <ul>
+          <li><strong>RDP</strong>, <strong>VPN</strong>, SSH, screen-sharing/RMM, third-party tools — note security implications &amp; consent.</li>
+          <li>Basic scripting awareness: <code>.bat</code>, <code>.ps1</code> (PowerShell), <code>.sh</code>, <code>.py</code>, <code>.vbs</code>, <code>.js</code> — and risks of running untrusted scripts.</li>
+        </ul>
+      </section>
+
+      <div class="lesson-actions">
+        <button class="button" data-complete="c2-operational">Mark lesson complete</button>
+        <a class="button secondary" href="../../index.html">Back to dashboard</a>
+      </div>
+
+      <section id="flashcards">
+        <h2>Flashcards — key terms</h2>
+        <div class="flashcard-deck" data-cards='[
+          ["Every change needs…","An approved change request and a rollback (backout) plan."],
+          ["Incremental backup","Backs up changes since the last backup of any type; restore needs full + all increments."],
+          ["Differential backup","Backs up changes since the last full; restore needs full + last differential."],
+          ["3-2-1 backup rule","3 copies, 2 media types, 1 offsite."],
+          ["ESD protection","Anti-static wrist strap & mat; anti-static bags for parts."],
+          ["Never wear a wrist strap on…","High-voltage gear — CRT monitors and power supplies."],
+          ["MSDS / SDS","Safety Data Sheet — chemical handling & disposal info."],
+          ["UPS","Battery backup — rides through outages/brownouts and allows safe shutdown."],
+          ["PII","Personally Identifiable Information — handle/protect carefully."],
+          ["EULA","End-User License Agreement — governs software use."],
+          ["Chain of custody","Documented handling of evidence to preserve integrity."],
+          ["Change Board","Approves proposed changes before implementation."]
+        ]'></div>
+      </section>
+
+      <section id="quiz">
+        <h2>Quiz — Operational Procedures</h2>
+        <div class="quiz" data-lesson="c2-operational" data-quiz='[
+          {"q":"Which document must accompany every change in a formal change-management process?","options":["A marketing brief","A rollback (backout) plan","A sales quote","A press release"],"answer":1,"explain":"Changes require an approved request and a rollback/backout plan in case of failure."},
+          {"q":"A differential backup restores from which sets?","options":["Only the differential","The last full plus the last differential","Every incremental","Only the full"],"answer":1,"explain":"Differential restore = last full + the most recent differential."},
+          {"q":"When should you NOT wear an anti-static wrist strap?","options":["Installing RAM","Servicing a CRT monitor or PSU","Replacing an SSD","Seating a GPU"],"answer":1,"explain":"High-voltage devices like CRTs and PSUs can discharge through a grounded strap — never wear one."},
+          {"q":"Which document describes safe handling and disposal of chemicals like printer toner?","options":["EULA","SDS/MSDS","AUP","SLA"],"answer":1,"explain":"The Safety Data Sheet (SDS/MSDS) covers handling and disposal of hazardous materials."},
+          {"q":"What does the 3-2-1 backup rule specify?","options":["3 servers, 2 admins, 1 site","3 copies, 2 media types, 1 offsite","3 fulls, 2 incrementals, 1 differential","3 days, 2 weeks, 1 month"],"answer":1,"explain":"3 copies of data, on 2 different media, with 1 stored offsite."},
+          {"q":"When handling potential evidence during an incident, what preserves its integrity for later use?","options":["Deleting logs","Chain of custody documentation","Formatting the drive","Emailing it to yourself"],"answer":1,"explain":"Chain of custody documents who handled evidence and when, preserving integrity."}
+        ]'></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA A+ Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. Verify against current official objectives at comptia.org.</p>
+      </div>
+    </footer>
+    <script src="../../assets/app.js"></script>
+  </body>
+</html>

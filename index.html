@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A free, self-paced CompTIA A+ (Core 1 220-1101 & Core 2 220-1102) study course with lessons, flashcards, and quizzes. Vanilla HTML/CSS/JS, no dependencies." />
+    <title>CompTIA A+ Course — Core 1 &amp; Core 2 Study Guide</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="index.html">CompTIA A+ <span class="badge">A+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#core1">Core 1</a></li>
+          <li><a href="#core2">Core 2</a></li>
+          <li><a href="#how">How to use</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Self-paced · Free · No sign-up</p>
+        <h1>CompTIA A+ Study Course</h1>
+        <p class="lede">
+          A complete, self-paced study path for both A+ exams — Core 1 (220-1101)
+          and Core 2 (220-1102). Read the lessons, drill the flashcards, and test
+          yourself with quizzes. Your progress is saved in your browser.
+        </p>
+        <div class="lesson-actions">
+          <a class="button" href="core1/mobile-devices/index.html">Start Core 1 →</a>
+          <a class="button secondary" href="#how">How it works</a>
+        </div>
+      </section>
+
+      <div class="progress-dash" data-lessons='[
+        ["c1-mobile","Core 1 · Mobile Devices"],
+        ["c1-networking","Core 1 · Networking"],
+        ["c1-hardware","Core 1 · Hardware"],
+        ["c1-virt-cloud","Core 1 · Virtualization &amp; Cloud"],
+        ["c1-troubleshooting","Core 1 · Hardware &amp; Network Troubleshooting"],
+        ["c2-os","Core 2 · Operating Systems"],
+        ["c2-security","Core 2 · Security"],
+        ["c2-sw-troubleshooting","Core 2 · Software Troubleshooting"],
+        ["c2-operational","Core 2 · Operational Procedures"]
+      ]'></div>
+
+      <section id="core1">
+        <h2>Core 1 — Exam 220-1101</h2>
+        <p class="lede">Hardware, networking, mobile devices, virtualization, and troubleshooting.</p>
+        <div class="grid two">
+          <a class="card" href="core1/mobile-devices/index.html">
+            <span class="tag">Domain 1.0 <span class="weight">15%</span></span>
+            <h3>Mobile Devices</h3>
+            <p>Laptops, displays, ports, accessories, mobile network connectivity, and synchronization.</p>
+          </a>
+          <a class="card" href="core1/networking/index.html">
+            <span class="tag">Domain 2.0 <span class="weight">20%</span></span>
+            <h3>Networking</h3>
+            <p>Ports/protocols, networking hardware, wireless, services, and IP addressing.</p>
+          </a>
+          <a class="card" href="core1/hardware/index.html">
+            <span class="tag">Domain 3.0 <span class="weight">25%</span></span>
+            <h3>Hardware</h3>
+            <p>Cables, connectors, RAM, storage, motherboards, CPUs, power, and peripherals.</p>
+          </a>
+          <a class="card" href="core1/virtualization-cloud/index.html">
+            <span class="tag">Domain 4.0 <span class="weight">11%</span></span>
+            <h3>Virtualization &amp; Cloud</h3>
+            <p>Cloud models, shared resources, virtual machines, and client-side virtualization.</p>
+          </a>
+          <a class="card" href="core1/troubleshooting/index.html">
+            <span class="tag">Domain 5.0 <span class="weight">29%</span></span>
+            <h3>HW &amp; Network Troubleshooting</h3>
+            <p>Troubleshooting methodology, devices, displays, storage, and network issues.</p>
+          </a>
+        </div>
+      </section>
+
+      <section id="core2">
+        <h2>Core 2 — Exam 220-1102</h2>
+        <p class="lede">Operating systems, security, software troubleshooting, and operational procedures.</p>
+        <div class="grid two">
+          <a class="card" href="core2/operating-systems/index.html"><span class="tag">Domain 1.0 <span class="weight">28%</span></span><h3>Operating Systems</h3><p>Windows, command line, OS features, and other operating systems.</p></a>
+          <a class="card" href="core2/security/index.html"><span class="tag">Domain 2.0 <span class="weight">28%</span></span><h3>Security</h3><p>Threats, malware, social engineering, wireless security, and hardening.</p></a>
+          <a class="card" href="core2/software-troubleshooting/index.html"><span class="tag">Domain 3.0 <span class="weight">22%</span></span><h3>Software Troubleshooting</h3><p>OS, application, malware, and mobile/security issues.</p></a>
+          <a class="card" href="core2/operational-procedures/index.html"><span class="tag">Domain 4.0 <span class="weight">22%</span></span><h3>Operational Procedures</h3><p>Documentation, safety, change management, and professionalism.</p></a>
+        </div>
+      </section>
+
+      <section id="how">
+        <h2>How to use this course</h2>
+        <div class="grid three">
+          <div class="card"><span class="tag">Step 1</span><h3>Read the lesson</h3><p>Each domain is broken into clear, exam-focused sections with key terms and "on the exam" tips.</p></div>
+          <div class="card"><span class="tag">Step 2</span><h3>Drill flashcards</h3><p>Flip through the key terms until recall is automatic. Cards cycle so you can loop them.</p></div>
+          <div class="card"><span class="tag">Step 3</span><h3>Pass the quiz</h3><p>Score 70%+ on a lesson quiz and it's auto-marked complete on your home dashboard.</p></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA A+ Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. "A+", "CompTIA A+", and exam codes are trademarks of CompTIA, Inc. Always check the current official exam objectives at comptia.org.</p>
+      </div>
+    </footer>
+
+    <script src="assets/app.js"></script>
+  </body>
+</html>
