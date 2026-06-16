@@ -125,7 +125,7 @@
     btn.type = 'button';
     btn.className = 'theme-toggle';
     btn.setAttribute('aria-label', 'Toggle dark mode');
-    function label() { btn.textContent = (saved === 'dark' ? '☀ Light' : '🌙 Dark'); }
+    function label() { btn.textContent = (saved === 'dark' ? 'Light' : 'Dark'); }
     label();
     btn.addEventListener('click', function () {
       saved = (saved === 'dark') ? 'light' : 'dark';
@@ -367,9 +367,9 @@
     var wrap = document.createElement('div');
     wrap.className = 'progress-wrap';
     wrap.innerHTML =
-      '<strong>📊 Study stats</strong>' +
+      '<strong>Study stats</strong>' +
       '<div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:0.85rem">' +
-        stat('🔥 ' + streak.current, 'Day streak') +
+        stat(streak.current, 'Day streak') +
         stat(streak.longest, 'Longest streak') +
         stat(done + '/' + totalLessons, 'Lessons done') +
         stat(quizzes, 'Quizzes taken') +
@@ -419,13 +419,15 @@
     var wrap = document.createElement('div');
     wrap.className = 'progress-wrap';
     var cards = DEFS.map(function (d) {
-      return '<div style="flex:1 1 9rem;min-width:9rem;opacity:' + (d.got ? '1' : '0.4') +
-        ';border:1px solid var(--line);border-radius:8px;padding:0.7rem">' +
-        '<div style="font-size:1.5rem">' + d.icon + '</div>' +
-        '<div style="font-weight:700;color:var(--ink)">' + d.name + (d.got ? ' ✓' : '') + '</div>' +
+      return '<div style="flex:1 1 9rem;min-width:9rem;opacity:' + (d.got ? '1' : '0.45') +
+        ';border:1px solid var(--line);border-left:3px solid ' + (d.got ? 'var(--gold)' : 'var(--line)') +
+        ';border-radius:var(--r);padding:0.7rem">' +
+        '<div style="font-size:1rem;color:' + (d.got ? 'var(--gold-dark)' : 'var(--muted)') + '">' +
+        (d.got ? '◆' : '◇') + '</div>' +
+        '<div style="font-weight:700;color:var(--ink)">' + d.name + '</div>' +
         '<div style="font-size:0.82rem;color:var(--muted)">' + d.desc + '</div></div>';
     }).join('');
-    wrap.innerHTML = '<strong>🏅 Achievements</strong> <span style="color:var(--muted)">(' +
+    wrap.innerHTML = '<strong>Achievements</strong> <span style="color:var(--muted)">(' +
       earned + ' / ' + DEFS.length + ' unlocked)</span>' +
       '<div style="display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:0.85rem">' + cards + '</div>';
     host.appendChild(wrap);
@@ -437,8 +439,8 @@
     var host = document.querySelector('.backup-controls');
     if (!host) return;
 
-    var exportBtn = mkButton('⬇ Export progress', 'button secondary');
-    var importBtn = mkButton('⬆ Import progress', 'button secondary');
+    var exportBtn = mkButton('Export progress', 'button secondary');
+    var importBtn = mkButton('Import progress', 'button secondary');
     var file = document.createElement('input');
     file.type = 'file';
     file.accept = 'application/json,.json';
@@ -503,7 +505,7 @@
     var lesson = document.querySelector('.lesson');
     var actions = document.querySelector('.lesson-actions');
     if (!lesson || !actions) return;
-    var btn = mkButton('🖨 Print study sheet', 'button secondary');
+    var btn = mkButton('Print study sheet', 'button secondary');
     btn.addEventListener('click', function () { window.print(); });
     actions.appendChild(btn);
   }

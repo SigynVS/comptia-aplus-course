@@ -81,7 +81,7 @@
     tb.type = 'button';
     tb.className = 'theme-toggle';
     tb.setAttribute('aria-label', 'Toggle dark mode');
-    function lbl() { tb.textContent = (theme === 'dark' ? '☀ Light' : '🌙 Dark'); }
+    function lbl() { tb.textContent = (theme === 'dark' ? 'Light' : 'Dark'); }
     lbl();
     tb.addEventListener('click', function () {
       theme = (theme === 'dark') ? 'light' : 'dark';
@@ -233,7 +233,7 @@
     document.getElementById('score-line').textContent =
       (pass ? '✓ Pass — ' : '✗ Keep studying — ') + correct + ' / ' + exam.length +
       ' (' + pct + '%)  ·  ' + currentScope +
-      (improved ? '  🏆 New best!' : '  · Best: ' + best + '%');
+      (improved ? '  · New best' : '  · Best: ' + best + '%');
     document.getElementById('score-line').style.color = pass ? 'var(--good)' : 'var(--bad)';
     var bar = document.getElementById('score-bar');
     bar.style.width = pct + '%';
