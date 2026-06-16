@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA A+ practice final exam — randomized, timed questions pulled from all Core 1 and Core 2 domains, with instant scoring and answer review. Vanilla HTML/CSS/JS." />
+    <title>Final Exam — CompTIA A+ Practice Test</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../index.html">CompTIA A+ <span class="badge">A+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../index.html#core1">Core 1</a></li>
+          <li><a href="../index.html#core2">Core 2</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../index.html">Home</a> › <strong>Final Exam</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Practice test · All domains</p>
+        <h1>Final Exam</h1>
+        <p class="lede">
+          A randomized practice exam drawn from every Core 1 and Core 2 domain.
+          Questions and answer choices are shuffled each attempt. Aim for
+          <strong>75%+</strong> — roughly CompTIA's passing line.
+        </p>
+      </section>
+
+      <!-- Setup -->
+      <div id="setup" class="progress-wrap">
+        <h3 style="margin-top:0">Choose your exam length</h3>
+        <div class="lesson-actions" style="margin-top:0.75rem">
+          <button class="button" data-len="20">Quick · 20 Q</button>
+          <button class="button" data-len="40">Standard · 40 Q</button>
+          <button class="button" data-len="0">Full bank · all Q</button>
+        </div>
+        <p id="bank-size" class="lede" style="margin-top:0.75rem"></p>
+        <label style="display:block;margin-top:0.5rem">
+          <input type="checkbox" id="timed" checked /> Timed mode (90&nbsp;seconds per question)
+        </label>
+      </div>
+
+      <!-- Exam -->
+      <div id="exam" style="display:none">
+        <div class="progress-wrap" style="position:sticky;top:3.5rem;z-index:5;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+          <strong id="timer">Time —</strong>
+          <span id="progress-text" class="lede" style="margin:0"></span>
+          <button id="submitBtn" class="button" style="margin-left:auto">Submit exam</button>
+        </div>
+        <div id="questions" class="quiz"></div>
+        <button id="submitBtn2" class="button">Submit exam</button>
+      </div>
+
+      <!-- Results -->
+      <div id="results" style="display:none">
+        <div class="progress-wrap">
+          <h2 id="score-line" style="margin-top:0"></h2>
+          <div class="bar"><span id="score-bar"></span></div>
+          <div id="domain-breakdown"></div>
+          <div class="lesson-actions">
+            <button id="retry" class="button">New exam</button>
+            <a class="button secondary" href="../index.html">Back to home</a>
+          </div>
+        </div>
+        <h2>Review</h2>
+        <div id="review" class="quiz"></div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA A+ Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent practice material. Not affiliated with or endorsed by CompTIA. Practice scores do not predict actual exam results. Verify objectives at comptia.org.</p>
+      </div>
+    </footer>
+
+    <script src="../assets/questionbank.js"></script>
+    <script>
+      (function () {
+        'use strict';
+        var BANK = window.EXAM_BANK || [];
+        var PASS = 75; // percent
+        var exam = [];          // current question set (with shuffled options)
+        var timerId = null;
+        var remaining = 0;
+
+        // year
+        var y = document.getElementById('year');
+        if (y) y.textContent = new Date().getFullYear();
+
+        // nav toggle
+        var t = document.querySelector('.nav-toggle');
+        var m = document.getElementById('nav-menu');
+        if (t && m) t.addEventListener('click', function () {
+          var o = m.classList.toggle('open'); t.setAttribute('aria-expanded', String(o));
+        });
+
+        document.getElementById('bank-size').textContent =
+          'Question bank: ' + BANK.length + ' questions across all 9 domains.';
+
+        function shuffle(arr) {
+          var a = arr.slice();
+          for (var i = a.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+          }
+          return a;
+        }
+
+        function buildExam(len) {
+          var pool = shuffle(BANK);
+          if (len > 0) pool = pool.slice(0, len);
+          // shuffle options within each question, tracking the correct index
+          return pool.map(function (item) {
+            var idx = item.o.map(function (_, i) { return i; });
+            var order = shuffle(idx);
+            var options = order.map(function (i) { return item.o[i]; });
+            var answer = order.indexOf(item.a);
+            return { d: item.d, q: item.q, o: options, a: answer, e: item.e, picked: null };
+          });
+        }
+
+        function startExam(len, timed) {
+          exam = buildExam(len);
+          document.getElementById('setup').style.display = 'none';
+          document.getElementById('results').style.display = 'none';
+          document.getElementById('exam').style.display = 'block';
+          renderQuestions();
+          updateProgress();
+
+          if (timerId) { clearInterval(timerId); timerId = null; }
+          var timerEl = document.getElementById('timer');
+          if (timed) {
+            remaining = exam.length * 90;
+            tick();
+            timerId = setInterval(function () {
+              remaining--;
+              tick();
+              if (remaining <= 0) { clearInterval(timerId); timerId = null; finish(); }
+            }, 1000);
+          } else {
+            timerEl.textContent = 'Untimed';
+          }
+          window.scrollTo(0, 0);
+        }
+
+        function tick() {
+          var mm = Math.floor(remaining / 60), ss = remaining % 60;
+          document.getElementById('timer').textContent =
+            'Time ' + mm + ':' + (ss < 10 ? '0' : '') + ss;
+        }
+
+        function renderQuestions() {
+          var wrap = document.getElementById('questions');
+          wrap.innerHTML = '';
+          exam.forEach(function (item, qi) {
+            var box = document.createElement('div');
+            box.className = 'q';
+            var stem = document.createElement('p');
+            stem.className = 'stem';
+            stem.innerHTML = '<span style="color:var(--gold-dark)">' + item.d + '</span><br>' +
+              (qi + 1) + '. ' + escapeHtml(item.q);
+            box.appendChild(stem);
+            item.o.forEach(function (opt, oi) {
+              var label = document.createElement('label');
+              label.className = 'opt';
+              var input = document.createElement('input');
+              input.type = 'radio';
+              input.name = 'q' + qi;
+              input.value = String(oi);
+              input.addEventListener('change', function () {
+                item.picked = oi; updateProgress();
+              });
+              label.appendChild(input);
+              label.appendChild(document.createTextNode(opt));
+              box.appendChild(label);
+            });
+            wrap.appendChild(box);
+          });
+        }
+
+        function updateProgress() {
+          var answered = exam.filter(function (i) { return i.picked !== null; }).length;
+          document.getElementById('progress-text').textContent =
+            answered + ' of ' + exam.length + ' answered';
+        }
+
+        function finish() {
+          if (timerId) { clearInterval(timerId); timerId = null; }
+          var correct = 0;
+          var byDomain = {};
+          exam.forEach(function (item) {
+            byDomain[item.d] = byDomain[item.d] || { c: 0, n: 0 };
+            byDomain[item.d].n++;
+            if (item.picked === item.a) { correct++; byDomain[item.d].c++; }
+          });
+          var pct = Math.round((correct / exam.length) * 100);
+
+          document.getElementById('exam').style.display = 'none';
+          var res = document.getElementById('results');
+          res.style.display = 'block';
+
+          var pass = pct >= PASS;
+          document.getElementById('score-line').textContent =
+            (pass ? '✓ Pass — ' : '✗ Keep studying — ') + correct + ' / ' + exam.length +
+            ' (' + pct + '%)';
+          document.getElementById('score-line').style.color = pass ? 'var(--good)' : 'var(--bad)';
+          var bar = document.getElementById('score-bar');
+          bar.style.width = pct + '%';
+          bar.style.background = pass ? 'var(--good)' : 'var(--bad)';
+
+          var bd = document.getElementById('domain-breakdown');
+          bd.innerHTML = '<p style="margin:0.75rem 0 0.25rem"><strong>By domain:</strong></p>';
+          Object.keys(byDomain).sort().forEach(function (d) {
+            var o = byDomain[d];
+            bd.innerHTML += '<div>' + d + ': ' + o.c + '/' + o.n + '</div>';
+          });
+
+          var rev = document.getElementById('review');
+          rev.innerHTML = '';
+          exam.forEach(function (item, qi) {
+            var box = document.createElement('div');
+            box.className = 'q';
+            var ok = item.picked === item.a;
+            box.innerHTML = '<p class="stem">' + (qi + 1) + '. ' + escapeHtml(item.q) + '</p>';
+            item.o.forEach(function (opt, oi) {
+              var cls = 'opt';
+              if (oi === item.a) cls += ' correct';
+              else if (oi === item.picked) cls += ' wrong';
+              box.innerHTML += '<div class="' + cls + '">' + escapeHtml(opt) + '</div>';
+            });
+            box.innerHTML += '<div class="explain show"><strong>' +
+              (ok ? 'Correct.' : (item.picked === null ? 'Unanswered.' : 'Incorrect.')) +
+              '</strong> ' + escapeHtml(item.e) + '</div>';
+            rev.appendChild(box);
+          });
+          window.scrollTo(0, 0);
+        }
+
+        function escapeHtml(s) {
+          return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+
+        // wire buttons
+        document.querySelectorAll('#setup [data-len]').forEach(function (b) {
+          b.addEventListener('click', function () {
+            var len = parseInt(b.getAttribute('data-len'), 10);
+            var timed = document.getElementById('timed').checked;
+            startExam(len, timed);
+          });
+        });
+        document.getElementById('submitBtn').addEventListener('click', finish);
+        document.getElementById('submitBtn2').addEventListener('click', finish);
+        document.getElementById('retry').addEventListener('click', function () {
+          document.getElementById('results').style.display = 'none';
+          document.getElementById('setup').style.display = 'block';
+          window.scrollTo(0, 0);
+        });
+      })();
+    </script>
+  </body>
+</html>
