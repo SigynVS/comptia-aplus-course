@@ -393,8 +393,14 @@
     var lessonsDone = Object.keys(p).filter(function (k) { return p[k] && p[k].done; }).length;
     var quizzes = s.quizzesTaken || 0;
     var avg = quizzes ? (s.scoreSum || 0) / quizzes : 0;
-    var best = loadBest();
-    var bestVals = Object.keys(best).map(function (k) { return best[k]; });
+    // Best scores span all three certs (A+, Network+, Security+).
+    var bestVals = [];
+    ['aplus-best', 'netplus-best', 'secplus-best'].forEach(function (key) {
+      try {
+        var obj = JSON.parse(localStorage.getItem(key)) || {};
+        Object.keys(obj).forEach(function (k) { bestVals.push(obj[k]); });
+      } catch (e) {}
+    });
     var topBest = bestVals.length ? Math.max.apply(null, bestVals) : 0;
 
     var DEFS = [
