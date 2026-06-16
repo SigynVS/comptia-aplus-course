@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA Network+ (N10-009) Domain 2.0 Network Implementation — routing and switching, VLANs, wireless standards, and physical installations. Lessons, flashcards, and a quiz." />
+    <title>Network Implementation — Network+ Domain 2.0</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../../index.html">CompTIA Study <span class="badge">NET+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../index.html">Network+ Home</a></li>
+          <li><a href="#lesson">Lesson</a></li>
+          <li><a href="#flashcards">Flashcards</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../../index.html">Home</a> › <a href="../index.html">Network+</a> › <strong>2.0 Network Implementation</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Network+ · N10-009 · Domain 2.0 (20%)</p>
+        <h1>Network Implementation</h1>
+        <p class="lede">Routing and switching technologies, VLANs, wireless standards, and the physical build.</p>
+      </section>
+
+      <section id="lesson" class="lesson">
+        <h2>2.1 Routing technologies</h2>
+        <ul>
+          <li><strong>Static</strong> routes (manual) vs <strong>dynamic</strong> routing protocols.</li>
+          <li>Protocols: <strong>OSPF</strong> (link-state, IGP), <strong>EIGRP</strong> (Cisco hybrid), <strong>BGP</strong> (path-vector, the internet's routing protocol), <strong>RIP</strong> (legacy distance-vector).</li>
+          <li><strong>Default route</strong> (0.0.0.0/0), administrative distance, metrics, <strong>NAT/PAT</strong>, and <strong>FHRP</strong> (e.g., VRRP) for gateway redundancy.</li>
+        </ul>
+
+        <h2>2.2 Switching technologies</h2>
+        <ul>
+          <li><strong>VLANs</strong> segment a LAN logically; <strong>802.1Q</strong> tags trunk traffic between switches.</li>
+          <li><strong>STP (Spanning Tree)</strong> prevents switching loops.</li>
+          <li><strong>Port security</strong>, <strong>MAC tables</strong>, <strong>port aggregation (LACP)</strong>, <strong>PoE</strong>, and <strong>jumbo frames</strong>.</li>
+          <li><strong>Trunk</strong> port (carries many VLANs) vs <strong>access</strong> port (one VLAN).</li>
+        </ul>
+        <div class="callout exam">
+          <strong>On the exam:</strong> A <strong>trunk</strong> (802.1Q) carries multiple VLANs between switches;
+          an <strong>access</strong> port belongs to a single VLAN for an end device.
+        </div>
+
+        <h2>2.3 Wireless standards</h2>
+        <table class="spec">
+          <tr><th>Standard</th><th>Wi-Fi</th><th>Band(s)</th></tr>
+          <tr><td>802.11n</td><td>Wi-Fi 4</td><td>2.4 &amp; 5 GHz</td></tr>
+          <tr><td>802.11ac</td><td>Wi-Fi 5</td><td>5 GHz</td></tr>
+          <tr><td>802.11ax</td><td>Wi-Fi 6/6E</td><td>2.4, 5, (6 GHz)</td></tr>
+        </table>
+        <ul>
+          <li>Concepts: <strong>SSID</strong>, channels (2.4 GHz: 1/6/11), channel width, <strong>MIMO/MU-MIMO</strong>, band steering.</li>
+          <li>Antenna types: omnidirectional vs directional; <strong>site survey</strong> &amp; heat map for placement.</li>
+        </ul>
+
+        <h2>2.4 Physical installations</h2>
+        <ul>
+          <li>Cabling: <strong>Cat 5e/6/6a/7/8</strong> twisted pair, <strong>single-mode vs multimode fiber</strong>, coax.</li>
+          <li>Connectors: RJ45, <strong>LC/SC/ST</strong> (fiber), F-type.</li>
+          <li><strong>T568A/T568B</strong> wiring; straight-through vs crossover; patch panels, <strong>110/66 blocks</strong>.</li>
+          <li>Hardware: switches, routers, APs, firewalls, <strong>NIC</strong>; environment: power (UPS/PDU), cooling, rack units.</li>
+        </ul>
+        <div class="callout">
+          <strong>Tip:</strong> Use <strong>single-mode fiber</strong> for long distance, <strong>multimode</strong> for shorter
+          high-bandwidth runs within a building.
+        </div>
+
+        <div class="lesson-actions">
+          <button class="button" data-complete="net-2">Mark lesson complete</button>
+          <a class="button secondary" href="../index.html">Back to Network+</a>
+        </div>
+      </section>
+
+      <section id="flashcards">
+        <h2>Flashcards — key terms</h2>
+        <div class="flashcard-deck" data-cards='[
+          ["802.1Q","VLAN tagging standard used on trunk links."],
+          ["Trunk vs access port","Trunk carries many VLANs; access port = one VLAN."],
+          ["STP","Spanning Tree Protocol — prevents switching loops."],
+          ["OSPF","Link-state interior gateway routing protocol."],
+          ["BGP","Path-vector protocol that routes between autonomous systems (the internet)."],
+          ["LACP","Link aggregation — bundles ports for bandwidth/redundancy."],
+          ["FHRP / VRRP","First-hop redundancy — redundant default gateway."],
+          ["Single-mode vs multimode fiber","Single-mode = long distance; multimode = shorter, high bandwidth."],
+          ["T568A/T568B","Twisted-pair wiring pinout standards."],
+          ["MU-MIMO","Multi-user multiple-input multiple-output Wi-Fi."],
+          ["NAT/PAT","Translates private IPs to public; PAT multiplexes via ports."],
+          ["Site survey","Wireless assessment/heat map for AP placement."]
+        ]'></div>
+      </section>
+
+      <section id="quiz">
+        <h2>Quiz — Network Implementation</h2>
+        <div class="quiz" data-lesson="net-2" data-quiz='[
+          {"q":"Which standard tags VLAN traffic across a trunk link?","options":["802.11ac","802.1Q","802.3af","802.1X"],"answer":1,"explain":"802.1Q is the VLAN tagging standard used on trunks."},
+          {"q":"Which protocol prevents Layer 2 switching loops?","options":["OSPF","STP","BGP","NAT"],"answer":1,"explain":"Spanning Tree Protocol blocks redundant paths to prevent loops."},
+          {"q":"Which routing protocol is used between autonomous systems on the internet?","options":["RIP","OSPF","BGP","EIGRP"],"answer":2,"explain":"BGP is the path-vector protocol that routes between ASes."},
+          {"q":"For a long-distance fiber run between buildings, which cable is best?","options":["Multimode fiber","Single-mode fiber","Cat 6a","Coaxial"],"answer":1,"explain":"Single-mode fiber supports the longest distances."},
+          {"q":"A switch port that belongs to exactly one VLAN for a PC is a(n)…","options":["Trunk port","Access port","Console port","Uplink"],"answer":1,"explain":"An access port carries a single VLAN to an end device."},
+          {"q":"Which technology bundles multiple physical links for more bandwidth?","options":["STP","LACP","FHRP","DHCP"],"answer":1,"explain":"LACP aggregates links into one logical channel."}
+        ]'></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. Verify against current official objectives at comptia.org.</p>
+      </div>
+    </footer>
+    <script src="../../assets/app.js"></script>
+  </body>
+</html>

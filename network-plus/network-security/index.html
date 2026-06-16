@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA Network+ (N10-009) Domain 4.0 Network Security — security concepts, common attacks, network hardening, and remote access methods. Lessons, flashcards, and a quiz." />
+    <title>Network Security — Network+ Domain 4.0</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../../index.html">CompTIA Study <span class="badge">NET+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../index.html">Network+ Home</a></li>
+          <li><a href="#lesson">Lesson</a></li>
+          <li><a href="#flashcards">Flashcards</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../../index.html">Home</a> › <a href="../index.html">Network+</a> › <strong>4.0 Network Security</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Network+ · N10-009 · Domain 4.0 (14%)</p>
+        <h1>Network Security</h1>
+        <p class="lede">Core security concepts, common network attacks, device hardening, and secure remote access.</p>
+      </section>
+
+      <section id="lesson" class="lesson">
+        <h2>4.1 Security concepts</h2>
+        <ul>
+          <li><strong>CIA triad</strong>, <strong>defense in depth</strong>, <strong>least privilege</strong>, <strong>zero trust</strong>.</li>
+          <li><strong>AAA</strong>, <strong>RADIUS/TACACS+</strong>, <strong>802.1X</strong> port-based auth, <strong>MFA</strong>.</li>
+          <li>Network segmentation: <strong>VLANs</strong>, <strong>DMZ/screened subnet</strong>, <strong>NAC</strong> (network access control).</li>
+        </ul>
+
+        <h2>4.2 Common attacks</h2>
+        <table class="spec">
+          <tr><th>Attack</th><th>What it does</th></tr>
+          <tr><td>DoS / DDoS</td><td>Overwhelms a service to deny availability.</td></tr>
+          <tr><td>On-path (MITM)</td><td>Intercepts/alters traffic between two parties.</td></tr>
+          <tr><td>ARP spoofing/poisoning</td><td>Maps the attacker's MAC to a victim IP on the LAN.</td></tr>
+          <tr><td>DNS poisoning</td><td>Returns false DNS answers to redirect victims.</td></tr>
+          <tr><td>VLAN hopping</td><td>Reaches a VLAN the attacker shouldn't access.</td></tr>
+          <tr><td>MAC flooding</td><td>Overflows the switch CAM table to force flooding.</td></tr>
+          <tr><td>Rogue AP / evil twin</td><td>Unauthorized AP impersonating a legit network.</td></tr>
+        </table>
+
+        <h2>4.3 Hardening</h2>
+        <ul>
+          <li>Disable unused ports/services; change default credentials; update firmware.</li>
+          <li><strong>Port security</strong>, <strong>DHCP snooping</strong>, <strong>dynamic ARP inspection</strong>, <strong>BPDU guard</strong>, <strong>root guard</strong>.</li>
+          <li>Wireless: <strong>WPA2/WPA3</strong>, disable WPS, strong PSK or 802.1X (enterprise).</li>
+          <li>Use <strong>ACLs</strong>, host/network firewalls, IDS/IPS, and private VLANs.</li>
+        </ul>
+        <div class="callout exam">
+          <strong>On the exam:</strong> <strong>DHCP snooping</strong> blocks rogue DHCP servers;
+          <strong>dynamic ARP inspection</strong> defeats ARP spoofing.
+        </div>
+
+        <h2>4.4 Remote access</h2>
+        <ul>
+          <li><strong>VPN</strong>: site-to-site vs client (remote-access); <strong>IPsec</strong> (tunnel/transport), <strong>SSL/TLS VPN</strong>, split vs full tunnel.</li>
+          <li><strong>SSH</strong> (22) for secure CLI; <strong>RDP</strong> (3389); out-of-band management (console).</li>
+          <li><strong>SASE/SSE</strong> and <strong>ZTNA</strong> for modern remote-access security.</li>
+        </ul>
+        <div class="callout">
+          <strong>Tip:</strong> Prefer <strong>SSH</strong> over Telnet and a <strong>VPN</strong> over exposing services directly —
+          encryption in transit is the theme.
+        </div>
+
+        <div class="lesson-actions">
+          <button class="button" data-complete="net-4">Mark lesson complete</button>
+          <a class="button secondary" href="../index.html">Back to Network+</a>
+        </div>
+      </section>
+
+      <section id="flashcards">
+        <h2>Flashcards — key terms</h2>
+        <div class="flashcard-deck" data-cards='[
+          ["802.1X","Port-based network access control with a RADIUS back end."],
+          ["DHCP snooping","Blocks rogue/unauthorized DHCP servers on a switch."],
+          ["Dynamic ARP inspection","Validates ARP to defeat ARP spoofing."],
+          ["ARP poisoning","Associates the attacker’s MAC with a victim IP on the LAN."],
+          ["DNS poisoning","Injects false DNS records to redirect victims."],
+          ["VLAN hopping","Gaining access to a VLAN you shouldn’t reach."],
+          ["Evil twin","Rogue AP impersonating a legitimate SSID."],
+          ["NAC","Network Access Control — admits devices meeting policy."],
+          ["DMZ / screened subnet","Buffer zone for public-facing services."],
+          ["IPsec","VPN protocol suite; tunnel or transport mode."],
+          ["Split tunnel","Only some traffic goes through the VPN."],
+          ["BPDU guard","Protects STP by disabling ports that receive BPDUs."]
+        ]'></div>
+      </section>
+
+      <section id="quiz">
+        <h2>Quiz — Network Security</h2>
+        <div class="quiz" data-lesson="net-4" data-quiz='[
+          {"q":"Which switch feature prevents a rogue DHCP server from handing out addresses?","options":["Port mirroring","DHCP snooping","STP","NAT"],"answer":1,"explain":"DHCP snooping trusts only authorized ports for DHCP offers."},
+          {"q":"An attacker associates their MAC with the gateway IP to intercept LAN traffic. This is…","options":["DNS poisoning","ARP poisoning","VLAN hopping","MAC flooding"],"answer":1,"explain":"ARP poisoning maps the attacker MAC to a victim/gateway IP."},
+          {"q":"Which standard provides port-based authentication using RADIUS?","options":["802.1Q","802.1X","802.11ax","802.3af"],"answer":1,"explain":"802.1X authenticates devices at the port before granting access."},
+          {"q":"Which VPN protocol suite operates in tunnel or transport mode?","options":["RDP","IPsec","SNMP","HTTP"],"answer":1,"explain":"IPsec secures IP traffic in tunnel or transport mode."},
+          {"q":"Which attack overwhelms a switch's MAC table to force it to flood frames?","options":["MAC flooding","DDoS","Evil twin","On-path"],"answer":0,"explain":"MAC flooding overflows the CAM table, causing fail-open flooding."},
+          {"q":"Which mitigation specifically defeats ARP spoofing?","options":["BPDU guard","Dynamic ARP inspection","Root guard","Port aggregation"],"answer":1,"explain":"Dynamic ARP Inspection validates ARP packets against trusted bindings."}
+        ]'></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. Verify against current official objectives at comptia.org.</p>
+      </div>
+    </footer>
+    <script src="../../assets/app.js"></script>
+  </body>
+</html>

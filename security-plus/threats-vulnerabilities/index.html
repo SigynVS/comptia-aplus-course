@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA Security+ (SY0-701) Domain 2.0 Threats, Vulnerabilities and Mitigations — threat actors, attack surfaces, malware, social engineering, vulnerabilities, and mitigation techniques. Lessons, flashcards, and a quiz." />
+    <title>Threats, Vulnerabilities &amp; Mitigations — Security+ Domain 2.0</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../../index.html">CompTIA Study <span class="badge">SEC+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../index.html">Security+ Home</a></li>
+          <li><a href="#lesson">Lesson</a></li>
+          <li><a href="#flashcards">Flashcards</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../../index.html">Home</a> › <a href="../index.html">Security+</a> › <strong>2.0 Threats, Vulnerabilities &amp; Mitigations</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Security+ · SY0-701 · Domain 2.0 (22%)</p>
+        <h1>Threats, Vulnerabilities &amp; Mitigations</h1>
+        <p class="lede">Who attacks, how they attack, where systems are weak, and how to reduce the risk.</p>
+      </section>
+
+      <section id="lesson" class="lesson">
+        <h2>2.1 Threat actors</h2>
+        <table class="spec">
+          <tr><th>Actor</th><th>Traits / motivation</th></tr>
+          <tr><td>Nation-state / APT</td><td>Highly resourced; espionage, sabotage. <strong>Advanced Persistent Threat.</strong></td></tr>
+          <tr><td>Organized crime</td><td>Financial gain (ransomware, fraud).</td></tr>
+          <tr><td>Hacktivist</td><td>Ideological/political motivation.</td></tr>
+          <tr><td>Insider threat</td><td>Employee/contractor; access + intent or negligence.</td></tr>
+          <tr><td>Unskilled (script kiddie)</td><td>Uses prebuilt tools.</td></tr>
+          <tr><td>Shadow IT</td><td>Unsanctioned systems/services created internally.</td></tr>
+        </table>
+        <p>Attributes: internal/external, resources/funding, sophistication. Motivations: data exfiltration, financial, espionage, disruption, revenge.</p>
+
+        <h2>2.2 Social engineering</h2>
+        <ul>
+          <li><strong>Phishing</strong> (email), <strong>vishing</strong> (voice), <strong>smishing</strong> (SMS), <strong>spear/whaling</strong> (targeted).</li>
+          <li><strong>Pretexting</strong>, <strong>impersonation</strong>, <strong>BEC</strong> (business email compromise), <strong>pharming</strong>, <strong>watering hole</strong>.</li>
+          <li>Principles of influence: <strong>authority, urgency, scarcity, social proof, intimidation, familiarity, trust</strong>.</li>
+        </ul>
+
+        <h2>2.3 Malware &amp; attack types</h2>
+        <table class="spec">
+          <tr><th>Type</th><th>Behavior</th></tr>
+          <tr><td>Ransomware</td><td>Encrypts data, demands payment.</td></tr>
+          <tr><td>Worm / Virus / Trojan</td><td>Self-spreading / host-bound / disguised.</td></tr>
+          <tr><td>Rootkit / Logic bomb</td><td>Stealthy persistence / triggered payload.</td></tr>
+          <tr><td>Spyware / Keylogger</td><td>Surveillance / keystroke capture.</td></tr>
+        </table>
+        <ul>
+          <li>App attacks: <strong>injection (SQLi)</strong>, <strong>XSS</strong>, <strong>CSRF</strong>, buffer overflow, <strong>privilege escalation</strong>, replay.</li>
+          <li>Crypto/password: <strong>brute force</strong>, <strong>dictionary</strong>, <strong>spraying</strong>, <strong>birthday</strong>, downgrade, collision.</li>
+          <li>Network: <strong>DDoS</strong>, <strong>on-path</strong>, DNS attacks, <strong>zero-day</strong>.</li>
+        </ul>
+        <div class="callout exam">
+          <strong>On the exam:</strong> <strong>Zero-day</strong> = no patch exists yet. <strong>Password spraying</strong>
+          tries a few common passwords across many accounts to avoid lockout.
+        </div>
+
+        <h2>2.4 Vulnerabilities</h2>
+        <ul>
+          <li>Application: memory injection, buffer overflow, race conditions (TOC/TOU), insecure APIs.</li>
+          <li>OS/web/cloud/virtualization: misconfigurations, <strong>VM escape</strong>, supply-chain, <strong>EOL/legacy</strong> systems.</li>
+          <li>Mobile: sideloading, jailbreak/root. Hardware: firmware, EOL, end-of-support.</li>
+        </ul>
+
+        <h2>2.5 Mitigation techniques</h2>
+        <ul>
+          <li><strong>Segmentation</strong>, <strong>access control (ACL/least privilege)</strong>, <strong>application allow lists</strong>, isolation/sandboxing.</li>
+          <li><strong>Patching</strong>, <strong>hardening</strong>, encryption, <strong>monitoring</strong>, <strong>configuration enforcement</strong>, decommissioning.</li>
+          <li>Removal of unnecessary software/services; default credential changes.</li>
+        </ul>
+        <div class="callout">
+          <strong>Tip:</strong> "Defense in depth" = layered mitigations so no single failure is catastrophic.
+        </div>
+
+        <div class="lesson-actions">
+          <button class="button" data-complete="sec-2">Mark lesson complete</button>
+          <a class="button secondary" href="../index.html">Back to Security+</a>
+        </div>
+      </section>
+
+      <section id="flashcards">
+        <h2>Flashcards — key terms</h2>
+        <div class="flashcard-deck" data-cards='[
+          ["APT","Advanced Persistent Threat — stealthy, well-resourced (often nation-state)."],
+          ["Insider threat","A trusted person who misuses access (intentional or negligent)."],
+          ["Zero-day","A vulnerability with no available patch."],
+          ["Password spraying","A few common passwords tried across many accounts to dodge lockout."],
+          ["Whaling","Phishing targeting high-value executives."],
+          ["BEC","Business Email Compromise — fraud via compromised/spoofed exec email."],
+          ["Watering hole","Compromising a site the target group frequents."],
+          ["SQLi","SQL injection — malicious input to manipulate a database."],
+          ["XSS","Cross-site scripting — injecting scripts into web pages."],
+          ["Logic bomb","Malicious code that triggers on a condition."],
+          ["VM escape","Breaking out of a guest VM to the host/hypervisor."],
+          ["Defense in depth","Layered controls so one failure isn’t catastrophic."]
+        ]'></div>
+      </section>
+
+      <section id="quiz">
+        <h2>Quiz — Threats, Vulnerabilities &amp; Mitigations</h2>
+        <div class="quiz" data-lesson="sec-2" data-quiz='[
+          {"q":"An attacker tries the password \"Spring2026!\" against hundreds of accounts. This is…","options":["Brute force","Password spraying","Dictionary attack","Rainbow table"],"answer":1,"explain":"Spraying uses a few common passwords across many accounts to avoid lockouts."},
+          {"q":"A flaw is actively exploited before any patch exists. This is a…","options":["Logic bomb","Zero-day","Replay attack","Race condition"],"answer":1,"explain":"A zero-day has no vendor fix available yet."},
+          {"q":"Which actor is best described as stealthy, well-funded, and often nation-state backed?","options":["Script kiddie","Hacktivist","APT","Insider"],"answer":2,"explain":"An Advanced Persistent Threat is sophisticated and persistent."},
+          {"q":"Malicious input that manipulates a backend database is which attack?","options":["XSS","SQL injection","CSRF","Buffer overflow"],"answer":1,"explain":"SQL injection targets the database via crafted input."},
+          {"q":"Which mitigation limits users to only the access they need?","options":["Least privilege","Full trust","Open sharing","Single sign-on"],"answer":0,"explain":"Least privilege minimizes access rights to reduce risk."},
+          {"q":"Compromising a website a target group regularly visits is a…","options":["Watering hole attack","Smishing","On-path attack","Logic bomb"],"answer":0,"explain":"A watering hole attack poisons a frequently visited site."}
+        ]'></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. Verify against current official objectives at comptia.org.</p>
+      </div>
+    </footer>
+    <script src="../../assets/app.js"></script>
+  </body>
+</html>

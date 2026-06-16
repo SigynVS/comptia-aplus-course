@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA Security+ (SY0-701) Domain 3.0 Security Architecture — architecture models, cloud and virtualization, secure network design, data protection, and resilience. Lessons, flashcards, and a quiz." />
+    <title>Security Architecture — Security+ Domain 3.0</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../../index.html">CompTIA Study <span class="badge">SEC+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../index.html">Security+ Home</a></li>
+          <li><a href="#lesson">Lesson</a></li>
+          <li><a href="#flashcards">Flashcards</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../../index.html">Home</a> › <a href="../index.html">Security+</a> › <strong>3.0 Security Architecture</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Security+ · SY0-701 · Domain 3.0 (18%)</p>
+        <h1>Security Architecture</h1>
+        <p class="lede">Designing secure systems: architecture models, secure network design, data protection, and resilience.</p>
+      </section>
+
+      <section id="lesson" class="lesson">
+        <h2>3.1 Architecture models</h2>
+        <ul>
+          <li><strong>Cloud</strong> (responsibility matrix), <strong>serverless</strong>, <strong>microservices</strong>, <strong>IaC</strong> (infrastructure as code).</li>
+          <li><strong>On-prem vs cloud vs hybrid</strong>; <strong>virtualization/containers</strong>; <strong>IoT/ICS/SCADA</strong>, embedded, RTOS.</li>
+          <li><strong>Zero Trust</strong> architecture: control plane vs data plane; policy enforcement points.</li>
+        </ul>
+
+        <h2>3.2 Secure network design</h2>
+        <table class="spec">
+          <tr><th>Concept</th><th>Notes</th></tr>
+          <tr><td>Segmentation / VLAN / DMZ</td><td>Limit blast radius; isolate public-facing services.</td></tr>
+          <tr><td>Firewalls (NGFW/UTM/WAF)</td><td>Layer 3–7 filtering; WAF protects web apps.</td></tr>
+          <tr><td>IDS/IPS</td><td>Detect / actively block intrusions.</td></tr>
+          <tr><td>Proxy / load balancer</td><td>Mediation, caching, scaling, availability.</td></tr>
+          <tr><td>VPN / SASE / SD-WAN</td><td>Secure remote and site connectivity.</td></tr>
+          <tr><td>Port security / 802.1X / NAC</td><td>Control device access at the edge.</td></tr>
+        </table>
+        <p>Design principles: <strong>fail-open vs fail-closed</strong>, <strong>least privilege</strong>, defense in depth, secure defaults.</p>
+
+        <h2>3.3 Data protection</h2>
+        <ul>
+          <li>Data states: <strong>at rest</strong>, <strong>in transit</strong>, <strong>in use</strong> — protect each (encryption, TLS, enclaves).</li>
+          <li>Classifications: public, sensitive, confidential, restricted; <strong>PII/PHI</strong>.</li>
+          <li>Techniques: <strong>encryption</strong>, <strong>tokenization</strong>, <strong>masking</strong>, <strong>hashing</strong>, <strong>obfuscation</strong>, <strong>DLP</strong>.</li>
+          <li>Geographic/sovereignty considerations and data lifecycle.</li>
+        </ul>
+        <div class="callout exam">
+          <strong>On the exam:</strong> <strong>Tokenization</strong> replaces data with a non-sensitive token (reversible
+          via a vault); <strong>masking</strong> hides part of the data (e.g., ****1234).
+        </div>
+
+        <h2>3.4 Resilience &amp; recovery</h2>
+        <ul>
+          <li>High availability: clustering, load balancing, <strong>geographic redundancy</strong>, multi-cloud.</li>
+          <li>Backups: types, frequency, encryption, offsite, <strong>3-2-1</strong>; test restores.</li>
+          <li>Power: <strong>UPS</strong>, generators, dual supplies, PDUs.</li>
+          <li>Continuity: <strong>RTO/RPO</strong>, hot/warm/cold sites, <strong>tabletop exercises</strong>, failover testing.</li>
+        </ul>
+        <div class="callout">
+          <strong>Tip:</strong> Capacity planning + tested backups + redundant power are the unglamorous core of resilience.
+        </div>
+
+        <div class="lesson-actions">
+          <button class="button" data-complete="sec-3">Mark lesson complete</button>
+          <a class="button secondary" href="../index.html">Back to Security+</a>
+        </div>
+      </section>
+
+      <section id="flashcards">
+        <h2>Flashcards — key terms</h2>
+        <div class="flashcard-deck" data-cards='[
+          ["Data at rest / in transit / in use","The three data states; each needs protection."],
+          ["Tokenization","Replaces sensitive data with a reversible token via a vault."],
+          ["Masking","Hides part of data (e.g., ****1234)."],
+          ["DLP","Data Loss Prevention — stops sensitive data exfiltration."],
+          ["WAF","Web Application Firewall — Layer 7 protection for web apps."],
+          ["IDS vs IPS","IDS detects/alerts; IPS actively blocks."],
+          ["Fail-closed","On failure, deny access (secure default)."],
+          ["IaC","Infrastructure as Code — provisioning via versioned config."],
+          ["SASE","Secure Access Service Edge — cloud-delivered network security."],
+          ["RTO / RPO","Recovery time / recovery point objectives."],
+          ["Geographic redundancy","Replicating across regions for resilience."],
+          ["Tabletop exercise","Discussion-based DR/IR rehearsal."]
+        ]'></div>
+      </section>
+
+      <section id="quiz">
+        <h2>Quiz — Security Architecture</h2>
+        <div class="quiz" data-lesson="sec-3" data-quiz='[
+          {"q":"Which technique replaces a credit-card number with a non-sensitive value redeemable via a vault?","options":["Masking","Tokenization","Hashing","Obfuscation"],"answer":1,"explain":"Tokenization swaps data for a token that maps back via a secure vault."},
+          {"q":"Which device specifically protects web applications at Layer 7?","options":["NGFW","WAF","IDS","Proxy"],"answer":1,"explain":"A Web Application Firewall inspects HTTP/S to protect web apps."},
+          {"q":"Which data state is protected primarily by TLS?","options":["At rest","In transit","In use","Archived"],"answer":1,"explain":"Data in transit is protected with TLS/encryption on the wire."},
+          {"q":"A security design that denies access when a control fails is…","options":["Fail-open","Fail-closed","Open by default","Trust-on-first-use"],"answer":1,"explain":"Fail-closed denies access on failure — a secure default."},
+          {"q":"Which approach prevents sensitive data from leaving the organization?","options":["DLP","DHCP","DNS","DMARC"],"answer":0,"explain":"Data Loss Prevention monitors and blocks exfiltration."},
+          {"q":"Which provides the BEST resilience against a regional outage?","options":["A single UPS","Geographic redundancy across regions","A faster CPU","More RAM"],"answer":1,"explain":"Replicating across geographic regions survives a regional failure."}
+        ]'></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. Verify against current official objectives at comptia.org.</p>
+      </div>
+    </footer>
+    <script src="../../assets/app.js"></script>
+  </body>
+</html>

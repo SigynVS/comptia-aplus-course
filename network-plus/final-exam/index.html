@@ -3,42 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="CompTIA A+ practice final exam — randomized, timed questions pulled from all Core 1 and Core 2 domains, with instant scoring and answer review. Vanilla HTML/CSS/JS." />
-    <title>Final Exam — CompTIA A+ Practice Test</title>
-    <link rel="stylesheet" href="../assets/styles.css" />
+    <meta name="description" content="CompTIA Network+ (N10-009) practice final exam — randomized, timed questions from all five domains with instant scoring, per-domain drills, and missed-question review. Vanilla HTML/CSS/JS." />
+    <title>Final Exam — CompTIA Network+ Practice Test</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
   </head>
   <body>
     <header class="site-header">
       <nav class="nav" aria-label="Primary">
-        <a class="brand" href="../index.html">CompTIA A+ <span class="badge">A+</span></a>
+        <a class="brand" href="../../index.html">CompTIA Study <span class="badge">NET+</span></a>
         <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
         <ul class="nav-menu" id="nav-menu">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../index.html#core1">Core 1</a></li>
-          <li><a href="../index.html#core2">Core 2</a></li>
+          <li><a href="../index.html">Network+ Home</a></li>
+          <li><a href="../../index.html">A+</a></li>
+          <li><a href="../../security-plus/index.html">Security+</a></li>
         </ul>
       </nav>
     </header>
 
     <main>
-      <p class="crumbs"><a href="../index.html">Home</a> › <strong>Final Exam</strong></p>
+      <p class="crumbs"><a href="../../index.html">Home</a> › <a href="../index.html">Network+</a> › <strong>Final Exam</strong></p>
 
       <section class="hero">
-        <p class="eyebrow">Practice test · All domains</p>
-        <h1>Final Exam</h1>
+        <p class="eyebrow">Practice test · All domains · N10-009</p>
+        <h1>Network+ Final Exam</h1>
         <p class="lede">
-          A randomized practice exam drawn from every Core 1 and Core 2 domain.
-          Questions and answer choices are shuffled each attempt. Aim for
-          <strong>75%+</strong> — roughly CompTIA's passing line.
+          A randomized practice exam drawn from every Network+ domain. Questions and
+          answer choices are shuffled each attempt. Aim for <strong>75%+</strong>.
         </p>
       </section>
 
-      <!-- Setup -->
       <div id="setup" class="progress-wrap">
         <h3 style="margin-top:0">Full exam — all domains</h3>
         <div class="lesson-actions" style="margin-top:0.75rem">
           <button class="button" data-len="20">Quick · 20 Q</button>
-          <button class="button" data-len="40">Standard · 40 Q</button>
           <button class="button" data-len="0">Full bank · all Q</button>
         </div>
         <p id="bank-size" class="lede" style="margin-top:0.75rem"></p>
@@ -65,7 +62,6 @@
         <div id="best-summary" style="margin-top:1rem"></div>
       </div>
 
-      <!-- Exam -->
       <div id="exam" style="display:none">
         <div class="progress-wrap" style="position:sticky;top:3.5rem;z-index:5;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
           <strong id="timer">Time —</strong>
@@ -76,7 +72,6 @@
         <button id="submitBtn2" class="button">Submit exam</button>
       </div>
 
-      <!-- Results -->
       <div id="results" style="display:none">
         <div class="progress-wrap">
           <h2 id="score-line" style="margin-top:0"></h2>
@@ -84,7 +79,7 @@
           <div id="domain-breakdown"></div>
           <div class="lesson-actions">
             <button id="retry" class="button">New exam</button>
-            <a class="button secondary" href="../index.html">Back to home</a>
+            <a class="button secondary" href="../index.html">Back to Network+</a>
           </div>
         </div>
         <h2>Review</h2>
@@ -94,12 +89,13 @@
 
     <footer class="site-footer">
       <div class="inner">
-        <p>&copy; <span id="year"></span> CompTIA A+ Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p>&copy; <span id="year"></span> CompTIA Study Course — built with vanilla HTML, CSS &amp; JS.</p>
         <p class="disclaimer">Independent practice material. Not affiliated with or endorsed by CompTIA. Practice scores do not predict actual exam results. Verify objectives at comptia.org.</p>
       </div>
     </footer>
 
-    <script src="../assets/questionbank.js"></script>
-    <script src="../assets/exam-engine.js"></script>
+    <script>window.EXAM_CONFIG = { missedKey: 'netplus-missed', bestKey: 'netplus-best' };</script>
+    <script src="../../assets/networkplus-bank.js"></script>
+    <script src="../../assets/exam-engine.js"></script>
   </body>
 </html>

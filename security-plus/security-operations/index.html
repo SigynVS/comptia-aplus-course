@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA Security+ (SY0-701) Domain 4.0 Security Operations — hardening, monitoring, identity and access management, incident response, and digital forensics. Lessons, flashcards, and a quiz." />
+    <title>Security Operations — Security+ Domain 4.0</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../../index.html">CompTIA Study <span class="badge">SEC+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../index.html">Security+ Home</a></li>
+          <li><a href="#lesson">Lesson</a></li>
+          <li><a href="#flashcards">Flashcards</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../../index.html">Home</a> › <a href="../index.html">Security+</a> › <strong>4.0 Security Operations</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Security+ · SY0-701 · Domain 4.0 (28%)</p>
+        <h1>Security Operations</h1>
+        <p class="lede">The biggest domain: hardening, monitoring, identity &amp; access, incident response, and forensics.</p>
+      </section>
+
+      <section id="lesson" class="lesson">
+        <h2>4.1 Hardening &amp; secure baselines</h2>
+        <ul>
+          <li>Establish, deploy, and maintain <strong>secure baselines</strong>; disable unused services/ports.</li>
+          <li>Harden endpoints, servers, mobile, IoT, network devices; <strong>FDE</strong>, host firewall, EDR.</li>
+          <li><strong>Patch/vulnerability management</strong>: scanning, CVE/CVSS, remediation, rescanning, exceptions.</li>
+        </ul>
+
+        <h2>4.2 Monitoring &amp; tooling</h2>
+        <table class="spec">
+          <tr><th>Tool</th><th>Use</th></tr>
+          <tr><td>SIEM</td><td>Aggregate/correlate logs &amp; alerts.</td></tr>
+          <tr><td>SOAR</td><td>Automate &amp; orchestrate response (playbooks).</td></tr>
+          <tr><td>IDS/IPS, antivirus/EDR</td><td>Detect/block malicious activity.</td></tr>
+          <tr><td>DLP, NetFlow, vuln scanners</td><td>Exfil prevention, traffic, weakness discovery.</td></tr>
+          <tr><td>Threat intel feeds</td><td>IoCs, TTPs (MITRE ATT&amp;CK).</td></tr>
+        </table>
+
+        <h2>4.3 Identity &amp; access management (IAM)</h2>
+        <ul>
+          <li>Provisioning/deprovisioning, <strong>SSO</strong>, federation (<strong>SAML, OAuth, OIDC</strong>), <strong>LDAP</strong>.</li>
+          <li><strong>MFA</strong> factors: know / have / are / location / behavior; <strong>passwordless</strong>, FIDO2.</li>
+          <li>Access models: <strong>RBAC, ABAC, DAC, MAC</strong>, rule-based; <strong>PAM</strong> for privileged accounts.</li>
+          <li>Concepts: least privilege, separation of duties, just-in-time access, password policies/vaulting.</li>
+        </ul>
+        <div class="callout exam">
+          <strong>On the exam:</strong> <strong>MAC</strong> = labels enforced by the system (most rigid);
+          <strong>DAC</strong> = owner decides; <strong>RBAC</strong> = by job role; <strong>ABAC</strong> = by attributes/policy.
+        </div>
+
+        <h2>4.4 Incident response</h2>
+        <ol>
+          <li><strong>Preparation</strong> → <strong>Detection &amp; analysis</strong> → <strong>Containment</strong> → <strong>Eradication</strong> → <strong>Recovery</strong> → <strong>Lessons learned</strong>.</li>
+        </ol>
+        <ul>
+          <li>Training, testing (<strong>tabletop</strong>, simulations), <strong>playbooks</strong>, threat hunting, root-cause analysis.</li>
+        </ul>
+
+        <h2>4.5 Digital forensics</h2>
+        <ul>
+          <li><strong>Chain of custody</strong>, legal hold, <strong>order of volatility</strong> (collect most volatile first: CPU/RAM → disk → backups).</li>
+          <li>Acquisition: imaging, write blockers, hashing for integrity; e-discovery, preservation, reporting.</li>
+        </ul>
+        <div class="callout">
+          <strong>Tip:</strong> Follow the <strong>order of volatility</strong> — capture RAM/cache before powering down,
+          since volatile data vanishes on shutdown.
+        </div>
+
+        <div class="lesson-actions">
+          <button class="button" data-complete="sec-4">Mark lesson complete</button>
+          <a class="button secondary" href="../index.html">Back to Security+</a>
+        </div>
+      </section>
+
+      <section id="flashcards">
+        <h2>Flashcards — key terms</h2>
+        <div class="flashcard-deck" data-cards='[
+          ["IR phases","Preparation, Detection & Analysis, Containment, Eradication, Recovery, Lessons Learned."],
+          ["Order of volatility","Collect most volatile first: CPU/RAM → disk → backups."],
+          ["Chain of custody","Documented handling of evidence to keep it admissible."],
+          ["SIEM vs SOAR","SIEM aggregates/correlates; SOAR automates response."],
+          ["RBAC","Access by job role."],
+          ["ABAC","Access by attributes/policy."],
+          ["MAC (access)","System-enforced labels; most rigid."],
+          ["DAC","Owner decides access."],
+          ["PAM","Privileged Access Management for admin accounts."],
+          ["SAML / OIDC","Federation/SSO standards (SAML XML; OIDC on OAuth 2.0)."],
+          ["CVSS","Scoring system for vulnerability severity."],
+          ["EDR","Endpoint Detection and Response."]
+        ]'></div>
+      </section>
+
+      <section id="quiz">
+        <h2>Quiz — Security Operations</h2>
+        <div class="quiz" data-lesson="sec-4" data-quiz='[
+          {"q":"Which access control model uses system-enforced labels and is the most rigid?","options":["DAC","MAC","RBAC","ABAC"],"answer":1,"explain":"Mandatory Access Control enforces labels centrally; users cannot override."},
+          {"q":"During evidence collection, what should you capture FIRST?","options":["Disk image","System RAM","Offsite backups","Printed logs"],"answer":1,"explain":"Order of volatility: capture volatile memory (RAM) before it is lost."},
+          {"q":"Which platform automates response with playbooks?","options":["SIEM","SOAR","IDS","DLP"],"answer":1,"explain":"SOAR orchestrates and automates response workflows."},
+          {"q":"What is the correct order of the first three IR phases?","options":["Containment, Detection, Recovery","Preparation, Detection & Analysis, Containment","Recovery, Lessons Learned, Preparation","Eradication, Recovery, Detection"],"answer":1,"explain":"Preparation → Detection & Analysis → Containment begins the IR lifecycle."},
+          {"q":"Which model grants access based on attributes like department, time, and device?","options":["RBAC","ABAC","DAC","MAC"],"answer":1,"explain":"Attribute-Based Access Control evaluates attributes/policy at access time."},
+          {"q":"Which documents who handled evidence and when, preserving admissibility?","options":["SLA","Chain of custody","CVSS","Playbook"],"answer":1,"explain":"Chain of custody preserves evidence integrity for legal use."}
+        ]'></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. Verify against current official objectives at comptia.org.</p>
+      </div>
+    </footer>
+    <script src="../../assets/app.js"></script>
+  </body>
+</html>

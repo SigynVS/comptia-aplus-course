@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA Security+ (SY0-701) Domain 5.0 Security Program Management and Oversight — governance, risk management, third-party risk, compliance, audits, and security awareness. Lessons, flashcards, and a quiz." />
+    <title>Security Program Management — Security+ Domain 5.0</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../../index.html">CompTIA Study <span class="badge">SEC+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../index.html">Security+ Home</a></li>
+          <li><a href="#lesson">Lesson</a></li>
+          <li><a href="#flashcards">Flashcards</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../../index.html">Home</a> › <a href="../index.html">Security+</a> › <strong>5.0 Program Management</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Security+ · SY0-701 · Domain 5.0 (20%)</p>
+        <h1>Security Program Management &amp; Oversight</h1>
+        <p class="lede">The governance layer: policies, risk, third-party management, compliance, audits, and awareness.</p>
+      </section>
+
+      <section id="lesson" class="lesson">
+        <h2>5.1 Governance</h2>
+        <ul>
+          <li>Guidance hierarchy: <strong>policies</strong> → <strong>standards</strong> → <strong>procedures</strong> → <strong>guidelines</strong>.</li>
+          <li>Policy examples: AUP, information security, BCP/DRP, incident response, SDLC, change management.</li>
+          <li>Structures: boards/committees, roles — <strong>owner, controller, processor, custodian, steward</strong>.</li>
+          <li>Regulatory/legal/industry drivers; <strong>governance, risk, and compliance (GRC)</strong>.</li>
+        </ul>
+
+        <h2>5.2 Risk management</h2>
+        <table class="spec">
+          <tr><th>Concept</th><th>Notes</th></tr>
+          <tr><td>Risk identification &amp; assessment</td><td>Qualitative vs quantitative.</td></tr>
+          <tr><td>SLE / ARO / ALE</td><td>ALE = SLE × ARO (annualized loss expectancy).</td></tr>
+          <tr><td>Risk responses</td><td><strong>Accept, avoid, transfer, mitigate</strong> (and exemptions/exceptions).</td></tr>
+          <tr><td>Risk register</td><td>Tracks risks, owners, likelihood, impact, KRIs.</td></tr>
+          <tr><td>BIA</td><td>Business Impact Analysis → RTO/RPO, MTD.</td></tr>
+        </table>
+        <div class="callout exam">
+          <strong>On the exam:</strong> <strong>ALE = SLE × ARO</strong>. Buying insurance = <strong>transfer</strong>;
+          shutting down a risky service = <strong>avoid</strong>.
+        </div>
+
+        <h2>5.3 Third-party risk</h2>
+        <ul>
+          <li>Vendor assessment, due diligence, <strong>SLA, MOU/MOA, MSA, BPA, NDA, SOW</strong>.</li>
+          <li>Supply-chain risk, vendor monitoring, right-to-audit clauses, <strong>EOL/EOSL</strong> considerations.</li>
+        </ul>
+
+        <h2>5.4 Compliance &amp; audits</h2>
+        <ul>
+          <li>Frameworks/regs: <strong>PCI DSS, HIPAA, GDPR, SOX</strong>, ISO 27001, NIST CSF.</li>
+          <li><strong>Internal vs external audits</strong>, attestation, <strong>penetration testing</strong> (known/partially known/unknown environment), reconnaissance (active/passive).</li>
+          <li>Privacy: data subject rights, controller vs processor, data retention, RTBF.</li>
+          <li>Consequences of non-compliance: fines, sanctions, reputational damage, loss of license.</li>
+        </ul>
+
+        <h2>5.5 Security awareness</h2>
+        <ul>
+          <li><strong>Phishing simulations</strong>, anti-social-engineering training, secure behavior.</li>
+          <li>Policy/handbook acknowledgment, reporting suspicious activity, role-based training, recurring campaigns.</li>
+        </ul>
+        <div class="callout">
+          <strong>Tip:</strong> People are the most-targeted attack surface — <strong>awareness training</strong>
+          is a primary, high-ROI control.
+        </div>
+
+        <div class="lesson-actions">
+          <button class="button" data-complete="sec-5">Mark lesson complete</button>
+          <a class="button secondary" href="../index.html">Back to Security+</a>
+        </div>
+      </section>
+
+      <section id="flashcards">
+        <h2>Flashcards — key terms</h2>
+        <div class="flashcard-deck" data-cards='[
+          ["Policy vs standard vs procedure","Policy = intent; standard = mandatory rules; procedure = step-by-step."],
+          ["ALE formula","ALE = SLE × ARO (annualized loss expectancy)."],
+          ["Risk responses","Accept, avoid, transfer, mitigate."],
+          ["Transfer (risk)","Shift risk to a third party (e.g., insurance)."],
+          ["BIA","Business Impact Analysis → RTO/RPO/MTD."],
+          ["Risk register","Living record of risks, owners, likelihood, impact."],
+          ["MOU vs MSA vs SOW","Intent / master terms / specific work scope."],
+          ["PCI DSS","Standard for protecting payment-card data."],
+          ["GDPR","EU privacy regulation; controller vs processor."],
+          ["Pen test environments","Known, partially known, unknown (white/gray/black box)."],
+          ["Data steward vs custodian","Steward manages data quality/use; custodian handles storage/protection."],
+          ["KRI","Key Risk Indicator — early warning metric."]
+        ]'></div>
+      </section>
+
+      <section id="quiz">
+        <h2>Quiz — Program Management</h2>
+        <div class="quiz" data-lesson="sec-5" data-quiz='[
+          {"q":"A company buys cyber-insurance to cover breach costs. Which risk response is this?","options":["Accept","Avoid","Transfer","Mitigate"],"answer":2,"explain":"Insurance shifts financial risk to a third party — transfer."},
+          {"q":"Which formula calculates Annualized Loss Expectancy?","options":["SLE − ARO","SLE × ARO","ARO ÷ SLE","SLE + ARO"],"answer":1,"explain":"ALE = SLE × ARO."},
+          {"q":"Which document defines the specific deliverables and timeline of work with a vendor?","options":["NDA","SOW","MOU","AUP"],"answer":1,"explain":"A Statement of Work specifies deliverables, scope, and schedule."},
+          {"q":"Which regulation governs protection of payment-card data?","options":["HIPAA","PCI DSS","SOX","GDPR"],"answer":1,"explain":"PCI DSS protects cardholder data."},
+          {"q":"Discontinuing a risky service entirely is which risk response?","options":["Accept","Avoid","Transfer","Mitigate"],"answer":1,"explain":"Eliminating the activity avoids the risk."},
+          {"q":"Which analysis identifies critical processes and drives RTO/RPO?","options":["BIA","CVSS","SIEM","DLP"],"answer":0,"explain":"A Business Impact Analysis prioritizes processes and sets recovery objectives."}
+        ]'></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. Verify against current official objectives at comptia.org.</p>
+      </div>
+    </footer>
+    <script src="../../assets/app.js"></script>
+  </body>
+</html>

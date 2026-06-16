@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA Network+ (N10-009) Domain 3.0 Network Operations — documentation, monitoring, high availability, disaster recovery, and organizational processes. Lessons, flashcards, and a quiz." />
+    <title>Network Operations — Network+ Domain 3.0</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../../index.html">CompTIA Study <span class="badge">NET+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../index.html">Network+ Home</a></li>
+          <li><a href="#lesson">Lesson</a></li>
+          <li><a href="#flashcards">Flashcards</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../../index.html">Home</a> › <a href="../index.html">Network+</a> › <strong>3.0 Network Operations</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Network+ · N10-009 · Domain 3.0 (19%)</p>
+        <h1>Network Operations</h1>
+        <p class="lede">Keeping the network documented, monitored, available, and recoverable.</p>
+      </section>
+
+      <section id="lesson" class="lesson">
+        <h2>3.1 Documentation</h2>
+        <ul>
+          <li><strong>Physical &amp; logical diagrams</strong>, rack diagrams, <strong>IDF/MDF</strong> layouts, cable maps.</li>
+          <li><strong>Baselines</strong>, <strong>IP address management (IPAM)</strong>, asset inventory, service-level docs.</li>
+          <li>Policies: <strong>AUP</strong>, BYOD, NDA, password policy, <strong>SLA/MOU</strong>.</li>
+        </ul>
+
+        <h2>3.2 Monitoring &amp; metrics</h2>
+        <table class="spec">
+          <tr><th>Tool/Concept</th><th>Use</th></tr>
+          <tr><td>SNMP</td><td>Polls/manages devices (161); <strong>traps</strong> (162) push alerts.</td></tr>
+          <tr><td>Syslog</td><td>Centralized log collection.</td></tr>
+          <tr><td>Flow data (NetFlow)</td><td>Traffic analysis by conversation.</td></tr>
+          <tr><td>SIEM</td><td>Aggregates &amp; correlates logs/alerts.</td></tr>
+          <tr><td>Performance metrics</td><td>Bandwidth, latency, jitter, packet loss, uptime.</td></tr>
+        </table>
+
+        <h2>3.3 High availability &amp; disaster recovery</h2>
+        <ul>
+          <li><strong>Redundancy</strong>: NIC teaming, redundant power/links, <strong>FHRP</strong>, load balancing, clustering.</li>
+          <li>Metrics: <strong>RTO</strong> (recovery time objective), <strong>RPO</strong> (recovery point objective), <strong>MTTR</strong>, <strong>MTBF</strong>.</li>
+          <li>Sites: <strong>hot</strong> (ready now), <strong>warm</strong> (partial), <strong>cold</strong> (bare facility).</li>
+          <li><strong>Backups</strong>: full/incremental/differential, snapshots, the 3-2-1 rule.</li>
+        </ul>
+        <div class="callout exam">
+          <strong>On the exam:</strong> <strong>RTO</strong> = how fast you must be back up; <strong>RPO</strong> = how much
+          data loss is acceptable (how far back the last good backup is).
+        </div>
+
+        <h2>3.4 Organizational processes</h2>
+        <ul>
+          <li><strong>Change management</strong> with approvals &amp; rollback; <strong>configuration management</strong> &amp; version control.</li>
+          <li><strong>Lifecycle</strong> (EOL/EOSL), patching, <strong>vendor/SLA</strong> management.</li>
+        </ul>
+        <div class="callout">
+          <strong>Tip:</strong> A <strong>warm site</strong> is the middle ground — some equipment/data staged,
+          faster than cold, cheaper than hot.
+        </div>
+
+        <div class="lesson-actions">
+          <button class="button" data-complete="net-3">Mark lesson complete</button>
+          <a class="button secondary" href="../index.html">Back to Network+</a>
+        </div>
+      </section>
+
+      <section id="flashcards">
+        <h2>Flashcards — key terms</h2>
+        <div class="flashcard-deck" data-cards='[
+          ["RTO","Recovery Time Objective — max acceptable downtime."],
+          ["RPO","Recovery Point Objective — max acceptable data loss (last backup)."],
+          ["MTTR","Mean Time To Repair."],
+          ["MTBF","Mean Time Between Failures."],
+          ["Hot vs warm vs cold site","Hot = ready now; warm = partial; cold = bare facility."],
+          ["SNMP trap","Device-initiated alert sent to the manager (port 162)."],
+          ["Syslog","Centralized log collection service."],
+          ["SIEM","Aggregates & correlates security logs and alerts."],
+          ["NetFlow","Traffic flow analysis by conversation."],
+          ["IPAM","IP Address Management."],
+          ["Jitter","Variation in packet delay — hurts VoIP/video."],
+          ["3-2-1 backup","3 copies, 2 media types, 1 offsite."]
+        ]'></div>
+      </section>
+
+      <section id="quiz">
+        <h2>Quiz — Network Operations</h2>
+        <div class="quiz" data-lesson="net-3" data-quiz='[
+          {"q":"Which metric defines the maximum acceptable amount of data loss?","options":["RTO","RPO","MTTR","MTBF"],"answer":1,"explain":"RPO is how far back the last recoverable data point can be."},
+          {"q":"A device sends an unsolicited alert to the monitoring server on port 162. This is a…","options":["Syslog message","SNMP trap","NetFlow record","DNS query"],"answer":1,"explain":"SNMP traps are device-initiated alerts (port 162)."},
+          {"q":"Which recovery site is fully equipped and can take over almost immediately?","options":["Cold site","Warm site","Hot site","Mobile site"],"answer":2,"explain":"A hot site is fully provisioned and ready to run."},
+          {"q":"Which system aggregates and correlates logs from many sources for security analysis?","options":["IPAM","SIEM","DHCP","STP"],"answer":1,"explain":"A SIEM centralizes and correlates log/alert data."},
+          {"q":"Which performance metric most affects VoIP call quality variation?","options":["Jitter","Throughput","MTBF","RPO"],"answer":0,"explain":"Jitter (delay variation) degrades real-time audio."},
+          {"q":"Which document defines the agreed level of service between provider and customer?","options":["AUP","SLA","NDA","MOU"],"answer":1,"explain":"An SLA specifies guaranteed service levels."}
+        ]'></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. Verify against current official objectives at comptia.org.</p>
+      </div>
+    </footer>
+    <script src="../../assets/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA Network+ (N10-009) Domain 5.0 Network Troubleshooting — the troubleshooting methodology plus cabling, connectivity, performance issues, and tools. Lessons, flashcards, and a quiz." />
+    <title>Network Troubleshooting — Network+ Domain 5.0</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../../index.html">CompTIA Study <span class="badge">NET+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../index.html">Network+ Home</a></li>
+          <li><a href="#lesson">Lesson</a></li>
+          <li><a href="#flashcards">Flashcards</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../../index.html">Home</a> › <a href="../index.html">Network+</a> › <strong>5.0 Network Troubleshooting</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Network+ · N10-009 · Domain 5.0 (24%)</p>
+        <h1>Network Troubleshooting</h1>
+        <p class="lede">The methodology, cabling and connectivity faults, performance issues, and the tools that find them.</p>
+      </section>
+
+      <section id="lesson" class="lesson">
+        <h2>5.1 The troubleshooting methodology</h2>
+        <ol>
+          <li><strong>Identify the problem</strong> (gather info, question users, duplicate if possible).</li>
+          <li><strong>Establish a theory</strong> of probable cause (question the obvious).</li>
+          <li><strong>Test the theory</strong> to determine cause.</li>
+          <li><strong>Establish a plan of action</strong> and identify effects.</li>
+          <li><strong>Implement the solution</strong> or escalate.</li>
+          <li><strong>Verify full functionality</strong> and implement preventive measures.</li>
+          <li><strong>Document</strong> findings, actions, and outcomes.</li>
+        </ol>
+        <div class="callout exam">
+          <strong>On the exam:</strong> Same 7-step flow as A+. Memorize the order — questions often ask
+          "what's the NEXT step."
+        </div>
+
+        <h2>5.2 Cabling &amp; physical issues</h2>
+        <table class="spec">
+          <tr><th>Symptom</th><th>Likely cause</th></tr>
+          <tr><td>No link light</td><td>Bad cable, wrong port, NIC, or speed/duplex.</td></tr>
+          <tr><td>Intermittent connectivity</td><td>Loose connector, EMI, damaged cable.</td></tr>
+          <tr><td>Slow throughput</td><td><strong>Duplex mismatch</strong>, saturation, bad cable, CRC errors.</td></tr>
+          <tr><td>Crosstalk / attenuation</td><td>Cable too long (&gt;100 m), poor termination, interference.</td></tr>
+          <tr><td>Wrong pinout</td><td>T568A/B mismatch; need straight-through vs crossover.</td></tr>
+        </table>
+
+        <h2>5.3 Connectivity &amp; addressing</h2>
+        <ul>
+          <li><strong>169.254.x.x (APIPA)</strong> → no DHCP. <strong>Duplicate IP</strong> → conflict.</li>
+          <li>Wrong <strong>gateway/DNS/subnet mask</strong> → can't reach remote networks.</li>
+          <li>DNS issues → can ping IP but not name; <strong>routing loops</strong> → high hop counts/TTL expiry.</li>
+        </ul>
+
+        <h2>5.4 Tools</h2>
+        <table class="spec">
+          <tr><th>Tool</th><th>Use</th></tr>
+          <tr><td><code>ping</code></td><td>Reachability/latency.</td></tr>
+          <tr><td><code>traceroute</code>/<code>tracert</code></td><td>Path &amp; where it breaks.</td></tr>
+          <tr><td><code>nslookup</code>/<code>dig</code></td><td>DNS resolution.</td></tr>
+          <tr><td><code>ipconfig</code>/<code>ifconfig</code>/<code>ip</code></td><td>Interface config.</td></tr>
+          <tr><td><code>netstat</code> / <code>arp</code></td><td>Connections / ARP cache.</td></tr>
+          <tr><td>Cable tester / toner probe</td><td>Continuity / locate a run.</td></tr>
+          <tr><td>OTDR / light meter</td><td>Fiber faults / signal loss.</td></tr>
+          <tr><td>Protocol analyzer (Wireshark)</td><td>Packet-level inspection.</td></tr>
+        </table>
+        <div class="callout">
+          <strong>Tip:</strong> Can ping an IP but not a hostname? It's a <strong>DNS</strong> problem.
+          Can't ping anything beyond the gateway? Suspect <strong>routing/gateway</strong>.
+        </div>
+
+        <div class="lesson-actions">
+          <button class="button" data-complete="net-5">Mark lesson complete</button>
+          <a class="button secondary" href="../index.html">Back to Network+</a>
+        </div>
+      </section>
+
+      <section id="flashcards">
+        <h2>Flashcards — key terms</h2>
+        <div class="flashcard-deck" data-cards='[
+          ["Step 1 of troubleshooting","Identify the problem (gather info, question users)."],
+          ["Last troubleshooting step","Document findings, actions, and outcomes."],
+          ["Duplex mismatch","Half/full mismatch → slow throughput, late collisions."],
+          ["169.254.x.x","APIPA — no DHCP server reachable."],
+          ["Ping IP works, name fails","DNS resolution problem."],
+          ["Max copper run","100 meters for twisted-pair Ethernet."],
+          ["Crosstalk","Signal bleed between pairs; worsened by poor termination."],
+          ["traceroute","Shows the path and where it breaks."],
+          ["OTDR","Optical Time-Domain Reflectometer — locates fiber faults."],
+          ["Toner probe","Locates/identifies a cable in a bundle."],
+          ["Protocol analyzer","Captures and inspects packets (e.g., Wireshark)."],
+          ["Duplicate IP","Two hosts with the same IP → connectivity conflicts."]
+        ]'></div>
+      </section>
+
+      <section id="quiz">
+        <h2>Quiz — Network Troubleshooting</h2>
+        <div class="quiz" data-lesson="net-5" data-quiz='[
+          {"q":"A user can ping 8.8.8.8 but not google.com. What is the problem?","options":["Bad cable","DNS resolution","Duplex mismatch","Dead NIC"],"answer":1,"explain":"Reaching an IP but not a name is a DNS issue."},
+          {"q":"What is the FIRST step of the troubleshooting methodology?","options":["Establish a theory","Identify the problem","Document outcome","Verify functionality"],"answer":1,"explain":"Step 1 is to identify the problem."},
+          {"q":"A 1 Gbps link runs at a crawl with late collisions. Likely cause?","options":["DNS poisoning","Duplex mismatch","APIPA","Wrong VLAN"],"answer":1,"explain":"A duplex mismatch causes slow throughput and late collisions."},
+          {"q":"Which tool locates a break or fault in a fiber-optic cable?","options":["Cable tester","OTDR","Toner probe","Multimeter"],"answer":1,"explain":"An OTDR locates faults and measures loss along fiber."},
+          {"q":"A workstation shows 169.254.10.5. What failed?","options":["DNS","DHCP","Gateway","NIC driver"],"answer":1,"explain":"APIPA addresses appear when no DHCP server responds."},
+          {"q":"What is the maximum standard run length for twisted-pair Ethernet?","options":["55 m","100 m","185 m","305 m"],"answer":1,"explain":"Twisted-pair Ethernet is limited to 100 meters."}
+        ]'></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. Verify against current official objectives at comptia.org.</p>
+      </div>
+    </footer>
+    <script src="../../assets/app.js"></script>
+  </body>
+</html>
