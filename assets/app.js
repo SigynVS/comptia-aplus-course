@@ -498,6 +498,16 @@
     host.appendChild(file);
   }
 
+  // ---------- Print study sheet (lesson pages) ----------
+  function initPrintButton() {
+    var lesson = document.querySelector('.lesson');
+    var actions = document.querySelector('.lesson-actions');
+    if (!lesson || !actions) return;
+    var btn = mkButton('🖨 Print study sheet', 'button secondary');
+    btn.addEventListener('click', function () { window.print(); });
+    actions.appendChild(btn);
+  }
+
   // ---------- helpers ----------
   function mkButton(text, cls) {
     var b = document.createElement('button');
@@ -520,5 +530,6 @@
     initBadges();
     initDashboard();
     initBackup();
+    initPrintButton();
   });
 })();

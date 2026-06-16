@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Combined CompTIA practice exam — randomized questions drawn from A+, Network+, and Security+ together, with per-track drills, missed-question review, and timing. Vanilla HTML/CSS/JS." />
+    <title>All-Certs Practice Exam — CompTIA Study Hub</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../index.html">CompTIA Study <span class="badge">ALL</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../final-exam/index.html">A+ Exam</a></li>
+          <li><a href="../network-plus/final-exam/index.html">Net+ Exam</a></li>
+          <li><a href="../security-plus/final-exam/index.html">Sec+ Exam</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../index.html">Home</a> › <strong>All-Certs Exam</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Practice test · A+ · Network+ · Security+</p>
+        <h1>All-Certs Practice Exam</h1>
+        <p class="lede">
+          The ultimate mixed exam — questions pulled from every domain across all
+          three certifications. Use the per-domain drill to target any single track,
+          or take the full pool. Aim for <strong>75%+</strong>.
+        </p>
+      </section>
+
+      <div id="setup" class="progress-wrap">
+        <h3 style="margin-top:0">Full mixed exam</h3>
+        <div class="lesson-actions" style="margin-top:0.75rem">
+          <button class="button" data-len="25">Quick · 25 Q</button>
+          <button class="button" data-len="50">Standard · 50 Q</button>
+          <button class="button" data-len="0">Full pool · all Q</button>
+        </div>
+        <p id="bank-size" class="lede" style="margin-top:0.75rem"></p>
+
+        <h3>Per-domain drill</h3>
+        <p class="lede" style="margin-top:0">Each option is prefixed by its certification (A+, Net+, Sec+).</p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;margin-top:0.5rem">
+          <select id="domain-select" aria-label="Choose a domain"
+            style="padding:0.6rem 0.7rem;border:1px solid var(--line);border-radius:8px;font:inherit;min-width:18rem"></select>
+          <button id="drill-btn" class="button">Drill this domain →</button>
+        </div>
+
+        <h3>Review your missed questions</h3>
+        <p class="lede" style="margin-top:0">Retry only the questions you have gotten wrong across the mixed pool.</p>
+        <div class="lesson-actions" style="margin-top:0.5rem">
+          <button id="missed-btn" class="button secondary">Review missed (0)</button>
+          <button id="clear-missed" class="button secondary">Clear missed list</button>
+        </div>
+
+        <label style="display:block;margin-top:1rem">
+          <input type="checkbox" id="timed" checked /> Timed mode (90&nbsp;seconds per question)
+        </label>
+
+        <div id="best-summary" style="margin-top:1rem"></div>
+      </div>
+
+      <div id="exam" style="display:none">
+        <div class="progress-wrap" style="position:sticky;top:3.5rem;z-index:5;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+          <strong id="timer">Time —</strong>
+          <span id="progress-text" class="lede" style="margin:0"></span>
+          <button id="submitBtn" class="button" style="margin-left:auto">Submit exam</button>
+        </div>
+        <div id="questions" class="quiz"></div>
+        <button id="submitBtn2" class="button">Submit exam</button>
+      </div>
+
+      <div id="results" style="display:none">
+        <div class="progress-wrap">
+          <h2 id="score-line" style="margin-top:0"></h2>
+          <div class="bar"><span id="score-bar"></span></div>
+          <div id="domain-breakdown"></div>
+          <div class="lesson-actions">
+            <button id="retry" class="button">New exam</button>
+            <a class="button secondary" href="../index.html">Back to home</a>
+          </div>
+        </div>
+        <h2>Review</h2>
+        <div id="review" class="quiz"></div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA Study Hub — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent practice material. Not affiliated with or endorsed by CompTIA. Practice scores do not predict actual exam results. Verify objectives at comptia.org.</p>
+      </div>
+    </footer>
+
+    <script>window.EXAM_CONFIG = { missedKey: 'allcerts-missed', bestKey: 'allcerts-best' };</script>
+    <!-- Merge all three banks, prefixing each domain with its certification. -->
+    <script src="../assets/questionbank.js"></script>
+    <script>window.__ALL = (window.EXAM_BANK || []).map(function (q) {
+      return { d: 'A+ · ' + q.d, q: q.q, o: q.o, a: q.a, e: q.e };
+    });</script>
+    <script src="../assets/networkplus-bank.js"></script>
+    <script>window.__ALL = window.__ALL.concat((window.EXAM_BANK || []).map(function (q) {
+      return { d: 'Net+ · ' + q.d, q: q.q, o: q.o, a: q.a, e: q.e };
+    }));</script>
+    <script src="../assets/securityplus-bank.js"></script>
+    <script>
+      window.__ALL = window.__ALL.concat((window.EXAM_BANK || []).map(function (q) {
+        return { d: 'Sec+ · ' + q.d, q: q.q, o: q.o, a: q.a, e: q.e };
+      }));
+      window.EXAM_BANK = window.__ALL;
+    </script>
+    <script src="../assets/exam-engine.js"></script>
+  </body>
+</html>

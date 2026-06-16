@@ -339,6 +339,23 @@ table.spec th { background: var(--navy); color: var(--cream); }
 .site-footer a { color: var(--gold); }
 .disclaimer { color: rgba(244,241,234,0.6); font-size: 0.82rem; margin-top: 0.5rem; }
 
+/* ---------- Print: clean study sheet ---------- */
+@media print {
+  .site-header, .site-footer, .nav, #flashcards, #quiz,
+  .lesson-actions, .crumbs, .theme-toggle, .nav-toggle,
+  .hero .eyebrow { display: none !important; }
+  html[data-theme="dark"] { --cream: #fff; --ink: #000; --muted: #333; }
+  body { background: #fff; color: #000; }
+  main { max-width: 100%; padding: 0; }
+  h1, h2, h3 { color: #000; }
+  .callout { border: 1px solid #999; }
+  table.spec th { background: #ddd !important; color: #000 !important; }
+  table.spec, .callout, .card { box-shadow: none; }
+  a { color: #000; text-decoration: none; }
+  .lesson { font-size: 11pt; }
+  @page { margin: 1.5cm; }
+}
+
 /* ---------- Desktop ---------- */
 @media (min-width: 44rem) {
   .nav-toggle { display: none; }
