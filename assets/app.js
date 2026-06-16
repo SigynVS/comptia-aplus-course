@@ -32,6 +32,65 @@
     return !!(p[lessonId] && p[lessonId].done);
   }
 
+  // ---------- Study stats (streak, quizzes, averages) ----------
+  // Shared schema (also written by the final-exam page):
+  // { visitDates:[YYYY-MM-DD...], quizzesTaken:n, scoreSum:n, examsTaken:n }
+  var STATS_KEY = 'aplus-stats';
+  function loadStats() {
+    try { return JSON.parse(localStorage.getItem(STATS_KEY)) || {}; }
+    catch (e) { return {}; }
+  }
+  function saveStats(s) {
+    try { localStorage.setItem(STATS_KEY, JSON.stringify(s)); } catch (e) {}
+  }
+  function todayStr() {
+    var d = new Date();
+    return d.getFullYear() + '-' +
+      String(d.getMonth() + 1).padStart(2, '0') + '-' +
+      String(d.getDate()).padStart(2, '0');
+  }
+  function recordVisit() {
+    var s = loadStats();
+    s.visitDates = s.visitDates || [];
+    var t = todayStr();
+    if (s.visitDates.indexOf(t) === -1) { s.visitDates.push(t); s.visitDates.sort(); }
+    saveStats(s);
+    return s;
+  }
+  function recordQuiz(pct) {
+    var s = loadStats();
+    s.quizzesTaken = (s.quizzesTaken || 0) + 1;
+    s.scoreSum = (s.scoreSum || 0) + pct;
+    saveStats(s);
+  }
+  // expose so the standalone final-exam page can log into the same store
+  window.AplusStats = { recordQuiz: recordQuiz, recordVisit: recordVisit };
+
+  function dayBefore(str) {
+    var p = str.split('-');
+    var d = new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
+    d.setDate(d.getDate() - 1);
+    return d.getFullYear() + '-' +
+      String(d.getMonth() + 1).padStart(2, '0') + '-' +
+      String(d.getDate()).padStart(2, '0');
+  }
+  function computeStreak(dates) {
+    var set = {};
+    dates.forEach(function (d) { set[d] = true; });
+    var cur = 0, day = todayStr();
+    while (set[day]) { cur++; day = dayBefore(day); }
+    // longest run
+    var sorted = dates.slice().sort();
+    var longest = 0, run = 0, prev = null;
+    sorted.forEach(function (d) {
+      if (prev && dayBefore(d) === prev) run++;
+      else run = 1;
+      if (run > longest) longest = run;
+      prev = d;
+    });
+    return { current: cur, longest: longest };
+  }
+
   // ---------- Mobile nav ----------
   function initNav() {
     var toggle = document.querySelector('.nav-toggle');
@@ -207,6 +266,7 @@
         });
         var pct = Math.round((score / items.length) * 100);
         result.textContent = 'Score: ' + score + ' / ' + items.length + '  (' + pct + '%)';
+        if (!quiz.dataset.counted) { recordQuiz(pct); quiz.dataset.counted = '1'; }
 
         var lessonId = quiz.getAttribute('data-lesson');
         if (lessonId && pct >= 70) {
@@ -274,6 +334,40 @@
     dash.appendChild(wrap);
   }
 
+  // ---------- Study-stats panel (home page) ----------
+  // Markup: <div class="study-stats" data-total-lessons="9"></div>
+  function initStatsPanel() {
+    var host = document.querySelector('.study-stats');
+    if (!host) return;
+    var s = loadStats();
+    var streak = computeStreak(s.visitDates || []);
+    var totalLessons = parseInt(host.getAttribute('data-total-lessons'), 10) || 9;
+    var p = loadProgress();
+    var done = Object.keys(p).filter(function (k) { return p[k] && p[k].done; }).length;
+    var quizzes = s.quizzesTaken || 0;
+    var avg = quizzes ? Math.round((s.scoreSum || 0) / quizzes) : 0;
+    var exams = s.examsTaken || 0;
+
+    function stat(num, label) {
+      return '<div style="flex:1 1 7rem;min-width:7rem">' +
+        '<div style="font-size:1.6rem;font-weight:800;color:var(--gold-dark)">' + num + '</div>' +
+        '<div style="font-size:0.85rem;color:var(--muted)">' + label + '</div></div>';
+    }
+    var wrap = document.createElement('div');
+    wrap.className = 'progress-wrap';
+    wrap.innerHTML =
+      '<strong>📊 Study stats</strong>' +
+      '<div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:0.85rem">' +
+        stat('🔥 ' + streak.current, 'Day streak') +
+        stat(streak.longest, 'Longest streak') +
+        stat(done + '/' + totalLessons, 'Lessons done') +
+        stat(quizzes, 'Quizzes taken') +
+        stat(avg + '%', 'Avg quiz score') +
+        stat(exams, 'Final exams') +
+      '</div>';
+    host.appendChild(wrap);
+  }
+
   // ---------- helpers ----------
   function mkButton(text, cls) {
     var b = document.createElement('button');
@@ -291,6 +385,8 @@
     initFlashcards();
     initQuizzes();
     initCompleteButtons();
+    recordVisit();
+    initStatsPanel();
     initDashboard();
   });
 })();

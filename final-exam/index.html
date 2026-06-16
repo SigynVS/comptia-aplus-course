@@ -318,6 +318,13 @@
           updateMissedBtn();
           var pct = Math.round((correct / exam.length) * 100);
 
+          // log a completed final exam into the shared stats store
+          try {
+            var st = JSON.parse(localStorage.getItem('aplus-stats')) || {};
+            st.examsTaken = (st.examsTaken || 0) + 1;
+            localStorage.setItem('aplus-stats', JSON.stringify(st));
+          } catch (e) {}
+
           document.getElementById('exam').style.display = 'none';
           var res = document.getElementById('results');
           res.style.display = 'block';
