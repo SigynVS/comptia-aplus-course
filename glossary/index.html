@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CompTIA A+ acronym glossary — a searchable list of the acronyms and key terms tested on Core 1 (220-1101) and Core 2 (220-1102). Vanilla HTML/CSS/JS." />
+    <title>Acronym Glossary — CompTIA A+</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../index.html">CompTIA A+ <span class="badge">A+</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../final-exam/index.html">Final Exam</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p class="crumbs"><a href="../index.html">Home</a> › <strong>Acronym Glossary</strong></p>
+
+      <section class="hero">
+        <p class="eyebrow">Reference · All domains</p>
+        <h1>Acronym Glossary</h1>
+        <p class="lede">
+          A+ tests a lot of acronyms. Search the list below — type any letters of the
+          acronym or its meaning to filter instantly.
+        </p>
+        <input id="search" type="search" placeholder="Search e.g. NVMe, DHCP, encryption…"
+          aria-label="Search glossary"
+          style="width:100%;max-width:32rem;padding:0.7rem 0.9rem;border:1px solid var(--line);border-radius:8px;font:inherit;margin-top:0.5rem" />
+        <p id="count" class="lede" style="margin-top:0.5rem"></p>
+      </section>
+
+      <dl id="glossary" class="keyterms"></dl>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; <span id="year"></span> CompTIA A+ Study Course — built with vanilla HTML, CSS &amp; JS.</p>
+        <p class="disclaimer">Independent study material. Not affiliated with or endorsed by CompTIA. Verify objectives at comptia.org.</p>
+      </div>
+    </footer>
+
+    <script src="../assets/app.js"></script>
+    <script>
+      (function () {
+        'use strict';
+        var TERMS = [
+          ["APIPA","Automatic Private IP Addressing — 169.254.x.x, self-assigned when no DHCP server is reachable."],
+          ["ARP","Address Resolution Protocol — maps an IP address to a MAC address."],
+          ["AUP","Acceptable Use Policy — rules for using an organization's systems."],
+          ["BIOS","Basic Input/Output System — firmware that starts the hardware before the OS."],
+          ["BSOD","Blue Screen of Death — a Windows stop error."],
+          ["CIDR","Classless Inter-Domain Routing — IP notation like /24."],
+          ["CMOS","Complementary Metal-Oxide-Semiconductor — chip/battery that retains BIOS settings & clock."],
+          ["DDR","Double Data Rate — system RAM (DDR3/DDR4/DDR5)."],
+          ["DHCP","Dynamic Host Configuration Protocol — auto-assigns IP settings (ports 67/68)."],
+          ["DIMM","Dual Inline Memory Module — desktop RAM stick."],
+          ["DISM","Deployment Image Servicing and Management — repairs the Windows image."],
+          ["DNS","Domain Name System — resolves names to IP addresses (port 53)."],
+          ["ECC","Error-Correcting Code — RAM that detects/corrects errors."],
+          ["EFS","Encrypting File System — per-file encryption in Windows/NTFS."],
+          ["ESD","Electrostatic Discharge — static that can damage components."],
+          ["EULA","End-User License Agreement — governs software use."],
+          ["FTP","File Transfer Protocol — ports 20/21."],
+          ["GPT","GUID Partition Table — modern partition scheme (UEFI, >2 TB, 128 partitions)."],
+          ["HTTP / HTTPS","Web protocols — port 80 (plain) / 443 (TLS-encrypted)."],
+          ["IMAP","Internet Message Access Protocol — syncs email across devices (143 / 993)."],
+          ["IMEI","International Mobile Equipment Identity — identifies the device."],
+          ["IMSI","International Mobile Subscriber Identity — identifies the subscriber (on the SIM)."],
+          ["IaaS / PaaS / SaaS","Cloud service models — Infrastructure / Platform / Software as a Service."],
+          ["IPS","In-Plane Switching — LCD panel with great color & wide viewing angles."],
+          ["LDAP","Lightweight Directory Access Protocol — directory services (port 389)."],
+          ["MBR","Master Boot Record — legacy partition scheme (≤2 TB, 4 primary partitions)."],
+          ["MFA","Multi-Factor Authentication — two or more independent factors."],
+          ["MMC","Microsoft Management Console — hosts snap-ins like diskmgmt.msc."],
+          ["NFC","Near Field Communication — very short-range wireless (tap-to-pay)."],
+          ["NTFS","New Technology File System — Windows FS with permissions, encryption, journaling."],
+          ["NVMe","Non-Volatile Memory Express — fast SSD interface over PCIe."],
+          ["PCIe","Peripheral Component Interconnect Express — expansion bus (x1…x16)."],
+          ["PII / PHI","Personally Identifiable / Protected Health Information — regulated data."],
+          ["PoE","Power over Ethernet — power + data over one cable."],
+          ["POP3","Post Office Protocol v3 — downloads email to one device (110 / 995)."],
+          ["PRL","Preferred Roaming List — updates which cell towers a device uses."],
+          ["PSU","Power Supply Unit — converts AC to the DC rails a PC needs."],
+          ["RADIUS","Remote Authentication Dial-In User Service — centralized AAA."],
+          ["RAID","Redundant Array of Independent Disks — 0/1/5/10."],
+          ["RDP","Remote Desktop Protocol — port 3389."],
+          ["RFID","Radio-Frequency Identification — tags read by radio."],
+          ["SATA","Serial ATA — internal drive interface."],
+          ["SDS / MSDS","(Material) Safety Data Sheet — chemical handling & disposal."],
+          ["SMB / CIFS","Server Message Block — Windows file/printer sharing (port 445)."],
+          ["SMTP","Simple Mail Transfer Protocol — sends email (25/587/465)."],
+          ["SNMP","Simple Network Management Protocol — device management (161/162)."],
+          ["SODIMM","Small Outline DIMM — laptop RAM form factor."],
+          ["SSD","Solid-State Drive — flash storage, no moving parts."],
+          ["SSH","Secure Shell — encrypted remote access (port 22)."],
+          ["SSO","Single Sign-On — one login for multiple systems."],
+          ["TKIP / AES","Wireless encryption ciphers — TKIP (WPA, weak) / AES-CCMP (WPA2/3)."],
+          ["TPM","Trusted Platform Module — hardware crypto chip (used by BitLocker)."],
+          ["UAC","User Account Control — Windows elevation prompts."],
+          ["UEFI","Unified Extensible Firmware Interface — modern BIOS replacement."],
+          ["UPS","Uninterruptible Power Supply — battery backup for outages/brownouts."],
+          ["USB","Universal Serial Bus — 2.0 (480 Mbps) / 3.x (5–10 Gbps) / USB-C reversible."],
+          ["VDI","Virtual Desktop Infrastructure — centrally hosted desktops."],
+          ["VPN","Virtual Private Network — encrypted tunnel over a public network."],
+          ["WPA2 / WPA3","Wi-Fi Protected Access — WPA2 (AES) minimum, WPA3 (SAE) best."]
+        ];
+
+        var y = document.getElementById('year');
+        if (y) y.textContent = new Date().getFullYear();
+
+        var dl = document.getElementById('glossary');
+        var search = document.getElementById('search');
+        var count = document.getElementById('count');
+
+        function render(filter) {
+          filter = (filter || '').toLowerCase().trim();
+          dl.innerHTML = '';
+          var shown = 0;
+          TERMS.forEach(function (pair) {
+            if (filter && pair[0].toLowerCase().indexOf(filter) === -1 &&
+                pair[1].toLowerCase().indexOf(filter) === -1) return;
+            var dt = document.createElement('dt');
+            dt.textContent = pair[0];
+            var dd = document.createElement('dd');
+            dd.textContent = pair[1];
+            dl.appendChild(dt);
+            dl.appendChild(dd);
+            shown++;
+          });
+          count.textContent = shown + ' of ' + TERMS.length + ' terms';
+        }
+
+        search.addEventListener('input', function () { render(search.value); });
+        render('');
+      })();
+    </script>
+  </body>
+</html>

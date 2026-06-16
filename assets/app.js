@@ -49,6 +49,37 @@
     });
   }
 
+  // ---------- Theme (dark mode), injected into every nav ----------
+  var THEME_KEY = 'aplus-theme';
+  function applyTheme(theme) {
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    else document.documentElement.removeAttribute('data-theme');
+  }
+  function initTheme() {
+    var saved = 'light';
+    try { saved = localStorage.getItem(THEME_KEY) || 'light'; } catch (e) {}
+    applyTheme(saved);
+
+    var nav = document.querySelector('.nav');
+    if (!nav) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'theme-toggle';
+    btn.setAttribute('aria-label', 'Toggle dark mode');
+    function label() { btn.textContent = (saved === 'dark' ? '☀ Light' : '🌙 Dark'); }
+    label();
+    btn.addEventListener('click', function () {
+      saved = (saved === 'dark') ? 'light' : 'dark';
+      applyTheme(saved);
+      try { localStorage.setItem(THEME_KEY, saved); } catch (e) {}
+      label();
+    });
+    // place the toggle right before the hamburger so it's visible on mobile too
+    var hamburger = nav.querySelector('.nav-toggle');
+    if (hamburger) nav.insertBefore(btn, hamburger);
+    else nav.appendChild(btn);
+  }
+
   // ---------- Footer year ----------
   function initYear() {
     var el = document.getElementById('year');
@@ -93,13 +124,21 @@
       }
       function flipCard() { showingBack = !showingBack; render(); }
 
+      function goPrev() { i = (i - 1 + cards.length) % cards.length; showingBack = false; render(); }
+      function goNext() { i = (i + 1) % cards.length; showingBack = false; render(); }
+
       card.addEventListener('click', flipCard);
       flip.addEventListener('click', flipCard);
-      prev.addEventListener('click', function () {
-        i = (i - 1 + cards.length) % cards.length; showingBack = false; render();
-      });
-      next.addEventListener('click', function () {
-        i = (i + 1) % cards.length; showingBack = false; render();
+      prev.addEventListener('click', goPrev);
+      next.addEventListener('click', goNext);
+
+      // Keyboard: ←/→ to move, Space/Enter to flip (only when a deck is in view)
+      deck.tabIndex = 0;
+      deck.setAttribute('aria-label', 'Flashcard deck. Use left and right arrows to navigate, space to flip.');
+      deck.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); goPrev(); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); goNext(); }
+        else if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flipCard(); }
       });
       render();
     });
@@ -220,6 +259,18 @@
       list.appendChild(row);
     });
     wrap.appendChild(list);
+
+    var reset = mkButton('Reset progress', 'button secondary');
+    reset.style.marginTop = '1rem';
+    reset.addEventListener('click', function () {
+      if (!window.confirm('Clear all lesson completion progress? This cannot be undone.')) return;
+      saveProgress({});
+      // re-render dashboard
+      dash.innerHTML = '';
+      initDashboard();
+    });
+    wrap.appendChild(reset);
+
     dash.appendChild(wrap);
   }
 
@@ -235,6 +286,7 @@
   // ---------- boot ----------
   document.addEventListener('DOMContentLoaded', function () {
     initNav();
+    initTheme();
     initYear();
     initFlashcards();
     initQuizzes();

@@ -97,5 +97,14 @@ window.EXAM_BANK = [
   { d:"Operational Procedures", q:"What does the 3-2-1 backup rule specify?", o:["3 servers, 2 admins, 1 site","3 copies, 2 media types, 1 offsite","3 fulls, 2 incrementals, 1 differential","3 days, 2 weeks, 1 month"], a:1, e:"3 copies, on 2 media types, with 1 offsite." },
   { d:"Operational Procedures", q:"What preserves evidence integrity during an incident?", o:["Deleting logs","Chain of custody documentation","Formatting the drive","Emailing it to yourself"], a:1, e:"Chain of custody documents who handled evidence and when." },
   { d:"Operational Procedures", q:"An incremental backup captures what?", o:["Everything","Changes since the last backup of any type","Changes since the last full","Nothing"], a:1, e:"Incremental = changes since the last backup of any type." },
-  { d:"Operational Procedures", q:"Which governs how software may be used?", o:["SDS","EULA","PII","UPS"], a:1, e:"The End-User License Agreement governs software use." }
+  { d:"Operational Procedures", q:"Which governs how software may be used?", o:["SDS","EULA","PII","UPS"], a:1, e:"The End-User License Agreement governs software use." },
+  { d:"Operational Procedures", q:"What device rides through a brief outage and allows a safe shutdown?", o:["Surge suppressor","UPS","Power strip","PoE injector"], a:1, e:"A UPS provides battery backup during outages/brownouts." },
+
+  /* ===== Additional mixed questions ===== */
+  { d:"Mobile Devices", q:"Which connector is reversible and can carry data, video, and power?", o:["USB-A","USB-C","Micro-USB","Lightning"], a:1, e:"USB-C is reversible and supports data, DisplayPort Alt Mode, and power delivery." },
+  { d:"Networking", q:"Which port does SMTP use to send email?", o:["25","110","143","443"], a:0, e:"SMTP sends mail on port 25 (also 587/465)." },
+  { d:"Hardware", q:"Which RAID level offers striping with NO redundancy?", o:["RAID 0","RAID 1","RAID 5","RAID 10"], a:0, e:"RAID 0 stripes for speed but has no fault tolerance." },
+  { d:"Operating Systems", q:"Which command checks and repairs file-system errors on a disk?", o:["sfc","chkdsk /f","ipconfig","gpresult"], a:1, e:"chkdsk /f fixes file-system errors (/r also recovers bad sectors)." },
+  { d:"Security", q:"Which principle grants users only the access they need?", o:["Defense in depth","Least privilege","Zero trust","Separation of duties"], a:1, e:"Least privilege limits access to the minimum required." },
+  { d:"Software Troubleshooting", q:"An app fails to launch after an OS update. Which is a reasonable early fix?", o:["Replace the CPU","Run in compatibility mode / repair the app","Reformat the drive","Replace the PSU"], a:1, e:"Try compatibility mode, run-as-admin, or repair/reinstall before drastic steps." }
 ];

@@ -102,6 +102,32 @@
           var o = m.classList.toggle('open'); t.setAttribute('aria-expanded', String(o));
         });
 
+        // theme (shared key with the rest of the site)
+        var THEME_KEY = 'aplus-theme';
+        var theme = 'light';
+        try { theme = localStorage.getItem(THEME_KEY) || 'light'; } catch (e) {}
+        function applyTheme(th) {
+          if (th === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+          else document.documentElement.removeAttribute('data-theme');
+        }
+        applyTheme(theme);
+        var nav = document.querySelector('.nav');
+        if (nav) {
+          var tb = document.createElement('button');
+          tb.type = 'button';
+          tb.className = 'theme-toggle';
+          tb.setAttribute('aria-label', 'Toggle dark mode');
+          function lbl() { tb.textContent = (theme === 'dark' ? '☀ Light' : '🌙 Dark'); }
+          lbl();
+          tb.addEventListener('click', function () {
+            theme = (theme === 'dark') ? 'light' : 'dark';
+            applyTheme(theme);
+            try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+            lbl();
+          });
+          nav.insertBefore(tb, t || null);
+        }
+
         document.getElementById('bank-size').textContent =
           'Question bank: ' + BANK.length + ' questions across all 9 domains.';
 

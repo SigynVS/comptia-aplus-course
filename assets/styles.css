@@ -12,6 +12,45 @@
   --max: 70rem;
 }
 
+/* ---------- Dark theme overrides ---------- */
+html[data-theme="dark"] {
+  --cream: #14171d;
+  --ink: #e7e5df;
+  --muted: #a6adbb;
+  --line: rgba(231, 229, 223, 0.14);
+  --navy: #0f1722;
+  --navy-2: #16202e;
+}
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .callout,
+html[data-theme="dark"] .progress-wrap,
+html[data-theme="dark"] table.spec,
+html[data-theme="dark"] .quiz .q,
+html[data-theme="dark"] .quiz .opt { background: #1b2230; }
+html[data-theme="dark"] code, html[data-theme="dark"] kbd { background: rgba(231,229,223,0.12); }
+html[data-theme="dark"] h1, html[data-theme="dark"] h2, html[data-theme="dark"] h3,
+html[data-theme="dark"] .card h3, html[data-theme="dark"] a { color: #dfe7f5; }
+html[data-theme="dark"] .weight { background: rgba(231,229,223,0.1); color: #dfe7f5; }
+/* Header controls must stay light on the always-dark header */
+html[data-theme="dark"] .theme-toggle,
+html[data-theme="dark"] .nav-toggle { color: #e7e5df; border-color: rgba(231,229,223,0.4); }
+/* Secondary (outline) buttons sit on dark surfaces in dark mode */
+html[data-theme="dark"] .button.secondary { color: #dfe7f5; border-color: #5b6b86; }
+html[data-theme="dark"] .button.secondary:hover { background: #dfe7f5; color: #0f1722; }
+
+/* ---------- Theme toggle button (injected into nav) ---------- */
+.theme-toggle {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(244, 241, 234, 0.4);
+  border-radius: 6px;
+  padding: 0.35rem 0.6rem;
+  font: inherit;
+  cursor: pointer;
+  line-height: 1;
+}
+.theme-toggle:hover { border-color: var(--gold); }
+
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
