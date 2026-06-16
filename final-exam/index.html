@@ -61,6 +61,8 @@
         <label style="display:block;margin-top:1rem">
           <input type="checkbox" id="timed" checked /> Timed mode (90&nbsp;seconds per question)
         </label>
+
+        <div id="best-summary" style="margin-top:1rem"></div>
       </div>
 
       <!-- Exam -->
@@ -123,6 +125,34 @@
           b.textContent = 'Review missed (' + n + ')';
           b.disabled = n === 0;
           b.style.opacity = n === 0 ? '0.5' : '1';
+        }
+
+        // ----- Best-score tracker (per mode) -----
+        var BEST_KEY = 'aplus-best';
+        var currentScope = 'Full exam';
+        function loadBest() {
+          try { return JSON.parse(localStorage.getItem(BEST_KEY)) || {}; }
+          catch (e) { return {}; }
+        }
+        function saveBest(obj) {
+          try { localStorage.setItem(BEST_KEY, JSON.stringify(obj)); } catch (e) {}
+        }
+        function recordBest(scope, pct) {
+          var b = loadBest();
+          var improved = !(scope in b) || pct > b[scope];
+          if (improved) { b[scope] = pct; saveBest(b); }
+          return improved;
+        }
+        function renderBestSummary() {
+          var b = loadBest();
+          var keys = Object.keys(b);
+          var el = document.getElementById('best-summary');
+          if (!el) return;
+          if (!keys.length) { el.innerHTML = ''; return; }
+          var rows = keys.sort().map(function (k) {
+            return '<div>' + k + ': <strong>' + b[k] + '%</strong></div>';
+          }).join('');
+          el.innerHTML = '<p style="margin:0.75rem 0 0.25rem"><strong>Your best scores:</strong></p>' + rows;
         }
 
         // year
@@ -199,8 +229,9 @@
           });
         }
 
-        function startExam(source, len, timed) {
+        function startExam(source, len, timed, scope) {
           if (!source.length) { alert('No questions available for this selection.'); return; }
+          currentScope = scope || 'Full exam';
           exam = buildExam(source, len);
           document.getElementById('setup').style.display = 'none';
           document.getElementById('results').style.display = 'none';
@@ -292,9 +323,12 @@
           res.style.display = 'block';
 
           var pass = pct >= PASS;
+          var improved = recordBest(currentScope, pct);
+          var best = loadBest()[currentScope];
           document.getElementById('score-line').textContent =
             (pass ? '✓ Pass — ' : '✗ Keep studying — ') + correct + ' / ' + exam.length +
-            ' (' + pct + '%)';
+            ' (' + pct + '%)  ·  ' + currentScope +
+            (improved ? '  🏆 New best!' : '  · Best: ' + best + '%');
           document.getElementById('score-line').style.color = pass ? 'var(--good)' : 'var(--bad)';
           var bar = document.getElementById('score-bar');
           bar.style.width = pct + '%';
@@ -337,28 +371,33 @@
         // wire buttons
         document.querySelectorAll('#setup [data-len]').forEach(function (b) {
           b.addEventListener('click', function () {
-            startExam(BANK, parseInt(b.getAttribute('data-len'), 10), timed());
+            var len = parseInt(b.getAttribute('data-len'), 10);
+            var scope = len === 0 ? 'Full exam' : ('Full exam · ' + len + 'Q');
+            startExam(BANK, len, timed(), scope);
           });
         });
         document.getElementById('drill-btn').addEventListener('click', function () {
           var d = document.getElementById('domain-select').value;
-          startExam(BANK.filter(function (q) { return q.d === d; }), 0, timed());
+          startExam(BANK.filter(function (q) { return q.d === d; }), 0, timed(), 'Drill · ' + d);
         });
         document.getElementById('missed-btn').addEventListener('click', function () {
           var ids = loadMissed();
-          startExam(BANK.filter(function (q) { return ids.indexOf(q.id) !== -1; }), 0, timed());
+          startExam(BANK.filter(function (q) { return ids.indexOf(q.id) !== -1; }), 0, timed(), 'Missed review');
         });
         document.getElementById('clear-missed').addEventListener('click', function () {
           if (!confirm('Clear your missed-questions list?')) return;
           saveMissed([]); updateMissedBtn();
         });
         updateMissedBtn();
+        renderBestSummary();
 
         document.getElementById('submitBtn').addEventListener('click', finish);
         document.getElementById('submitBtn2').addEventListener('click', finish);
         document.getElementById('retry').addEventListener('click', function () {
           document.getElementById('results').style.display = 'none';
           document.getElementById('setup').style.display = 'block';
+          updateMissedBtn();
+          renderBestSummary();
           window.scrollTo(0, 0);
         });
       })();
