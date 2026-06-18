@@ -44,6 +44,9 @@ html[data-theme="dark"] .button.secondary:hover { background: #dfe7f5; color: #0
 html[data-theme="dark"] .callout strong { color: #dfe7f5; }
 html[data-theme="dark"] table.spec th { background: #243248; color: #eef2f9; }
 html[data-theme="dark"] table.spec th, html[data-theme="dark"] table.spec td { border-color: rgba(231,229,223,0.18); }
+/* Glossary terms and quiz score also use --navy as text on the (now dark) page. */
+html[data-theme="dark"] .keyterms dt { color: #dfe7f5; }
+html[data-theme="dark"] .quiz-result { color: #dfe7f5; }
 
 /* ---------- Theme toggle button (injected into nav) ---------- */
 .theme-toggle {
