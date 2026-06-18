@@ -40,6 +40,10 @@ html[data-theme="dark"] .nav-toggle { color: #e7e5df; border-color: rgba(231,229
 /* Secondary (outline) buttons sit on dark surfaces in dark mode */
 html[data-theme="dark"] .button.secondary { color: #dfe7f5; border-color: #5b6b86; }
 html[data-theme="dark"] .button.secondary:hover { background: #dfe7f5; color: #0f1722; }
+/* Callout bold text and table headers use --navy, which goes dark-on-dark; relight them. */
+html[data-theme="dark"] .callout strong { color: #dfe7f5; }
+html[data-theme="dark"] table.spec th { background: #243248; color: #eef2f9; }
+html[data-theme="dark"] table.spec th, html[data-theme="dark"] table.spec td { border-color: rgba(231,229,223,0.18); }
 
 /* ---------- Theme toggle button (injected into nav) ---------- */
 .theme-toggle {
