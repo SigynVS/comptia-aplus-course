@@ -11,7 +11,7 @@
   --bad: #b3322c;
   --max: 70rem;
   /* Editorial serif for headings — a deliberate point of view, no web fonts. */
-  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", "Hoefler Text", Georgia, serif;
+  --serif: Arial, sans-serif;
   --r: 4px;
 }
 
@@ -67,7 +67,7 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   color: var(--ink);
   background: var(--cream);
   line-height: 1.65;
