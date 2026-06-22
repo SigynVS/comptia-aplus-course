@@ -63,7 +63,7 @@ html[data-theme="dark"] .quiz-result { color: #dfe7f5; }
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; font-size: 20px; }
 
 body {
   margin: 0;
